@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 // import {
@@ -9,7 +9,7 @@ import {
 } from './';
 
 const useStyles = makeStyles(theme => ({
-    fire: {
+    intro: {
         position: 'absolute',
         backgroundColor: '#212121',
         width: '100%',
@@ -17,22 +17,27 @@ const useStyles = makeStyles(theme => ({
     },
     logo: {
         position: 'relative',
-        width: 190,
+        width: 150,
+        top: 'calc(50vh - 35px)',
+        left: 'calc(50vw - 55px)',
 
-        top: 200,
-        left: 200,
     },
 }));
 
-export default function Fire() {
+function Intro() {
     const classes = useStyles();
+
+    useEffect(() => {
+        // console.log ('effect')
+    });
+
     // const {
     //     firebase,
     // } = useSelector(state => state);
     // console.log(firebase);
     return (
         <React.Fragment>
-            <div className={classes.fire}>
+            <div className={classes.intro}>
                 <div className={classes.logo}>
                     <Logo />
                 </div>
@@ -40,3 +45,6 @@ export default function Fire() {
         </React.Fragment>
     );
 }
+
+const MemodFuncComponent = React.memo(Intro);
+export default MemodFuncComponent;

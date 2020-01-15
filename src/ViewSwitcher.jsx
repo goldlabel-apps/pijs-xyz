@@ -4,8 +4,7 @@ import muiTheme from './theme/mui';
 import { useSelector } from 'react-redux';
 import {
     Boot,
-    Fire,
-    // View,
+    Intro,
 } from './components';
 
 export default function ViewSwitcher() {
@@ -17,7 +16,7 @@ export default function ViewSwitcher() {
     if (!boot.booted) {
         screen = <Boot />;
     } else {
-        screen = <Fire />;
+        screen = <Intro />;
     }
 
     return (

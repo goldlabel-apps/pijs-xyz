@@ -14,12 +14,12 @@ const useStyles = makeStyles(theme => ({
     logo: {
         // display: 'flex',
         // marginRight: theme.spacing(4),
-        padding: theme.spacing(),
-        border: '1px solid limegreen',
-        borderRadius: theme.spacing(),
+        // padding: theme.spacing(),
+        // border: '1px solid limegreen',
+        // borderRadius: theme.spacing(),
     },
     logoText: {
-        color: '#F1DD3F',
+        color: 'rgba(255,222,255,0.9)',
         marginTop: theme.spacing(1.2),
         marginLeft: theme.spacing()
     },
@@ -41,14 +41,14 @@ function Logo() {
                             store.dispatch({ type: `WEATHER/OPEN` });
                             store.dispatch({ type: `SYSTEM/USERENTITY/OPEN` });
                         }}>
-                        <Icon icon={`pi`} />
+                        <Icon icon={`home`} color={`primary`} />
                     </IconButton>
                 </Grid>
                 <Grid item>
                     <Typography
                         className={classes.logoText}
                         variant={`h6`}>
-                        PiJS.app
+                        Test
             </Typography>
                 </Grid>
             </Grid>
