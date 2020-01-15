@@ -1,6 +1,7 @@
 import Boot from "./Boot";
 import Camera from "./Camera";
 import Dock from "./Dock";
+import Fire from "./Fire";
 import Icon from "./Icon";
 import Logo from "./Logo";
 import Mapbox from "./Mapbox";
@@ -13,6 +14,7 @@ export {
   Boot,
   Camera,
   Dock,
+  Fire,
   Icon,
   Logo,
   Mapbox,

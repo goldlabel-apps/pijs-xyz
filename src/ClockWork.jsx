@@ -69,6 +69,7 @@ class ClockWork extends Component {
                         color: `#F1DD3F`,
                     }
                 })
+
                 break;
 
             default:
@@ -76,6 +77,7 @@ class ClockWork extends Component {
         }
 
         if (!booted && ticks > 2) {
+            store.dispatch({ type: `SYSTEM/BOOT` });
             store.dispatch({ type: `CAMERA/UPDATE` })
             if (ipgeo && fingerprint) {
                 if (!userShownAtTick) {
