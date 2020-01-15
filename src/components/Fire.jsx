@@ -4,20 +4,24 @@ import { makeStyles } from '@material-ui/core/styles';
 // import {
 //     Grid,
 // } from '@material-ui/core/';
-// import {
-//     Camera,
-// } from './';
+import {
+    Logo,
+} from './';
 
 const useStyles = makeStyles(theme => ({
     fire: {
+        position: 'absolute',
         backgroundColor: '#212121',
-        border: '1px solid red',
-        minHeight: '100vh',
+        width: '100%',
+        height: '100%',
     },
-    top: {
-        margin: 'auto',
-        maxWidth: 800,
-    }
+    logo: {
+        position: 'relative',
+        width: 190,
+
+        top: 200,
+        left: 200,
+    },
 }));
 
 export default function Fire() {
@@ -28,8 +32,10 @@ export default function Fire() {
     // console.log(firebase);
     return (
         <React.Fragment>
-            <div className={classes.view}>
-                Fire
+            <div className={classes.fire}>
+                <div className={classes.logo}>
+                    <Logo />
+                </div>
             </div>
         </React.Fragment>
     );
