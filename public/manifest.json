@@ -1,7 +1,7 @@
 {
   "short_name": "PiJS",
-  "name": "PiJS",
-  "description": "A React PWA and Secure SSL Node/Express server running on a Raspberry Pi 4",
+  "name": "PiJS.app",
+  "description": "PiJS.app is a React Progressive Web Application",
   "start_url": ".",
   "theme_color": "#F1DD3F",
   "background_color": "#212121",
