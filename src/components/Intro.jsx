@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 // import {
 //     Grid,
@@ -18,23 +18,22 @@ const useStyles = makeStyles(theme => ({
     logo: {
         position: 'relative',
         width: 150,
+        opacity: 0,
         top: 'calc(50vh - 35px)',
         left: 'calc(50vw - 55px)',
-
     },
 }));
 
 function Intro() {
     const classes = useStyles();
-
+    const { intro } = useSelector(state => state.animation);
     useEffect(() => {
-        // console.log ('effect')
-    });
+        const { started, finished } = intro;
+        if (!started && !finished) {
+            // console.log('Start', intro);
+        }
+    }, [intro]);
 
-    // const {
-    //     firebase,
-    // } = useSelector(state => state);
-    // console.log(firebase);
     return (
         <React.Fragment>
             <div className={classes.intro}>

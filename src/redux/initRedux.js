@@ -3,6 +3,7 @@ import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import { reduxBatch } from "@manaflair/redux-batch";
+import { animation, animationSlice } from "./animation/reducer";
 import { camera, cameraSlice } from "./camera/reducer";
 import { firebase, firebaseSlice } from "./firebase/reducer";
 import { system, systemSlice } from "./system/reducer";
@@ -15,6 +16,7 @@ const initRedux = () => {
   };
 
   const reducers = combineReducers({
+    animation,
     camera,
     firebase,
     system,
@@ -24,6 +26,7 @@ const initRedux = () => {
   const persistedReducer = persistReducer(persistConfig, reducers);
 
   const preloadedState = {
+    animation: animationSlice,
     camera: cameraSlice,
     firebase: firebaseSlice,
     system: systemSlice,

@@ -9,7 +9,11 @@ import ViewSwitcher from "./ViewSwitcher";
 import ClockWork from "./ClockWork";
 import { CssBaseline } from "@material-ui/core/";
 
-const disablePersitance = false;
+let disablePersitance = false;
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.has('upgrade-from')) {
+  disablePersitance = true;
+}
 
 console.log(
   `${packageJSON.name} ${packageJSON.version} (${process.env.REACT_APP_ENV})`
