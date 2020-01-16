@@ -7,23 +7,24 @@ exports.app = functions.https.onRequest((req, res) => {
     if (mode === `json`) {
         const epoch = Date.now();
         const r = {
-            app: `wordpress-node`,
+            name: packageJSON.name,
             version: packageJSON.version,
-            serverTime: moment(epoch).format(`ddd, MMM Do, h:mm a`),
+            description: packageJSON.description,
+            time: moment(epoch).format(`ddd, MMM Do, h:mm a`),
             data: [
-                {
-                    title: `Node`,
-                    type: `paragraph`,
-                    body: `Find out about Node JS`,
-                    link: `https://nodejs.org/en/about`
-                },
+                // {
+                //     title: `Node`,
+                //     type: `paragraph`,
+                //     body: `Find out about Node JS`,
+                //     link: `https://nodejs.org/en/about`
+                // },
             ],
             errors: [
-                {
-                    code: `e0001`,
-                    problem: `Setup required`,
-                    action: `Add WordPress Sites`,
-                }
+                // {
+                //     code: `e0001`,
+                //     problem: `Setup required`,
+                //     action: `Add WordPress Sites`,
+                // }
             ],
         }
         res.setHeader(`Content-Type`, `application/json`);

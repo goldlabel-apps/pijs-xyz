@@ -1,6 +1,6 @@
 {
-  "name": "functions",
-  "version": "0.0.2",
+  "name": "pijs-functions",
+  "version": "0.0.3",
   "description": "Cloud Functions for Firebase",
   "scripts": {
     "lint": "eslint .",

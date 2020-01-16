@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-// import {
-//     Grid,
-// } from '@material-ui/core/';
 import {
     Logo,
 } from './';
+import { TimelineMax, Power2 } from "gsap";
 
 const useStyles = makeStyles(theme => ({
     intro: {
@@ -24,6 +22,15 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+function playAnimation() {
+    const div = document.getElementById(`logo`);
+    const timeline = new TimelineMax();
+    timeline.to(div, 3, {
+        opacity: 1,
+        ease: Power2.easeOut
+    });
+}
+
 function Intro() {
     const classes = useStyles();
     const { intro } = useSelector(state => state.animation);
@@ -31,13 +38,14 @@ function Intro() {
         const { started, finished } = intro;
         if (!started && !finished) {
             // console.log('Start', intro);
+            playAnimation();
         }
     }, [intro]);
 
     return (
         <React.Fragment>
             <div className={classes.intro}>
-                <div className={classes.logo}>
+                <div className={classes.logo} id={`logo`}>
                     <Logo />
                 </div>
             </div>
