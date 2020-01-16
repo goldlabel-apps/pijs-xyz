@@ -14,8 +14,9 @@ class ClockWork extends Component {
     componentWillUnmount() { this.stopTimer() }
 
     tick = () => {
+        // console.log('tick', Date.now())
         const store = getStore();
-        store.dispatch({ type: `SYSTEM/TICK` });
+        store.dispatch({ type: `CLOCKWORK/TICK` });
     }
 
     startTimer = () => {

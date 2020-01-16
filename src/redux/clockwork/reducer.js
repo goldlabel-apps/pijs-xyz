@@ -6,7 +6,7 @@ export const clockworkSlice = {
   data: {
     ticks: 0,
     ticking: false,
-    tickDelay: 10 // secs betweek ticks
+    tickDelay: 1 // secs betweek ticks
   },
   errors: []
 };
@@ -14,7 +14,7 @@ export const clockworkSlice = {
 const clockwork = createReducer(clockworkSlice, {
   [tick]: state => {
     state.updated = Date.now();
-    state.tick.ticks++;
+    state.data.ticks++;
     return state;
   },
 

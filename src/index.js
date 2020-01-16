@@ -5,11 +5,12 @@ import initRedux from "./redux/initRedux";
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
-import ViewSwitcher from "./ViewSwitcher";
+import MaterialView from "./MaterialView";
 import ClockWork from "./ClockWork";
 import { CssBaseline } from "@material-ui/core/";
 
-let disablePersitance = true;
+let debugOn = true;
+let disablePersitance = false;
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.has("upgrade-from")) {
   disablePersitance = true;
@@ -40,7 +41,7 @@ ReactDOM.render(
       <React.Fragment>
         <ClockWork />
         <CssBaseline />
-        <ViewSwitcher />
+        <MaterialView debugOn={debugOn} />
       </React.Fragment>
     </PersistGate>
   </Provider>,
