@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
+import { gsap } from "gsap";
 import {
     Logo,
 } from './';
-
-import { gsap } from "gsap";
 
 const useStyles = makeStyles(theme => ({
     intro: {
@@ -16,10 +15,8 @@ const useStyles = makeStyles(theme => ({
     },
     logo: {
         position: 'relative',
-        width: 150,
         opacity: 0,
-        top: 'calc(50vh - 35px)',
-        left: 'calc(50vw - 55px)',
+        top: 'calc(50vh - 24px)',
     },
 }));
 

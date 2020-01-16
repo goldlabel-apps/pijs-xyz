@@ -20,7 +20,7 @@ const camera = createReducer(cameraSlice, {
 
   [update]: (state) => {
     state.updated = Date.now();
-    state.currentPhoto = `https://pijs.app/jpg/current-photo.jpg?cb=${Date.now()}`;
+    state.currentPhoto = `https://pi.listingslab.io/current-photo?cb=${Date.now()}`;
     return state;
   }, 
 
@@ -61,34 +61,3 @@ const camera = createReducer(cameraSlice, {
 });
 
 export { camera };
-
-  
-  
-    // [updateCamera]: (state) => {
-  //   if (state.camera) {
-  //     state.camera.updated = Date.now();
-  //     state.camera.currentPhoto = `https://pijs.app/jpg/current-photo.jpg?cb=${Date.now()}`;
-  //   }
-
-  //   return state;
-  // }, 
-
-  
-
-  // [openCamera]: (state) => {
-  //   state.camera.updated = Date.now();
-  //   state.camera.open = true;
-  //   return state;
-  // },
-
-  // [closeCamera]: (state) => {
-  //   state.camera.updated = Date.now();
-  //   state.camera.open = false;
-  //   return state;
-  // },
-
-  // [toggleCamera]: (state) => {
-  //   state.camera.updated = Date.now();
-  //   state.camera.open = !state.camera.open;
-  //   return state;
-  // },
