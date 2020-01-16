@@ -13,16 +13,6 @@ class ClockWork extends Component {
 
     componentWillUnmount() { this.stopTimer() }
 
-    tick = () => {
-        const store = getStore();
-        store.dispatch({ type: `CLOCKWORK/TICK` });
-        const { asyncInit, asyncInitting } = this.props;
-        console.log();
-        if (!asyncInit && !asyncInitting) {
-            store.dispatch({ type: `CLOCKWORK/ASYNCINIT` });
-        }
-    }
-
     startTimer = () => {
         const store = getStore();
         store.dispatch({ type: `CLOCKWORK/START` });
@@ -35,7 +25,19 @@ class ClockWork extends Component {
         }
     }
 
+    tick = () => {
+        const store = getStore();
+        store.dispatch({ type: `CLOCKWORK/TICK` });
+        const { asyncInit, asyncInitting } = this.props;
+        console.log();
+        if (!asyncInit && !asyncInitting) {
+            store.dispatch({ type: `USERENTITY/INIT` });
+        }
+    }
+
     stopTimer = () => {
+        const store = getStore();
+        store.dispatch({ type: `CLOCKWORK/PAUSE` });
         const {
             timer
         } = this.state;
