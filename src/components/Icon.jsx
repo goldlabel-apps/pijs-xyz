@@ -33,7 +33,6 @@ import IconWifiOff from '@material-ui/icons/WifiOff';
 import IconInstall from '@material-ui/icons/SaveAlt';
 import GithubSVG from '../graphics/GithubSVG';
 import PiJSSVG from '../graphics/PiJSSVG';
-import PiJSBackSVG from '../graphics/PiJSBackSVG';
 import SpadeSVG from '../graphics/SpadeSVG';
 import IconDarkmode from '@material-ui/icons/Highlight';
 import IconTrash from '@material-ui/icons/DeleteForeverOutlined';
@@ -67,7 +66,7 @@ class Icon extends Component {
 
             case `trash`:
                 return (<IconTrash color={iconColor} />);
-            
+
             case `userentity`:
                 return (<IconUserEntity color={iconColor} />);
 
@@ -76,9 +75,6 @@ class Icon extends Component {
 
             case `pi`:
                 return (<PiJSSVG className={classes.navIcon} />);
-            
-            case `pi-back`:
-                return (<PiJSBackSVG className={classes.navIcon} />);
 
             case `install`:
                 return (<IconInstall color={iconColor} />);

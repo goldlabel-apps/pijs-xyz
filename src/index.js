@@ -9,10 +9,12 @@ import ViewSwitcher from "./ViewSwitcher";
 import ClockWork from "./ClockWork";
 import { CssBaseline } from "@material-ui/core/";
 
-let disablePersitance = false;
+let disablePersitance = true;
 const urlParams = new URLSearchParams(window.location.search);
-if (urlParams.has('upgrade-from')) {
+if (urlParams.has("upgrade-from")) {
   disablePersitance = true;
+  localStorage.clear();
+  window.location.assign(`/`);
 }
 
 console.log(

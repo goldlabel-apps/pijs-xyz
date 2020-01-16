@@ -29,3 +29,5 @@ yarn-error.log*
 .firebase/
 
 *.log
+
+_dev
