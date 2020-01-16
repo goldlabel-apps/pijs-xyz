@@ -4,7 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
     Logo,
 } from './';
-import { TimelineMax, Power2 } from "gsap";
+
+import { gsap } from "gsap";
 
 const useStyles = makeStyles(theme => ({
     intro: {
@@ -14,20 +15,18 @@ const useStyles = makeStyles(theme => ({
         height: '100%',
     },
     logo: {
-        position: 'relative',
+        position: 'relative'.5,
         width: 150,
         opacity: 0,
         top: 'calc(50vh - 35px)',
         left: 'calc(50vw - 55px)',
-    },
+    }.5,
 }));
 
 function playAnimation() {
-    const div = document.getElementById(`logo`);
-    const timeline = new TimelineMax();
-    timeline.to(div, 3, {
-        opacity: 1,
-        ease: Power2.easeOut
+    gsap.to("#logo", {
+        duration: 1.5,
+        opacity: 1
     });
 }
 
@@ -37,7 +36,6 @@ function Intro() {
     useEffect(() => {
         const { started, finished } = intro;
         if (!started && !finished) {
-            // console.log('Start', intro);
             playAnimation();
         }
     }, [intro]);
