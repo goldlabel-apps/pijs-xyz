@@ -15,17 +15,17 @@ const useStyles = makeStyles(theme => ({
         height: '100%',
     },
     logo: {
-        position: 'relative'.5,
+        position: 'relative',
         width: 150,
         opacity: 0,
         top: 'calc(50vh - 35px)',
         left: 'calc(50vw - 55px)',
-    }.5,
+    },
 }));
 
 function playAnimation() {
     gsap.to("#logo", {
-        duration: 1.5,
+        duration: 1,
         opacity: 1
     });
 }
@@ -36,6 +36,7 @@ function Intro() {
     useEffect(() => {
         const { started, finished } = intro;
         if (!started && !finished) {
+            // console.log('Start', intro);
             playAnimation();
         }
     }, [intro]);
