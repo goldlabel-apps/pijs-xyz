@@ -1,32 +1,38 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { start, pause, reset, tick } from "./actions";
+import { init, start, pause, reset, tick } from "./actions";
 
 export const clockworkSlice = {
   updated: Date.now(),
-  data: {
-    ticks: 0,
-    ticking: false,
-    tickDelay: 1 // secs betweek ticks
-  },
-  errors: []
+  ticks: 0,
+  ticking: false,
+  tickDelay: 1, // secs betweek ticks
+  asyncInit: false,
+  asyncInitting: false
 };
 
 const clockwork = createReducer(clockworkSlice, {
+  [init]: state => {
+    console.log("clockwork => CLOCKWORK/ASYNCINIT");
+    state.updated = Date.now();
+    state.asyncInitting = true;
+    return state;
+  },
+
   [tick]: state => {
     state.updated = Date.now();
-    state.data.ticks++;
+    state.ticks++;
     return state;
   },
 
   [pause]: state => {
     state.updated = Date.now();
-    state.data.ticking = false;
+    state.ticking = false;
     return state;
   },
 
   [start]: state => {
     state.updated = Date.now();
-    state.data.ticking = true;
+    state.ticking = true;
     return state;
   },
 

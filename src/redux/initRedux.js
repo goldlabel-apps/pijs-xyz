@@ -4,6 +4,7 @@ import { combineReducers } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import { reduxBatch } from "@manaflair/redux-batch";
 import { clockwork, clockworkSlice } from "./clockwork/reducer";
+import { userEntity, userEntitySlice } from "./userEntity/reducer";
 
 const initRedux = () => {
   const persistConfig = {
@@ -12,13 +13,15 @@ const initRedux = () => {
   };
 
   const reducers = combineReducers({
-    clockwork
+    clockwork,
+    userEntity
   });
 
   const persistedReducer = persistReducer(persistConfig, reducers);
 
   const preloadedState = {
-    clockwork: clockworkSlice
+    clockwork: clockworkSlice,
+    userEntity: userEntitySlice
   };
 
   const middleware = [

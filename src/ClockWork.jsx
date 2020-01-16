@@ -14,12 +14,18 @@ class ClockWork extends Component {
     componentWillUnmount() { this.stopTimer() }
 
     tick = () => {
-        // console.log('tick', Date.now())
         const store = getStore();
         store.dispatch({ type: `CLOCKWORK/TICK` });
+        const { asyncInit, asyncInitting } = this.props;
+        console.log();
+        if (!asyncInit && !asyncInitting) {
+            store.dispatch({ type: `CLOCKWORK/ASYNCINIT` });
+        }
     }
 
     startTimer = () => {
+        const store = getStore();
+        store.dispatch({ type: `CLOCKWORK/START` });
         const { tickDelay } = this.props;
         const {
             timer
@@ -46,7 +52,11 @@ class ClockWork extends Component {
 
 const mapStateToProps = (store) => {
     return {
-        tickDelay: store.clockwork.data.tickDelay,
+        tickDelay: store.clockwork.tickDelay,
+        ticking: store.clockwork.ticking,
+        ticks: store.clockwork.ticks,
+        asyncInit: store.clockwork.asyncInit,
+        asyncInitting: store.clockwork.asyncInitting,
     };
 };
 

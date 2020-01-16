@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
-    debugger: {
+    debug: {
         position: 'absolute',
         backgroundColor: 'rgba(255,255,255,0.25)',
         border: '1px solid rgba(255,255,255,0.5)',
@@ -20,8 +20,8 @@ function Debug() {
     const { clockwork } = useSelector(state => state);
     return (
         <React.Fragment>
-            <div className={classes.debugger}>
-                Ticks {clockwork.data.ticks}
+            <div className={classes.debug}>
+                Ticks {clockwork.ticks}
             </div>
         </React.Fragment>
     );
