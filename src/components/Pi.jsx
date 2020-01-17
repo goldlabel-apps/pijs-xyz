@@ -42,8 +42,10 @@ function Pi() {
     const {
         expanded,
         updated,
+        baseUrl,
         connected,
         connecting,
+        error,
     } = pi;
 
     return (
@@ -66,8 +68,11 @@ function Pi() {
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails className={classes.screen}>
                         <strong>since updated</strong>&nbsp;{Date.now() - updated}<br />
-                        <strong>connecting</strong>&nbsp;{connecting ? 'yes' : 'no'}<br />
-                        <strong>connected</strong>&nbsp;{connected ? 'yes' : 'no'}<br />
+
+                        <strong>baseUrl</strong>&nbsp;{baseUrl.toString()}<br />
+                        <strong>connecting</strong>&nbsp;{connecting.toString()}<br />
+                        <strong>connected</strong>&nbsp;{connected.toString()}<br />
+                        <strong>error</strong>&nbsp;{error.toString()}<br />
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
             </div>

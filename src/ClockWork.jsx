@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getStore } from './';
+import { connectPi } from './redux/pi/actions';
 
 class ClockWork extends Component {
 
@@ -16,6 +17,12 @@ class ClockWork extends Component {
     startTimer = () => {
         const store = getStore();
         store.dispatch({ type: `CLOCKWORK/START` });
+
+        store.dispatch({
+            type: "PI/SET_CONNECTING",
+            connecting: false
+        });
+
         const { tickDelay } = this.props;
         const {
             timer
@@ -33,8 +40,15 @@ class ClockWork extends Component {
             fireprintInitted,
             ipLocationInitted,
             initting,
-            initted
+            initted,
+            //ticks,
+            connecting,
+            connected
         } = this.props;
+
+        if (!connecting && !connected) {
+            connectPi();
+        }
 
         if (!initted) {
             if (!initting) {
@@ -44,7 +58,7 @@ class ClockWork extends Component {
         if (fireprintInitted && ipLocationInitted && !initted) {
             store.dispatch({ type: `USERENTITY/INIT/COMPLETE` });
         }
-        // store.dispatch({ type: `USERENTITY/INIT` });
+
 
     }
 
@@ -70,10 +84,14 @@ const mapStateToProps = (store) => {
         tickDelay: store.clockwork.tickDelay,
         ticking: store.clockwork.ticking,
         ticks: store.clockwork.ticks,
+        ////////////////////
         fireprintInitted: store.userEntity.fireprintInitted,
         ipLocationInitted: store.userEntity.ipLocationInitted,
         initting: store.userEntity.initting,
         initted: store.userEntity.initted,
+        ////////////////////
+        connected: store.pi.connected,
+        connecting: store.pi.connecting,
     };
 };
 
