@@ -67,6 +67,10 @@ function Pi() {
                         </Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails className={classes.screen}>
+                        <Typography
+                            variant={`h4`} className={classes.chinese}>
+                            分支名称可以中文吗？
+                        </Typography>
                         <strong>since updated</strong>&nbsp;{Date.now() - updated}<br />
 
                         <strong>baseUrl</strong>&nbsp;{baseUrl.toString()}<br />
