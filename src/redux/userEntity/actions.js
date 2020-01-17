@@ -5,9 +5,9 @@ import { getStore } from "../../";
 import userAgentParser from "ua-parser-js";
 
 export const reset = createAction(`USERENTITY/RESET`);
+export const toggleExpand = createAction(`USERENTITY/TOGGLE_EXPAND`);
 export const init = createAction(`USERENTITY/INIT`);
 export const initComplete = createAction(`USERENTITY/INIT/COMPLETE`);
-
 export const fireprintResponse = createAction(`USERENTITY/FIREPRINT/RESPONSE`);
 export const ipLocationResponse = createAction(
   `USERENTITY/IPLOCATION/RESPONSE`

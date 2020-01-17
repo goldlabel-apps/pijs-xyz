@@ -41,12 +41,16 @@ class ClockWork extends Component {
             ipLocationInitted,
             initting,
             initted,
-            //ticks,
+            ticks,
             connecting,
             connected
         } = this.props;
 
         if (!connecting && !connected) {
+            connectPi();
+        }
+
+        if (ticks % 5 === 0) {
             connectPi();
         }
 

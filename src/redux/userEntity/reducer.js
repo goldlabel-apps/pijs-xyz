@@ -7,11 +7,13 @@ import {
   getFireprint,
   getIPLocation,
   ipLocationResponse,
-  ipLocationError
+  ipLocationError,
+  toggleExpand
 } from "./actions";
 
 export const userEntitySlice = {
   updated: Date.now(),
+  expanded: false,
   created: null,
   initting: false,
   initted: false,
@@ -134,6 +136,12 @@ const userEntity = createReducer(userEntitySlice, {
   [ipLocationError]: (state, action) => {
     state.updated = Date.now();
     state.ipLocationError = action.error;
+    return state;
+  },
+
+  [toggleExpand]: state => {
+    state.updated = Date.now();
+    state.expanded = !state.expanded;
     return state;
   },
 
