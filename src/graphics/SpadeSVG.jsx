@@ -2,7 +2,7 @@ import React from "react";
 
 const SpadeSVG = props => {
     const { color } = props;
-    let c = `#333333`;
+    let c = `#fff`;
     if (color) {
         if (color) {
             c = color;

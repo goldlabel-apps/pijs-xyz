@@ -5,7 +5,49 @@ import { makeStyles } from '@material-ui/core/styles';
 import { gsap } from "gsap";
 import {
     PiJSLogo,
+    ByListingslab,
 } from './';
+
+const baseDuration = 1;
+
+function fadeInLogo() {
+    gsap.to(`#pijs-logo`, {
+        duration: 1 * baseDuration,
+        opacity: 1,
+        onComplete: delayFadeOutLogo,
+    });
+}
+function delayFadeOutLogo() {
+    gsap.delayedCall(0.75 * baseDuration, fadeOutLogo);
+}
+function fadeOutLogo() {
+    gsap.to(`#pijs-logo`, {
+        duration: 1 * baseDuration,
+        opacity: 0,
+        onComplete: fadeInListingslab,
+    });
+}
+function fadeInListingslab() {
+    gsap.to(`#by-listingslab`, {
+        duration: 1 * baseDuration,
+        opacity: 1,
+        onComplete: delayFadeOutListingslab,
+    });
+}
+function delayFadeOutListingslab() {
+    gsap.delayedCall(0.75 * baseDuration, fadeOutListingslab);
+}
+function fadeOutListingslab() {
+    gsap.to(`#by-listingslab`, {
+        duration: 1 * baseDuration,
+        opacity: 0,
+        onComplete: adComplete,
+    });
+}
+function adComplete() {
+    const store = getStore();
+    store.dispatch({ type: `ADVERT/COMPLETE` })
+}
 
 const useStyles = makeStyles(theme => ({
     intro: {
@@ -14,41 +56,17 @@ const useStyles = makeStyles(theme => ({
         width: '100%',
         height: '100%',
     },
-    logo: {
+    piJSLogo: {
         opacity: 0,
-        scale: 1.5,
         position: 'relative',
         top: 'calc(50vh - 24px)',
     },
-}));
-
-function adComplete() {
-    const store = getStore();
-    store.dispatch({ type: `ADVERT/COMPLETE` })
-}
-
-function fadeInDone() {
-    gsap.delayedCall(2, fadeOutLogo);
-}
-
-function fadeOutLogo() {
-    gsap.to(`#logo`, {
-        onComplete: adComplete,
-        duration: 1,
+    listingslab: {
         opacity: 0,
-    });
-}
-
-function fadeInLogo() {
-    gsap.set(`#logo`, {
-        scale: 1.25
-    });
-    gsap.to(`#logo`, {
-        duration: 1,
-        opacity: 1,
-        onComplete: fadeInDone,
-    });
-}
+        position: 'relative',
+        top: 'calc(50vh - 70px)',
+    },
+}));
 
 function Advert() {
     const classes = useStyles();
@@ -61,13 +79,19 @@ function Advert() {
             store.dispatch({ type: `ADVERT/PLAY` })
             gsap.delayedCall(0.5, fadeInLogo);
         }
-        // }, [intro]);
     })
     return (
         <React.Fragment>
             <div className={classes.intro}>
-                <div className={classes.logo} id={`logo`}>
+                <div
+                    className={classes.piJSLogo}
+                    id={`pijs-logo`}>
                     <PiJSLogo />
+                </div>
+                <div
+                    className={classes.listingslab}
+                    id={`by-listingslab`}>
+                    <ByListingslab />
                 </div>
             </div>
         </React.Fragment>

@@ -16,7 +16,8 @@ const useStyles = makeStyles(theme => ({
     },
     heading: {
         marginLeft: theme.spacing(2),
-        marginTop: theme.spacing(0.25)
+        marginTop: theme.spacing(0.25),
+        color: 'white',
     },
 }));
 
