@@ -5,16 +5,12 @@ export const clockworkSlice = {
   updated: Date.now(),
   ticks: 0,
   ticking: false,
-  tickDelay: 1, // secs betweek ticks
-  asyncInit: false,
-  asyncInitting: false
+  tickDelay: 1 // secs betweek ticks
 };
 
 const clockwork = createReducer(clockworkSlice, {
   [init]: state => {
-    console.log("clockwork => CLOCKWORK/ASYNCINIT");
     state.updated = Date.now();
-    state.asyncInitting = true;
     return state;
   },
 
