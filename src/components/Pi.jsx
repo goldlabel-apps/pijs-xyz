@@ -17,6 +17,9 @@ const useStyles = makeStyles(theme => ({
     screen: {
         display: 'block',
     },
+    error: {
+        color: 'hotpink',
+    },
     heading: {
         marginLeft: theme.spacing(2),
         marginTop: theme.spacing(0.25),
@@ -41,42 +44,52 @@ function Pi() {
     const { pi } = useSelector(state => state);
     const {
         expanded,
-        updated,
-        baseUrl,
-        connected,
-        connecting,
         error,
+        timeout,
+        lastConnectSuccess,
+        description,
+        version,
     } = pi;
-
+    let icon = `connected`;
+    if (Date.now() - lastConnectSuccess > timeout) {
+        icon = `disconnected`;
+    }
+    const connectionIcon = <Icon icon={icon} color={`primary`} />
     return (
         <React.Fragment>
             <div className={classes.camera}>
                 <ExpansionPanel
                     expanded={expanded}
                     onChange={(e) => {
-                        // console.log('onChange', expanded)
-                        store.dispatch({ type: `CAMERA/TOGGLE/EXPAND` })
+                        store.dispatch({ type: `PI/TOGGLE_EXPAND` })
                     }}>
                     <ExpansionPanelSummary
                         expandIcon={<ExpandMoreIcon />}
-                        aria-controls="Camera"
-                        id="camera">
-                        <Icon icon={`settings`} color={`primary`} />
+                        aria-controls="Pi"
+                        id="pi">
+                        {connectionIcon}
                         <Typography className={classes.heading}>
                             Pi
                         </Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails className={classes.screen}>
-                        <Typography
-                            variant={`h4`} className={classes.chinese}>
-                            分支名称可以中文吗？
-                        </Typography>
-                        <strong>since updated</strong>&nbsp;{Date.now() - updated}<br />
 
-                        <strong>baseUrl</strong>&nbsp;{baseUrl.toString()}<br />
-                        <strong>connecting</strong>&nbsp;{connecting.toString()}<br />
-                        <strong>connected</strong>&nbsp;{connected.toString()}<br />
-                        <strong>error</strong>&nbsp;{error.toString()}<br />
+                        {error ?
+                            <Typography
+                                variant={`body1`} className={classes.error}>
+                                PiJS {error}
+                            </Typography>
+                            : null}
+                        <Typography
+                            variant={`body1`} className={classes.chinese}>
+                            {description}
+                        </Typography>
+
+                        <Typography
+                            variant={`body1`} className={classes.chinese}>
+                            <strong>version</strong>&nbsp;{version.toString()}
+                        </Typography>
+
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
             </div>

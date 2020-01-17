@@ -47,9 +47,8 @@ function Camera() {
             <div className={classes.camera}>
                 <ExpansionPanel
                     expanded={expanded}
-                    onChange={(e) => {
-                        // console.log('onChange', expanded)
-                        store.dispatch({ type: `CAMERA/TOGGLE/EXPAND` })
+                    onChange={() => {
+                        store.dispatch({ type: `CAMERA/TOGGLE_EXPAND` })
                     }}>
                     <ExpansionPanelSummary
                         expandIcon={<ExpandMoreIcon />}

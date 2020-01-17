@@ -1,4 +1,5 @@
 import React from 'react';
+import { getStore } from '../';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import moment from 'moment';
@@ -22,16 +23,18 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function UserEntity() {
+    const store = getStore();
     const classes = useStyles();
     const { userEntity } = useSelector(state => state);
     const {
+        expanded,
         browser,
         isMobile,
         created,
         browserVersion,
         device,
         fingerprint,
-        // userAgent,
+        userAgent,
         resolutionWidth,
         resolutionHeight,
         os,
@@ -59,27 +62,35 @@ function UserEntity() {
     return (
         <React.Fragment>
             <div className={classes.userEntity}>
-                <ExpansionPanel>
+                <ExpansionPanel
+                    expanded={expanded}
+                    onChange={() => {
+                        store.dispatch({ type: `USERENTITY/TOGGLE_EXPAND` })
+                    }}>
                     <ExpansionPanelSummary
                         expandIcon={<ExpandMoreIcon />}
-                        aria-controls="userEntity-content"
-                        id="userEntityContent"
+                        aria-controls="userEntity"
+                        id="userEntity"
                     >
 
                         <Icon icon={`privacy`} color={`primary`} />
                         <Typography className={classes.heading}>
-                            Privacy
+                            UserEntity
                         </Typography>
                     </ExpansionPanelSummary>
-                    <ExpansionPanelDetails style={{ display: 'block' }}>
-                        <strong>created</strong> {created ? `${moment.unix(created / 1000).fromNow()}` : null}
-                        <br />
-                        <strong>fingerprint</strong> {fingerprint}<br />
-
-                        <strong>ip</strong> {ip}<br />
+                    <ExpansionPanelDetails style={{
+                        display: 'block',
+                        wordWrap: 'break-word'
+                    }}>
                         <div>
                             <img src={country_flag} alt={`country flag`} />
                         </div>
+                        <strong>created</strong> {created ? `${moment.unix(created / 1000).fromNow()}` : null}
+                        <br />
+                        <strong>fingerprint</strong> {fingerprint}<br />
+                        <strong>userAgent</strong> {userAgent}<br />
+                        <strong>ip</strong> {ip}<br />
+
                         <strong>country_name</strong> {country_name}<br />
                         <strong>country_code</strong> {country_code}<br />
                         <strong>state_prov</strong> {state_prov}<br />
