@@ -36,7 +36,7 @@ export const userEntitySlice = {
   zipcode: null,
   latitude: null,
   longitude: null,
-  is_eu: null,
+  isEU: null,
   calling_code: null,
   country_tld: null,
   country_flag: null,
@@ -119,7 +119,7 @@ const userEntity = createReducer(userEntitySlice, {
     state.zipcode = action.iPLocation.zipcode;
     state.latitude = action.iPLocation.latitude;
     state.longitude = action.iPLocation.longitude;
-    state.is_eu = action.iPLocation.is_eu;
+    state.isEU = action.iPLocation.is_eu ? "yes" : "no";
     state.calling_code = action.iPLocation.calling_code;
     state.country_tld = action.iPLocation.country_tld;
     state.country_flag = action.iPLocation.country_flag;

@@ -3,26 +3,26 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import muiTheme from './theme/mui';
 import { useSelector } from 'react-redux';
 import {
-    Boot,
     Advert,
     Debug,
+    Dashboard,
 } from './components';
 
 export default function MaterialView(props) {
+    const { debugOn } = props;
     const {
-        clockwork,
+        advert,
     } = useSelector(state => state);
-    let booted = true
+    const { complete } = advert;
     let screen = null;
     let debug = null;
-    if (!booted) {
-        screen = <Boot clockwork={clockwork} />;
-    } else {
-        screen = <Advert />;
-    }
-    const { debugOn } = props;
     if (debugOn) {
         debug = <Debug />;
+    }
+    if (!complete) {
+        screen = <Advert />;
+    } else {
+        screen = <Dashboard />;
     }
 
     return (

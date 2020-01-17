@@ -9,30 +9,20 @@ import {
     Typography,
 } from '@material-ui/core/';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Icon } from './';
 
 const useStyles = makeStyles(theme => ({
-    debug: {
-        position: 'absolute',
-        backgroundColor: 'rgba(255,255,255,0.25)',
-        border: '1px solid rgba(255,255,255,0.5)',
-        zIndex: 12324124,
-        color: 'white',
-        width: 300,
-        padding: theme.spacing(),
-        margin: theme.spacing(),
+    userEntity: {
     },
     heading: {
-        fontSize: theme.typography.pxToRem(15),
-        fontWeight: theme.typography.fontWeightRegular,
+        marginLeft: theme.spacing(2),
+        marginTop: theme.spacing(0.25)
     },
-    ticks: {
-        marginTop: theme.spacing()
-    }
 }));
 
-function Debug() {
+function UserEntity() {
     const classes = useStyles();
-    const { clockwork, userEntity } = useSelector(state => state);
+    const { userEntity } = useSelector(state => state);
     const {
         browser,
         isMobile,
@@ -67,15 +57,17 @@ function Debug() {
 
     return (
         <React.Fragment>
-            <div className={classes.debug}>
+            <div className={classes.userEntity}>
                 <ExpansionPanel>
                     <ExpansionPanelSummary
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="userEntity-content"
                         id="userEntityContent"
                     >
+
+                        <Icon icon={`privacy`} color={`primary`} />
                         <Typography className={classes.heading}>
-                            UserEntity
+                            Privacy
                         </Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails style={{ display: 'block' }}>
@@ -95,7 +87,6 @@ function Debug() {
                         <strong>state_prov</strong> {state_prov}<br />
                         <strong>calling_code</strong> {calling_code}<br />
                         <strong>country_tld</strong> {country_tld}<br />
-
                         <strong>time_zone</strong> {time_zone}<br />
                         <strong>calling_code</strong> {calling_code}<br />
                         <strong>country_tld</strong> {country_tld}<br />
@@ -116,16 +107,12 @@ function Debug() {
                         <strong>OS</strong > {os} {osVersion}<br />
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
-
-                <Typography variant={`body2`} className={classes.ticks}>
-                    ClockWork Ticks {clockwork.ticks}
-                </Typography>
             </div>
         </React.Fragment>
     );
 }
 
-const MemodFuncComponent = React.memo(Debug);
+const MemodFuncComponent = React.memo(UserEntity);
 export default MemodFuncComponent;
 
 

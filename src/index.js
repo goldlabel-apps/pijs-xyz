@@ -9,7 +9,7 @@ import MaterialView from "./MaterialView";
 import ClockWork from "./ClockWork";
 import { CssBaseline } from "@material-ui/core/";
 
-let debugOn = true;
+let debugOn = false;
 let disablePersitance = true;
 
 const urlParams = new URLSearchParams(window.location.search);

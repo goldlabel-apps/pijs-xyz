@@ -3,6 +3,8 @@ import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import { reduxBatch } from "@manaflair/redux-batch";
+import { advert, advertSlice } from "./advert/reducer";
+import { camera, cameraSlice } from "./camera/reducer";
 import { clockwork, clockworkSlice } from "./clockwork/reducer";
 import { userEntity, userEntitySlice } from "./userEntity/reducer";
 
@@ -13,6 +15,8 @@ const initRedux = () => {
   };
 
   const reducers = combineReducers({
+    advert,
+    camera,
     clockwork,
     userEntity
   });
@@ -20,6 +24,8 @@ const initRedux = () => {
   const persistedReducer = persistReducer(persistConfig, reducers);
 
   const preloadedState = {
+    advert: advertSlice,
+    camera: cameraSlice,
     clockwork: clockworkSlice,
     userEntity: userEntitySlice
   };

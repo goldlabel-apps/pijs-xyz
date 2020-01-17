@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-// import { useSelector } from 'react-redux';
+import { getStore } from '../';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { gsap } from "gsap";
 import {
@@ -21,25 +22,45 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function playAnimation() {
+function adComplete() {
+    const store = getStore();
+    store.dispatch({ type: `ADVERT/COMPLETE` })
+}
+
+function fadeInDone() {
+    gsap.delayedCall(2, fadeOutLogo);
+}
+
+function fadeOutLogo() {
+    gsap.to(`#logo`, {
+        onComplete: adComplete,
+        duration: 1,
+        opacity: 0,
+    });
+}
+
+function fadeInLogo() {
     gsap.set(`#logo`, {
         scale: 1.25
     });
     gsap.to(`#logo`, {
-        ease: `back.in`,
         duration: 1,
         opacity: 1,
+        onComplete: fadeInDone,
     });
 }
 
 function Advert() {
     const classes = useStyles();
-    // const { intro } = useSelector(state => state.animation);
+    const { advert } = useSelector(state => state);
+    const { complete, started } = advert;
     useEffect(() => {
-        // const { started, finished } = intro;
-        // if (!started && !finished) {
-        gsap.delayedCall(0.5, playAnimation);
-        //}
+        if (!started && !complete) {
+            const store = getStore();
+            store.dispatch({ type: `ADVERT/START` })
+            store.dispatch({ type: `ADVERT/PLAY` })
+            gsap.delayedCall(0.5, fadeInLogo);
+        }
         // }, [intro]);
     })
     return (
