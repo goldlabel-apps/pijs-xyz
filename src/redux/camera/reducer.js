@@ -4,7 +4,7 @@ import { toggleExpand, pause, reset } from "./actions";
 export const cameraSlice = {
   updated: Date.now(),
   playing: null,
-  expanded: true
+  expanded: false
 };
 
 const camera = createReducer(cameraSlice, {

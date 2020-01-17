@@ -6,6 +6,7 @@ import { reduxBatch } from "@manaflair/redux-batch";
 import { advert, advertSlice } from "./advert/reducer";
 import { camera, cameraSlice } from "./camera/reducer";
 import { clockwork, clockworkSlice } from "./clockwork/reducer";
+import { pi, piSlice } from "./pi/reducer";
 import { userEntity, userEntitySlice } from "./userEntity/reducer";
 
 const initRedux = () => {
@@ -18,6 +19,7 @@ const initRedux = () => {
     advert,
     camera,
     clockwork,
+    pi,
     userEntity
   });
 
@@ -27,6 +29,7 @@ const initRedux = () => {
     advert: advertSlice,
     camera: cameraSlice,
     clockwork: clockworkSlice,
+    pi: piSlice,
     userEntity: userEntitySlice
   };
 

@@ -5,6 +5,7 @@ import Debug from "./Debug";
 import Dashboard from "./Dashboard";
 import Advert from "./Advert";
 import Icon from "./Icon";
+import Pi from "./Pi";
 import PiJSLogo from "./PiJSLogo";
 import UserEntity from "./UserEntity";
 
@@ -16,6 +17,7 @@ export {
   Advert,
   Debug,
   Icon,
+  Pi,
   PiJSLogo,
   UserEntity
 };

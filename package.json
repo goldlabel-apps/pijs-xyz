@@ -1,6 +1,6 @@
 {
   "name": "pijs-app",
-  "version": "0.7.3",
+  "version": "0.7.6",
   "description": "PiJS.app is an Open Source React PWA",
   "repository": {
     "type": "git",
@@ -13,7 +13,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "clear && react-scripts build && firebase deploy"
+    "deploy": "clear && react-scripts build && firebase deploy",
+    "deploy:h": "clear && react-scripts build && firebase deploy --only hosting"
   },
   "dependencies": {
     "@manaflair/redux-batch": "^1.0.0",
