@@ -8,6 +8,7 @@ import Icon from "./Icon";
 import Pi from "./Pi";
 import PiJSLogo from "./PiJSLogo";
 import UserEntity from "./UserEntity";
+import Verbindungsstatus from "./Verbindungsstatus";
 
 export {
   Boot,
@@ -19,5 +20,6 @@ export {
   Icon,
   Pi,
   PiJSLogo,
-  UserEntity
+  UserEntity,
+  Verbindungsstatus
 };
