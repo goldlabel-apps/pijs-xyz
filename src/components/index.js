@@ -9,6 +9,7 @@ import Pi from "./Pi";
 import PiJSLogo from "./PiJSLogo";
 import UserEntity from "./UserEntity";
 import Verbindungsstatus from "./Verbindungsstatus";
+import Weather from "./Weather";
 
 export {
   Boot,
@@ -21,5 +22,6 @@ export {
   Pi,
   PiJSLogo,
   UserEntity,
-  Verbindungsstatus
+  Verbindungsstatus,
+  Weather
 };

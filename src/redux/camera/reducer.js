@@ -1,13 +1,21 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { toggleExpand, pause, reset } from "./actions";
+import { toggleExpand, pause, reset, update } from "./actions";
 
 export const cameraSlice = {
   updated: Date.now(),
   playing: null,
-  expanded: false
+  currentPhoto: `https://pi.listingslab.io/current-photo?cb=${Date.now()}`,
+  expanded: true
 };
 
 const camera = createReducer(cameraSlice, {
+  //
+  [update]: state => {
+    state.updated = Date.now();
+    state.currentPhoto = `https://pi.listingslab.io/current-photo?cb=${Date.now()}`;
+    return state;
+  },
+
   [toggleExpand]: state => {
     state.updated = Date.now();
     state.expanded = !state.expanded;

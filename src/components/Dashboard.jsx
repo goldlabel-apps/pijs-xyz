@@ -9,6 +9,7 @@ import {
     UserEntity,
     Camera,
     Pi,
+    // Weather,
 } from './';
 import { Icon } from './';
 
@@ -59,8 +60,8 @@ function Dashboard() {
                 </Typography>
                 </div>
 
-
                 <Pi />
+                {/* <Weather /> */}
                 <Camera />
                 <UserEntity />
 

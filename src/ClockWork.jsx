@@ -52,6 +52,7 @@ class ClockWork extends Component {
 
         if (ticks % 5 === 0) {
             connectPi();
+            store.dispatch({ type: `CAMERA/UPDATE` });
         }
 
         if (!initted) {

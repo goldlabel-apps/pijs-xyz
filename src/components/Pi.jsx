@@ -40,7 +40,6 @@ const useStyles = makeStyles(theme => ({
 function Pi() {
     const store = getStore();
     const classes = useStyles();
-    // let expanded = true;
     const { pi } = useSelector(state => state);
     const {
         expanded,
@@ -49,11 +48,16 @@ function Pi() {
         lastConnectSuccess,
         description,
         version,
+        location,
+        lat,
+        lng,
+        // pimoroni,
     } = pi;
     let icon = `connected`;
     if (Date.now() - lastConnectSuccess > timeout) {
         icon = `disconnected`;
     }
+
     const connectionIcon = <Icon icon={icon} color={`primary`} />
     return (
         <React.Fragment>
@@ -72,28 +76,37 @@ function Pi() {
                             Pi
                         </Typography>
                     </ExpansionPanelSummary>
-                    <ExpansionPanelDetails className={classes.screen}>
 
+                    <ExpansionPanelDetails className={classes.screen}>
                         {error ?
                             <Typography
                                 variant={`body1`} className={classes.error}>
-                                PiJS {error}
+                                PiJS {error.toString()}
                             </Typography>
-                            : null}
-                        <Typography
-                            variant={`body1`} className={classes.chinese}>
-                            {description}
-                        </Typography>
-
-                        <Typography
-                            variant={`body1`} className={classes.chinese}>
-                            <strong>version</strong>&nbsp;{version.toString()}
-                        </Typography>
-
+                            :
+                            <React.Fragment>
+                                <Typography
+                                    variant={`body1`} className={classes.chinese}>
+                                    <strong>description</strong>&nbsp;{description.toString()}
+                                </Typography>
+                                <Typography
+                                    variant={`body1`} className={classes.chinese}>
+                                    <strong>location</strong>&nbsp;{location.toString()}
+                                </Typography>
+                                <Typography
+                                    variant={`body1`} className={classes.chinese}>
+                                    <strong>lat</strong>&nbsp;{lat.toString()},  <strong>lng</strong>&nbsp;{lng.toString()}
+                                </Typography>
+                                <Typography
+                                    variant={`body1`} className={classes.chinese}>
+                                    <strong>version</strong>&nbsp;{version.toString()}
+                                </Typography>
+                            </React.Fragment>
+                        }
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
             </div>
-        </React.Fragment>
+        </React.Fragment >
     );
 }
 

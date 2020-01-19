@@ -8,6 +8,7 @@ import { camera, cameraSlice } from "./camera/reducer";
 import { clockwork, clockworkSlice } from "./clockwork/reducer";
 import { pi, piSlice } from "./pi/reducer";
 import { userEntity, userEntitySlice } from "./userEntity/reducer";
+import { weather, weatherSlice } from "./weather/reducer";
 
 const initRedux = () => {
   const persistConfig = {
@@ -20,7 +21,8 @@ const initRedux = () => {
     camera,
     clockwork,
     pi,
-    userEntity
+    userEntity,
+    weather
   });
 
   const persistedReducer = persistReducer(persistConfig, reducers);
@@ -30,7 +32,8 @@ const initRedux = () => {
     camera: cameraSlice,
     clockwork: clockworkSlice,
     pi: piSlice,
-    userEntity: userEntitySlice
+    userEntity: userEntitySlice,
+    weather: weatherSlice
   };
 
   const middleware = [

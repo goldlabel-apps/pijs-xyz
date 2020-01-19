@@ -40,7 +40,7 @@ function Camera() {
     const classes = useStyles();
     // let expanded = true;
     const { camera } = useSelector(state => state);
-    const { expanded } = camera;
+    const { expanded, currentPhoto } = camera;
 
     return (
         <React.Fragment>
@@ -86,8 +86,8 @@ function Camera() {
                                     <TransformComponent>
                                         <img
                                             className={classes.panPincher}
-                                            src="/jpg/current-photo.jpg"
-                                            alt="test" />
+                                            src={currentPhoto}
+                                            alt={`currentPhoto`} />
                                     </TransformComponent>
                                 </React.Fragment>
                             )}

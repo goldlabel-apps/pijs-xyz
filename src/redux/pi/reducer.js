@@ -5,12 +5,17 @@ export const piSlice = {
   updated: Date.now(),
   baseUrl: `https://pi.listingslab.io/`,
   timeout: 6000,
-  expanded: true,
+  expanded: false,
   connected: false,
   connecting: false,
   lastConnectSuccess: null,
-  error: false,
-  version: false
+  piEpoch: null,
+  error: true,
+  version: false,
+  pimoroni: null,
+  location: null,
+  lat: null,
+  lng: null
 };
 
 const pi = createReducer(piSlice, {
@@ -22,8 +27,13 @@ const pi = createReducer(piSlice, {
     state.connecting = false;
     state.connected = true;
     state.lastConnectSuccess = Date.now();
+    state.piEpoch = action.data.epoch;
     state.version = action.data.version;
     state.description = action.data.description;
+    state.pimoroni = action.data.pimoroni;
+    state.location = action.data.location;
+    state.lat = action.data.lat;
+    state.lng = action.data.lng;
     return state;
   },
 
