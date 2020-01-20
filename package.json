@@ -1,7 +1,7 @@
 {
   "name": "pijs-app",
   "version": "0.8.1",
-  "description": "PiJS.app is an Open Source React PWA",
+  "description": "PiJS.app is an Open Source React Progressive Web App",
   "repository": {
     "type": "git",
     "url": "https://github.com/listingslab-hardware/pijs-app.git"

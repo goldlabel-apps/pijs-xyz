@@ -7,6 +7,8 @@ import Advert from "./Advert";
 import Icon from "./Icon";
 import Pi from "./Pi";
 import Pimoroni from "./Pimoroni";
+import Privacy from "./Privacy";
+
 import PiJSLogo from "./PiJSLogo";
 import UserEntity from "./UserEntity";
 import Verbindungsstatus from "./Verbindungsstatus";
@@ -22,6 +24,7 @@ export {
   Icon,
   Pi,
   Pimoroni,
+  Privacy,
   PiJSLogo,
   UserEntity,
   Verbindungsstatus,

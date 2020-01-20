@@ -5,16 +5,17 @@ export const cameraSlice = {
   updated: Date.now(),
   expanded: false,
   playing: null,
-  currentPhoto: `https://pi.listingslab.io/current-photo-BROKE?cb=${Date.now()}`
+  currentPhoto: `/current-photo.jpg?cb=${Date.now()}`
+  // currentPhoto: `https://pi.listingslab.io/current-photo-BROKE?cb=${Date.now()}`
 };
 
 const camera = createReducer(cameraSlice, {
   //
   [update]: state => {
-    console.log(`https://pi.listingslab.io/current-photo?cb=${Date.now()}`);
-    // NEVER update the photo
-    // state.updated = Date.now();
-    // state.currentPhoto = `https://pi.listingslab.io/current-photo?cb=${Date.now()}`;
+    // console.log(`https://pi.listingslab.io/current-photo?cb=${Date.now()}`);
+    // ALWAYS update the photo
+    state.updated = Date.now();
+    state.currentPhoto = `/current-photo.jpg?cb=${Date.now()}`;
     return state;
   },
 

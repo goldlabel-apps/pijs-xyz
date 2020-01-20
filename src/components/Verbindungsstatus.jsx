@@ -1,83 +1,59 @@
 import React from 'react';
-import { getStore } from '../';
+// import { getStore } from '../';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-    ExpansionPanel,
-    ExpansionPanelSummary,
-    ExpansionPanelDetails,
-    Typography,
+    IconButton,
+    Tooltip,
 } from '@material-ui/core/';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Icon } from './';
 
 const useStyles = makeStyles(theme => ({
-    screen: {
+    btn: {
+        // border: '1px solid gold',
         display: 'block',
+        marginTop: theme.spacing(0.5),
+        marginRight: theme.spacing(0.5),
+        width: theme.spacing(6),
+        height: theme.spacing(6),
     },
-    heading: {
-        marginLeft: theme.spacing(2),
-        marginTop: theme.spacing(0.25),
-        color: 'white',
-    },
+
 }));
 
 function Verbindungsstatus() {
-    const store = getStore();
+    // const store = getStore();
     const classes = useStyles();
-    // let expanded = true;
     const { pi } = useSelector(state => state);
     const {
-        expanded,
-        error,
+        // error,
         timeout,
         lastConnectSuccess,
-        description,
-        version,
     } = pi;
-    let icon = `connected`;
+    let status = `connected`;
     if (Date.now() - lastConnectSuccess > timeout) {
-        icon = `disconnected`;
+        status = `disconnected`;
     }
-    const connectionIcon = <Icon icon={icon} color={`primary`} />
+    const connectionIcon = <Icon icon={status} color={`primary`} />;
+
+    let info = `Verbindung...`
+    if (status === `connected`) {
+        info = `Verbindung: CONNECTED :)`;
+    } else if (status === `disconnected`) {
+        info = `Verbindung: DISCONNECTED :(`;
+    }
+
     return (
         <React.Fragment>
-            <ExpansionPanel
-                expanded={expanded}
-                onChange={(e) => {
-                    store.dispatch({
-                        type: `PI/TOGGLE_VERBINDUNG`,
-                        payload: {
-                            sache1: 123
-                        }
-                    })
-                }}>
-                <ExpansionPanelSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="Verbindungsstatus"
-                    id="verbindungsstatus">
+            <Tooltip title={info}>
+                <IconButton
+                    className={classes.btn}
+                    onClick={(e) => {
+                        e.preventDefault();
+                    }}>
                     {connectionIcon}
-                    <Typography className={classes.heading}>
-                        Verbindungsstatus
-                    </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails className={classes.screen}>
-                    {error ?
-                        <Typography
-                            variant={`body1`} className={classes.error}>
-                            PiJS {error}
-                        </Typography>
-                        : null}
-                    <Typography
-                        variant={`body1`} className={classes.chinese}>
-                        {description}
-                    </Typography>
-                    <Typography
-                        variant={`body1`} className={classes.chinese}>
-                        <strong>version</strong>&nbsp;{version.toString()}
-                    </Typography>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </IconButton>
+            </Tooltip>
         </React.Fragment>
     );
 }
