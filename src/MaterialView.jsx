@@ -2,14 +2,24 @@ import React from 'react';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import muiTheme from './theme/mui';
 import { useSelector } from 'react-redux';
+import { makeStyles } from '@material-ui/core/styles';
 import {
     Advert,
     Debug,
     Dashboard,
 } from './components';
 
+const useStyles = makeStyles(theme => ({
+    app: {
+        margin: 'auto',
+        maxWidth: 800
+    },
+}));
+
+
 export default function MaterialView(props) {
     const { debugOn } = props;
+    const classes = useStyles();
     const {
         advert,
     } = useSelector(state => state);
@@ -22,7 +32,7 @@ export default function MaterialView(props) {
     if (!complete) {
         screen = <Advert />;
     } else {
-        screen = <Dashboard />;
+        screen = <div className={classes.app}><Dashboard /></div >;
     }
 
     return (

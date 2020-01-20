@@ -3,9 +3,9 @@ import { toggleExpand, pause, reset, update } from "./actions";
 
 export const cameraSlice = {
   updated: Date.now(),
+  expanded: false,
   playing: null,
   currentPhoto: `https://pi.listingslab.io/current-photo?cb=${Date.now()}`,
-  expanded: true
 };
 
 const camera = createReducer(cameraSlice, {
