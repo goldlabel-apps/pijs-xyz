@@ -59,10 +59,11 @@ function Dashboard() {
                         PiJS.app
                 </Typography>
                 </div>
-
+                
+                <Camera />
                 <Pi />
                 {/* <Weather /> */}
-                <Camera />
+                
                 <UserEntity />
 
                 <div className={classes.ticks}>

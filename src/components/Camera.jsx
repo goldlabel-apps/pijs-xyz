@@ -3,7 +3,7 @@ import { getStore } from '../';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-    IconButton,
+    Fab,
     ExpansionPanel,
     ExpansionPanelSummary,
     ExpansionPanelDetails,
@@ -64,24 +64,24 @@ function Camera() {
                             {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
                                 <React.Fragment>
                                     <div className={classes.tools}>
-                                        <IconButton
-                                            variant={`contained`}
-                                            color={`primary`}
+                                        
+                                        <Fab
+                                            color={`secondary`}
                                             onClick={zoomIn}>
                                             <Icon icon={`zoomin`} color={`primary`} />
-                                        </IconButton>
-                                        <IconButton
-                                            variant={`contained`}
-                                            color={`primary`}
+                                        </Fab>
+
+                                        <Fab
+                                            color={`secondary`}
                                             onClick={zoomOut}>
                                             <Icon icon={`zoomout`} color={`primary`} />
-                                        </IconButton>
-                                        <IconButton
-                                            variant={`contained`}
-                                            color={`primary`}
+                                        </Fab>
+
+                                        <Fab
+                                            color={`secondary`}
                                             onClick={resetTransform}>
                                             <Icon icon={`reset`} color={`primary`} />
-                                        </IconButton>
+                                        </Fab>
                                     </div>
                                     <TransformComponent>
                                         <img
