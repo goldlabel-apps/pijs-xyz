@@ -87,12 +87,11 @@ function Camera() {
                                     </div>
                                     : null}
 
-
                                 <TransformComponent>
                                     <img
                                         className={classes.panPincher}
                                         src={currentPhoto}
-                                        alt={`currentPhoto`} />
+                                        alt={`Current Photo`} />
                                 </TransformComponent>
                             </React.Fragment>
                         )}
