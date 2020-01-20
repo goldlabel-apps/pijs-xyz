@@ -5,7 +5,7 @@ export const pimoroniSlice = {
   updated: Date.now(),
   baseUrl: `https://pi.listingslab.io/pimoroni`,
   timeout: 6000,
-  expanded: true,
+  expanded: false,
   fetching: false,
   fetched: false,
   lastFetchSuccess: null,

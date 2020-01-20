@@ -11,8 +11,6 @@ export const piSlice = {
   lastConnectSuccess: null,
   piEpoch: null,
   error: true,
-  version: false,
-  pimoroni: null,
   location: null,
   lat: null,
   lng: null
@@ -30,7 +28,6 @@ const pi = createReducer(piSlice, {
     state.piEpoch = action.data.epoch;
     state.version = action.data.version;
     state.description = action.data.description;
-    state.pimoroni = action.data.pimoroni;
     state.location = action.data.location;
     state.lat = action.data.lat;
     state.lng = action.data.lng;

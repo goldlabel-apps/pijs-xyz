@@ -47,7 +47,6 @@ function Pi() {
         timeout,
         lastConnectSuccess,
         description,
-        version,
         location,
         lat,
         lng,
@@ -57,7 +56,6 @@ function Pi() {
     if (Date.now() - lastConnectSuccess > timeout) {
         icon = `disconnected`;
     }
-
     const connectionIcon = <Icon icon={icon} color={`primary`} />
     return (
         <React.Fragment>
@@ -87,19 +85,12 @@ function Pi() {
                             <React.Fragment>
                                 <Typography
                                     variant={`body1`} className={classes.chinese}>
-                                    <strong>description</strong>&nbsp;{description.toString()}
+                                    {description}
                                 </Typography>
                                 <Typography
                                     variant={`body1`} className={classes.chinese}>
                                     <strong>location</strong>&nbsp;{location.toString()}
-                                </Typography>
-                                <Typography
-                                    variant={`body1`} className={classes.chinese}>
-                                    <strong>lat</strong>&nbsp;{lat.toString()},  <strong>lng</strong>&nbsp;{lng.toString()}
-                                </Typography>
-                                <Typography
-                                    variant={`body1`} className={classes.chinese}>
-                                    <strong>version</strong>&nbsp;{version.toString()}
+                                    &nbsp;<strong>lat</strong>&nbsp;{lat.toString()},  <strong>lng</strong>&nbsp;{lng.toString()}
                                 </Typography>
                             </React.Fragment>
                         }

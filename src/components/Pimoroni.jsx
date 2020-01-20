@@ -37,7 +37,7 @@ function Pimoroni() {
             <ExpansionPanel
                 expanded={expanded}
                 onChange={(e) => {
-                    store.dispatch({ type: `WEATHER/TOGGLE_EXPAND` })
+                    store.dispatch({ type: `PIMORONI/TOGGLE_EXPAND` })
                 }}>
                 <ExpansionPanelSummary
                     expandIcon={<ExpandMoreIcon />}
@@ -62,7 +62,7 @@ function Pimoroni() {
                         <strong>lux</strong>&nbsp;{lux}<br />
                         <strong>pressure</strong>&nbsp;{pressure}<br />
                         <strong>temperature</strong>&nbsp;{temperature}<br />
-                        <strong>lastPiUpdate</strong>&nbsp;{moment(lastPiUpdate).fromNow()}<br />
+                        <strong>Enviro pHAT updated</strong>&nbsp;{moment(lastPiUpdate).fromNow()}<br />
                     </Typography>
 
                 </ExpansionPanelDetails>

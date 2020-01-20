@@ -61,10 +61,11 @@ function Dashboard() {
                 </Typography>
                 </div>
 
-                <Pimoroni />
                 <Camera />
                 <Weather />
                 <Pi />
+                <Pimoroni />
+
                 <UserEntity />
 
                 <div className={classes.ticks}>

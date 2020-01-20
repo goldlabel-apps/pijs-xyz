@@ -8,7 +8,7 @@ import {
     ByListingslab,
 } from './';
 
-const baseDuration = 0.1;
+const baseDuration = 0.4;
 
 function fadeInLogo() {
     gsap.to(`#pijs-logo`, {
