@@ -3,7 +3,6 @@ import { getStore } from '../';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-    Avatar,
     ExpansionPanel,
     ExpansionPanelSummary,
     ExpansionPanelDetails,
@@ -11,6 +10,7 @@ import {
 } from '@material-ui/core/';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Icon } from './';
+import moment from 'moment';
 
 const useStyles = makeStyles(theme => ({
     heading: {
@@ -18,25 +18,20 @@ const useStyles = makeStyles(theme => ({
         marginTop: theme.spacing(0.25),
         color: 'white',
     },
-
 }));
 
-function Weather() {
+function Pimoroni() {
     const store = getStore();
     const classes = useStyles();
-    const { weather } = useSelector(state => state);
+    const { pimoroni } = useSelector(state => state);
     const {
         expanded,
         error,
-        windSpeed,
-        windDirection,
+        lux,
+        pressure,
         temperature,
-        humidity,
-        overview,
-        outlookIcon,
-        // sunrise,
-        // sunset
-    } = weather;
+        lastPiUpdate,
+    } = pimoroni;
     return (
         <React.Fragment>
             <ExpansionPanel
@@ -46,11 +41,11 @@ function Weather() {
                 }}>
                 <ExpansionPanelSummary
                     expandIcon={<ExpandMoreIcon />}
-                    aria-controls="Weather"
-                    id="weather">
-                    <Icon icon={'weather'} color={`primary`} />
+                    aria-controls="Pimoroni"
+                    id="pimoroni">
+                    <Icon icon={'api'} color={`primary`} />
                     <Typography className={classes.heading}>
-                        Weather
+                        Pimoroni
                     </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails className={classes.screen}>
@@ -58,27 +53,17 @@ function Weather() {
                     {error ?
                         <Typography
                             variant={`body1`} className={classes.error}>
-                            Weather {error}
+                            pimoroni {error}
                         </Typography>
                         : null}
-                    <Avatar src={outlookIcon} alt={`weather outlook`} />
+
                     <Typography
                         variant={`body1`} className={classes.chinese}>
-
-                        <strong>Overview</strong>&nbsp;{overview}<br />
-                        <strong>Wind Speed</strong>&nbsp;{windSpeed}<br />
-                        <strong>Wind Direction</strong>&nbsp;{windDirection}<br />
-                        <strong>Temperature</strong>&nbsp;{temperature}<br />
-                        <strong>Humidity</strong>&nbsp;{humidity}<br />
-
-                        {/* <strong>Sunrise</strong>&nbsp;{sunrise}<br />
-                        <strong>Sunset</strong>&nbsp;{sunset}<br /> */}
-
-
+                        <strong>lux</strong>&nbsp;{lux}<br />
+                        <strong>pressure</strong>&nbsp;{pressure}<br />
+                        <strong>temperature</strong>&nbsp;{temperature}<br />
+                        <strong>lastPiUpdate</strong>&nbsp;{moment(lastPiUpdate).fromNow()}<br />
                     </Typography>
-
-
-
 
                 </ExpansionPanelDetails>
             </ExpansionPanel>
@@ -86,5 +71,5 @@ function Weather() {
     );
 }
 
-const MemodFuncComponent = React.memo(Weather);
+const MemodFuncComponent = React.memo(Pimoroni);
 export default MemodFuncComponent;

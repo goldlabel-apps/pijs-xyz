@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getStore } from './';
 import { connectPi } from './redux/pi/actions';
+import { fetchWeather } from './redux/weather/actions';
+import { fetchPimoroni } from './redux/pimoroni/actions';
 
 class ClockWork extends Component {
 
@@ -43,11 +45,23 @@ class ClockWork extends Component {
             initted,
             ticks,
             connecting,
-            connected
+            connected,
+            weatherFetching,
+            weatherFetched,
+            pimoroniFetching,
+            pimoroniFetched
         } = this.props;
 
         if (!connecting && !connected) {
             connectPi();
+        }
+
+        if (!weatherFetching && !weatherFetched) {
+            fetchWeather();
+        }
+
+        if (!pimoroniFetching && !pimoroniFetched) {
+            fetchPimoroni();
         }
 
         if (ticks % 5 === 0) {
@@ -97,7 +111,15 @@ const mapStateToProps = (store) => {
         ////////////////////
         connected: store.pi.connected,
         connecting: store.pi.connecting,
+        ////////////////////
+        weatherFetching: store.weather.fetching,
+        weatherFetched: store.weather.fetched,
+        ////////////////////
+        pimoroniFetching: store.pimoroni.fetching,
+        pimoroniFetched: store.pimoroni.fetched,
+        pimoroniLastFetchSuccess: store.pimoroni.lastFetchSuccess,
     };
 };
+
 
 export default (connect(mapStateToProps, null)(ClockWork));

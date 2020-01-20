@@ -21,6 +21,7 @@ export const fetchWeather = () => {
   axios
     .get(`${baseUrl}${endPoint}&APPID=${process.env.REACT_APP_OPEN_WEATHER}`)
     .then(function(response) {
+      // console.log(response.data);
       store.dispatch({
         type: "WEATHER/SAVE",
         data: response.data

@@ -7,6 +7,7 @@ import { advert, advertSlice } from "./advert/reducer";
 import { camera, cameraSlice } from "./camera/reducer";
 import { clockwork, clockworkSlice } from "./clockwork/reducer";
 import { pi, piSlice } from "./pi/reducer";
+import { pimoroni, pimoroniSlice } from "./pimoroni/reducer";
 import { userEntity, userEntitySlice } from "./userEntity/reducer";
 import { weather, weatherSlice } from "./weather/reducer";
 
@@ -21,6 +22,7 @@ const initRedux = () => {
     camera,
     clockwork,
     pi,
+    pimoroni,
     userEntity,
     weather
   });
@@ -32,6 +34,7 @@ const initRedux = () => {
     camera: cameraSlice,
     clockwork: clockworkSlice,
     pi: piSlice,
+    pimoroni: pimoroniSlice,
     userEntity: userEntitySlice,
     weather: weatherSlice
   };

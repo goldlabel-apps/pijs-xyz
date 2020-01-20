@@ -9,7 +9,8 @@ import {
     UserEntity,
     Camera,
     Pi,
-    // Weather,
+    Pimoroni,
+    Weather,
 } from './';
 import { Icon } from './';
 
@@ -59,11 +60,11 @@ function Dashboard() {
                         PiJS.app
                 </Typography>
                 </div>
-                
+
+                <Pimoroni />
                 <Camera />
+                <Weather />
                 <Pi />
-                {/* <Weather /> */}
-                
                 <UserEntity />
 
                 <div className={classes.ticks}>

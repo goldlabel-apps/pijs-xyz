@@ -8,6 +8,8 @@ export const toggleExpand = createAction(`PI/TOGGLE_EXPAND`);
 export const reset = createAction(`PI/RESET`);
 export const save = createAction(`PI/SAVE`);
 
+// https://pi.listingslab.io/pimoroni
+
 export const connectPi = () => {
   const store = getStore();
   const { baseUrl } = store.getState().pi;

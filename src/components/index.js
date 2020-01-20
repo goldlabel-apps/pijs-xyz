@@ -6,6 +6,7 @@ import Dashboard from "./Dashboard";
 import Advert from "./Advert";
 import Icon from "./Icon";
 import Pi from "./Pi";
+import Pimoroni from "./Pimoroni";
 import PiJSLogo from "./PiJSLogo";
 import UserEntity from "./UserEntity";
 import Verbindungsstatus from "./Verbindungsstatus";
@@ -20,6 +21,7 @@ export {
   Debug,
   Icon,
   Pi,
+  Pimoroni,
   PiJSLogo,
   UserEntity,
   Verbindungsstatus,

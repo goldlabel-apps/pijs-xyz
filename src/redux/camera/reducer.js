@@ -5,7 +5,7 @@ export const cameraSlice = {
   updated: Date.now(),
   expanded: false,
   playing: null,
-  currentPhoto: `https://pi.listingslab.io/current-photo?cb=${Date.now()}`,
+  currentPhoto: `https://pi.listingslab.io/current-photo?cb=${Date.now()}`
 };
 
 const camera = createReducer(cameraSlice, {
