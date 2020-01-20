@@ -3,7 +3,7 @@ import { toggleExpand, pause, reset, update } from "./actions";
 
 export const cameraSlice = {
   updated: Date.now(),
-  expanded: false,
+  expanded: true,
   playing: null,
   currentPhoto: `/current-photo.jpg?cb=${Date.now()}`
   // currentPhoto: `https://pi.listingslab.io/current-photo-BROKE?cb=${Date.now()}`

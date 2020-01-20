@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     tools: {
         position: 'absolute',
         left: theme.spacing(3),
-        bottom: theme.spacing(3),
+        bottom: 0,
         zIndex: 1234,
     },
     panPincher: {
@@ -61,7 +61,7 @@ function Camera() {
                     <TransformWrapper>
                         {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
                             <React.Fragment>
-                                {expanded ? 
+                                {expanded ?
                                     <div className={classes.tools}>
                                         <Fab
                                             className={classes.zoomButton}
@@ -85,9 +85,9 @@ function Camera() {
                                             <Icon icon={`reset`} color={`primary`} />
                                         </Fab>
                                     </div>
-                                : null}
-                                
-                                
+                                    : null}
+
+
                                 <TransformComponent>
                                     <img
                                         className={classes.panPincher}

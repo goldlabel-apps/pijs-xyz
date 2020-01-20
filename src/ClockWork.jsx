@@ -64,7 +64,7 @@ class ClockWork extends Component {
             fetchPimoroni();
         }
         // seconds between updates
-        if (ticks % 30 === 0) {
+        if (ticks % 5 === 0) {
             connectPi();
             fetchPimoroni();
             store.dispatch({ type: `CAMERA/UPDATE` });

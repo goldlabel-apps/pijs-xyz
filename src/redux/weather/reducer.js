@@ -4,7 +4,7 @@ import moment from "moment";
 
 export const weatherSlice = {
   updated: Date.now(),
-  expanded: false,
+  expanded: true,
   baseUrl: `https://api.openweathermap.org/data/2.5/`,
   fetching: false,
   fetched: false,

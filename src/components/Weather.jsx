@@ -7,6 +7,7 @@ import {
     ExpansionPanel,
     ExpansionPanelSummary,
     ExpansionPanelDetails,
+    Grid,
     Typography,
 } from '@material-ui/core/';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -61,21 +62,37 @@ function Weather() {
                             Weather {error}
                         </Typography>
                         : null}
-                    <Avatar src={outlookIcon} alt={`weather outlook`} />
-                    <Typography
-                        variant={`body1`} className={classes.chinese}>
 
-                        <strong>Overview</strong>&nbsp;{overview}<br />
-                        <strong>Wind Speed</strong>&nbsp;{windSpeed}<br />
-                        <strong>Wind Direction</strong>&nbsp;{windDirection}<br />
-                        <strong>Temperature</strong>&nbsp;{temperature}<br />
-                        <strong>Humidity</strong>&nbsp;{humidity}<br />
+                    <Grid container>
+                        <Grid item xs={3}>
+                            <Avatar src={outlookIcon} alt={`weather outlook`} />
+                            <Typography
+                                variant={`h6`} className={classes.chinese}>
+                                {temperature}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={9}>
+                            <Typography
+                                variant={`body1`} className={classes.chinese}>
 
-                        {/* <strong>Sunrise</strong>&nbsp;{sunrise}<br />
+                                {overview}<br />
+                                <strong>Wind Speed</strong>&nbsp;{windSpeed}<br />
+                                <strong>Wind Direction</strong>&nbsp;{windDirection}<br />
+
+                                <strong>Humidity</strong>&nbsp;{humidity}<br />
+
+                                {/* <strong>Sunrise</strong>&nbsp;{sunrise}<br />
                         <strong>Sunset</strong>&nbsp;{sunset}<br /> */}
 
 
-                    </Typography>
+                            </Typography>
+
+                        </Grid>
+                    </Grid>
+
+
+
+
 
 
 
