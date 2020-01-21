@@ -1,12 +1,12 @@
 import { createAction } from "@reduxjs/toolkit";
-// import { getStore } from "../../";
-// import { db } from '../../fire';
+import { getStore } from "../../";
+import { db } from './fire';
 
 export const reset = createAction("FIREBASE/RESET");
 export const setChecked = createAction("FIREBASE/FINGERPRINT/SET");
 
 export const checkFingerprint = (fingerprint) => {
-  // const store = getStore();
+  const store = getStore();
   // const userEntity = store.getState().system.userEntity.data;
   
   // db.collection(`userEntities`).where(`fingerprint`, "==", fingerprint)
