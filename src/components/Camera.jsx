@@ -19,6 +19,17 @@ const useStyles = makeStyles(theme => ({
         marginTop: theme.spacing(0.25),
         color: 'white',
     },
+    lux: {
+        position: 'absolute',
+        borderRadius: theme.spacing(0.5),
+        top: theme.spacing(11),
+        fontSize: '0.8rem',
+        left: theme.spacing(4),
+        zIndex: 12345,
+        background: 'rgba(0,0,0,0.5)',
+        padding: theme.spacing(0.5),
+        color: 'white',
+    },
     tools: {
         position: 'absolute',
         left: theme.spacing(3),
@@ -38,12 +49,14 @@ const useStyles = makeStyles(theme => ({
 function Camera() {
     const store = getStore();
     const classes = useStyles();
-    const { camera } = useSelector(state => state);
+    const { camera, pimoroni } = useSelector(state => state);
     const {
         expanded,
         currentPhoto,
         error
     } = camera;
+    const { lux } = pimoroni;
+    // console.log('pimoroni', pimoroni.lux)
 
     return (
         <React.Fragment>
@@ -66,32 +79,38 @@ function Camera() {
                         {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
                             <React.Fragment>
                                 {expanded ?
-                                    <div className={classes.tools}>
-                                        <Fab
-                                            className={classes.zoomButton}
-                                            size={`small`}
-                                            color={`secondary`}
-                                            onClick={zoomIn}>
-                                            <Icon icon={`zoomin`} color={`primary`} />
-                                        </Fab>
-                                        <Fab
-                                            className={classes.zoomButton}
-                                            size={`small`}
-                                            color={`secondary`}
-                                            onClick={zoomOut}>
-                                            <Icon icon={`zoomout`} color={`primary`} />
-                                        </Fab>
-                                        <Fab
-                                            className={classes.zoomButton}
-                                            size={`small`}
-                                            color={`secondary`}
-                                            onClick={resetTransform}>
-                                            <Icon icon={`reset`} color={`primary`} />
-                                        </Fab>
-                                    </div>
+                                    <React.Fragment>
+                                        <Typography className={classes.lux}>
+                                            {lux} lumens per square meter
+                                        </Typography>
+                                        <div className={classes.tools}>
+                                            <Fab
+                                                className={classes.zoomButton}
+                                                size={`small`}
+                                                color={`secondary`}
+                                                onClick={zoomIn}>
+                                                <Icon icon={`zoomin`} color={`primary`} />
+                                            </Fab>
+                                            <Fab
+                                                className={classes.zoomButton}
+                                                size={`small`}
+                                                color={`secondary`}
+                                                onClick={zoomOut}>
+                                                <Icon icon={`zoomout`} color={`primary`} />
+                                            </Fab>
+                                            <Fab
+                                                className={classes.zoomButton}
+                                                size={`small`}
+                                                color={`secondary`}
+                                                onClick={resetTransform}>
+                                                <Icon icon={`reset`} color={`primary`} />
+                                            </Fab>
+
+                                        </div>
+                                    </React.Fragment>
                                     : null}
 
-                                {!error ? 
+                                {!error ?
                                     <TransformComponent>
                                         <img
                                             onLoad={(e) => {
@@ -104,7 +123,7 @@ function Camera() {
                                             src={currentPhoto}
                                             alt={`Current`} />
                                     </TransformComponent>
-                                    : null }
+                                    : null}
                             </React.Fragment>
                         )}
                     </TransformWrapper>
