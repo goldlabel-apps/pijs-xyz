@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { setConnecting, toggleExpand, onError, reset, save } from "./actions";
+import { fetching, toggleExpand, onError, reset, save } from "./actions";
 
 export const pimoroniSlice = {
   updated: Date.now(),
@@ -31,9 +31,9 @@ const pimoroni = createReducer(pimoroniSlice, {
     return state;
   },
 
-  [setConnecting]: (state, action) => {
+  [fetching]: (state, action) => {
     state.updated = Date.now();
-    state.connecting = action.connecting;
+    state.fetching = action.fetching;
     return state;
   },
 

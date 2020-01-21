@@ -3,7 +3,7 @@ import axios from "axios";
 import { getStore } from "../../";
 
 export const onError = createAction(`PIMORONI/ERROR`);
-export const setConnecting = createAction(`PIMORONI/FETCHING`);
+export const fetching = createAction(`PIMORONI/FETCHING`);
 export const toggleExpand = createAction(`PIMORONI/TOGGLE_EXPAND`);
 export const reset = createAction(`PIMORONI/RESET`);
 export const save = createAction(`PIMORONI/SAVE`);

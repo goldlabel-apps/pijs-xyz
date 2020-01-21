@@ -4,6 +4,8 @@ import Fingerprint2 from "fingerprintjs2";
 import { getStore } from "../../";
 import userAgentParser from "ua-parser-js";
 
+import { saveFireprint } from "../firebase/actions";
+
 export const reset = createAction(`USERENTITY/RESET`);
 export const toggleExpand = createAction(`USERENTITY/TOGGLE_EXPAND`);
 export const init = createAction(`USERENTITY/INIT`);
@@ -30,6 +32,7 @@ export const getFireprint = () => {
       components,
       userAgent
     });
+    saveFireprint(fingerprint);
   });
 };
 
