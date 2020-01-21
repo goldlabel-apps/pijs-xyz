@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
         zIndex: 1234,
     },
     panPincher: {
-        maxHeight: 500,
+        // maxHeight: 500,
         maxWidth: '100%',
     },
     zoomButton: {
@@ -39,7 +39,11 @@ function Camera() {
     const store = getStore();
     const classes = useStyles();
     const { camera } = useSelector(state => state);
-    const { expanded, currentPhoto } = camera;
+    const {
+        expanded,
+        currentPhoto,
+        error
+    } = camera;
 
     return (
         <React.Fragment>
@@ -87,12 +91,20 @@ function Camera() {
                                     </div>
                                     : null}
 
-                                <TransformComponent>
-                                    <img
-                                        className={classes.panPincher}
-                                        src={currentPhoto}
-                                        alt={`Current`} />
-                                </TransformComponent>
+                                {!error ? 
+                                    <TransformComponent>
+                                        <img
+                                            onLoad={(e) => {
+                                                store.dispatch({ type: `CAMERA/ERROR`, error: false })
+                                            }}
+                                            onError={(e) => {
+                                                store.dispatch({ type: `CAMERA/ERROR`, error: true })
+                                            }}
+                                            className={classes.panPincher}
+                                            src={currentPhoto}
+                                            alt={`Current`} />
+                                    </TransformComponent>
+                                    : null }
                             </React.Fragment>
                         )}
                     </TransformWrapper>
