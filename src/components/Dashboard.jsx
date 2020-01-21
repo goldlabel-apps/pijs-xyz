@@ -66,8 +66,8 @@ function Dashboard() {
                     <Verbindungsstatus />
                 </div>
                 <div className={classes.expansionPanels}>
-                    {/* <Camera />
-                    <Weather /> */}
+                    <Camera />
+                    <Weather />
                     {/* <Pimoroni /> */}
                 </div>
             </div>
