@@ -81,7 +81,7 @@ function Camera() {
                                 {expanded ?
                                     <React.Fragment>
                                         <Typography className={classes.lux}>
-                                            {lux} lumens per square meter
+                                            {Math.round(lux/1000)}K lumens per square meter
                                         </Typography>
                                         <div className={classes.tools}>
                                             <Fab
