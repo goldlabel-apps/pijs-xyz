@@ -58,8 +58,7 @@ const weather = createReducer(weatherSlice, {
     state.temperature = `${Math.round((action.data.main.temp - 273.15) * 10) /
       10 || 0} °C`;
     state.humidity = `${action.data.main.humidity} %`;
-    state.overview = `${action.data.weather[0].main || ``} ${action.data
-      .weather[0].description || ``}`;
+    state.overview = `${action.data.weather[0].description || ``}`;
     state.outlookIcon = `https://openweathermap.org/img/w/${action.data.weather[0].icon}.png`;
     state.sunrise = moment(action.data.sys.sunrise * 1000).fromNow();
     state.sunset = moment(action.data.sys.sunset * 1000).fromNow();

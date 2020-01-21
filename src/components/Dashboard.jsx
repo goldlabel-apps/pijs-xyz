@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core/';
 import {
     Camera,
-    Pimoroni,
+    // Pimoroni,
     Weather,
     Verbindungsstatus,
 } from './';
@@ -68,7 +68,7 @@ function Dashboard() {
                 <div className={classes.expansionPanels}>
                     <Camera />
                     <Weather />
-                    <Pimoroni />
+                    {/* <Pimoroni /> */}
                 </div>
             </div>
         </React.Fragment >

@@ -64,14 +64,7 @@ function Weather() {
                         : null}
 
                     <Grid container>
-                        <Grid item xs={3}>
-                            
-                            <Typography
-                                variant={`h5`} className={classes.chinese}>
-                                {temperature}
-                            </Typography>
-                            <Avatar src={outlookIcon} alt={`weather outlook`} />
-                        </Grid>
+                       
                         <Grid item xs={9}>
                             <Typography
                                 variant={`body1`} className={classes.chinese}>
@@ -84,8 +77,16 @@ function Weather() {
                                     <strong>Sunset</strong>&nbsp;{sunset}<br /> 
                                 */}
                             </Typography>
-
                         </Grid>
+
+                        <Grid item xs={3}>
+                            <Typography
+                                variant={`h6`} className={classes.chinese}>
+                                {temperature}
+                            </Typography>
+                            <Avatar src={outlookIcon} alt={`weather outlook`} />
+                        </Grid>
+
                     </Grid>
                 </ExpansionPanelDetails>
             </ExpansionPanel>
