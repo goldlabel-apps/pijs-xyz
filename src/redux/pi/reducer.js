@@ -10,6 +10,9 @@ export const piSlice = {
   connecting: false,
   lastConnectSuccess: null,
   piEpoch: null,
+  piTime: null,
+  description: null,
+  name: null,
   error: true,
   location: null,
   lat: null,
@@ -19,15 +22,16 @@ export const piSlice = {
 const pi = createReducer(piSlice, {
   //
   [save]: (state, action) => {
-    // console.log("save", action.data);
     state.updated = Date.now();
     state.error = false;
     state.connecting = false;
     state.connected = true;
     state.lastConnectSuccess = Date.now();
-    state.piEpoch = action.data.epoch;
-    state.version = action.data.version;
+    state.piEpoch = action.data.piEpoch;
+    state.piTime = action.data.piTime;
+    state.firmwareVersion = action.data.firmwareVersion;
     state.description = action.data.description;
+    state.name = action.data.name;
     state.location = action.data.location;
     state.lat = action.data.lat;
     state.lng = action.data.lng;
@@ -35,14 +39,12 @@ const pi = createReducer(piSlice, {
   },
 
   [setConnecting]: (state, action) => {
-    // console.log("setConnecting", action.connecting);
     state.updated = Date.now();
     state.connecting = action.connecting;
     return state;
   },
 
   [onError]: (state, action) => {
-    // console.log("onError", action.error);
     state.updated = Date.now();
     state.error = action.error;
     return state;

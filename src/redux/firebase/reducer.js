@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { anAction, reset } from "./actions";
+import { reset } from "./actions";
 
 export const firebaseSlice = {
   updated: Date.now()
@@ -7,11 +7,6 @@ export const firebaseSlice = {
 
 const firebase = createReducer(firebaseSlice, {
   //
-  [anAction]: state => {
-    state.updated = Date.now();
-    return state;
-  },
-
   [reset]: () => {
     return firebaseSlice;
   }
