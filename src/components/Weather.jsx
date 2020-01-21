@@ -65,38 +65,28 @@ function Weather() {
 
                     <Grid container>
                         <Grid item xs={3}>
-                            <Avatar src={outlookIcon} alt={`weather outlook`} />
+                            
                             <Typography
-                                variant={`h6`} className={classes.chinese}>
+                                variant={`h5`} className={classes.chinese}>
                                 {temperature}
                             </Typography>
+                            <Avatar src={outlookIcon} alt={`weather outlook`} />
                         </Grid>
                         <Grid item xs={9}>
                             <Typography
                                 variant={`body1`} className={classes.chinese}>
-
                                 {overview}<br />
-                                <strong>Wind Speed</strong>&nbsp;{windSpeed}<br />
-                                <strong>Wind Direction</strong>&nbsp;{windDirection}<br />
-
+                                <strong>Wind </strong>&nbsp;{windSpeed}, from {windDirection}
+                                <br />
                                 <strong>Humidity</strong>&nbsp;{humidity}<br />
-
-                                {/* <strong>Sunrise</strong>&nbsp;{sunrise}<br />
-                        <strong>Sunset</strong>&nbsp;{sunset}<br /> */}
-
-
+                                {/* 
+                                    <strong>Sunrise</strong>&nbsp;{sunrise}<br />
+                                    <strong>Sunset</strong>&nbsp;{sunset}<br /> 
+                                */}
                             </Typography>
 
                         </Grid>
                     </Grid>
-
-
-
-
-
-
-
-
                 </ExpansionPanelDetails>
             </ExpansionPanel>
         </React.Fragment>

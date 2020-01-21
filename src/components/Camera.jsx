@@ -91,7 +91,7 @@ function Camera() {
                                     <img
                                         className={classes.panPincher}
                                         src={currentPhoto}
-                                        alt={`Current Photo`} />
+                                        alt={`Current`} />
                                 </TransformComponent>
                             </React.Fragment>
                         )}
