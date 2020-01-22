@@ -9,9 +9,10 @@ export const piSlice = {
   connected: false,
   connecting: false,
   lastConnectSuccess: null,
+  url: null,
+  ip: null,
   piEpoch: null,
   piTime: null,
-  description: null,
   name: null,
   error: true,
   location: null,
@@ -30,8 +31,9 @@ const pi = createReducer(piSlice, {
     state.piEpoch = action.data.piEpoch;
     state.piTime = action.data.piTime;
     state.firmwareVersion = action.data.firmwareVersion;
-    state.description = action.data.description;
     state.name = action.data.name;
+    state.ip = action.data.ip;
+    state.url = action.data.url;
     state.location = action.data.location;
     state.lat = action.data.lat;
     state.lng = action.data.lng;

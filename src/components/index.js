@@ -8,7 +8,7 @@ import Icon from "./Icon";
 import Pi from "./Pi";
 import Pimoroni from "./Pimoroni";
 import Privacy from "./Privacy";
-
+import PiCard from "./PiCard";
 import PiJSLogo from "./PiJSLogo";
 import UserEntity from "./UserEntity";
 import Verbindungsstatus from "./Verbindungsstatus";
@@ -25,6 +25,7 @@ export {
   Pi,
   Pimoroni,
   Privacy,
+  PiCard,
   PiJSLogo,
   UserEntity,
   Verbindungsstatus,

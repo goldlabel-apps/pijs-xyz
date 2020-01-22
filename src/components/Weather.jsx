@@ -1,96 +1,81 @@
 import React from 'react';
-import { getStore } from '../';
+// import { getStore } from '../';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import {
     Avatar,
-    ExpansionPanel,
-    ExpansionPanelSummary,
-    ExpansionPanelDetails,
     Grid,
     Typography,
 } from '@material-ui/core/';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Icon } from './';
+// import { Icon } from './';
+// import moment from 'moment';
 
 const useStyles = makeStyles(theme => ({
-    heading: {
-        marginLeft: theme.spacing(2),
-        marginTop: theme.spacing(0.25),
-        color: 'white',
+    weatherWrap: {
+        maxWidth: 350,
+        position: 'absolute',
+        left: theme.spacing(4),
+        bottom: theme.spacing(5),
+        borderRadius: theme.spacing(0.5),
+        border: '1px solid rgba(241,221,63,1)',
+        background: 'rgba(241, 221, 63, 0.7)',
+        padding: theme.spacing(),
+    },
+    chinese: {
+        color: '#212121',
     },
 
 }));
 
 function Weather() {
-    const store = getStore();
+    // const store = getStore();
     const classes = useStyles();
-    const { weather } = useSelector(state => state);
+    const { weather, pimoroni } = useSelector(state => state);
     const {
-        expanded,
-        error,
+        // updated,
+        lastFetchSuccess,
+        // error,
         windSpeed,
         windDirection,
         temperature,
         humidity,
         overview,
         outlookIcon,
-        // sunrise,
-        // sunset
+        sunset
     } = weather;
+    const { lux } = pimoroni;
+    // console.log('updated')
+    if (!lastFetchSuccess) { return null }
+
     return (
-        <React.Fragment>
-            <ExpansionPanel
-                expanded={expanded}
-                onChange={(e) => {
-                    store.dispatch({ type: `WEATHER/TOGGLE_EXPAND` })
-                }}>
-                <ExpansionPanelSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="Weather"
-                    id="weather">
-                    <Icon icon={'weather'} color={`primary`} />
-                    <Typography className={classes.heading}>
-                        Weather
+        <div className={classes.weatherWrap}>
+            <Grid container>
+                <Grid item xs={5}>
+                    <Typography
+                        variant={`h4`} className={classes.chinese}>
+                        {temperature}
                     </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails className={classes.screen}>
+                    <Typography
+                        variant={`body1`} className={classes.chinese}>
+                        {overview}
+                    </Typography>
+                    <Avatar src={outlookIcon} alt={`weather outlook`} />
+                </Grid>
 
-                    {error ?
-                        <Typography
-                            variant={`body1`} className={classes.error}>
-                            Weather {error}
-                        </Typography>
-                        : null}
-
-                    <Grid container>
-                       
-                        <Grid item xs={9}>
-                            <Typography
-                                variant={`body1`} className={classes.chinese}>
-                                {overview}<br />
-                                <strong>Wind </strong>&nbsp;{windSpeed}, from {windDirection}
-                                <br />
-                                <strong>Humidity</strong>&nbsp;{humidity}<br />
-                                {/* 
-                                    <strong>Sunrise</strong>&nbsp;{sunrise}<br />
-                                    <strong>Sunset</strong>&nbsp;{sunset}<br /> 
-                                */}
-                            </Typography>
-                        </Grid>
-
-                        <Grid item xs={3}>
-                            <Typography
-                                variant={`h6`} className={classes.chinese}>
-                                {temperature}
-                            </Typography>
-                            <Avatar src={outlookIcon} alt={`weather outlook`} />
-                        </Grid>
-
-                    </Grid>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
-        </React.Fragment>
+                <Grid item xs={7}>
+                    <Typography
+                        variant={`body1`} className={classes.chinese}>
+                        <strong>Wind </strong>&nbsp;{windSpeed}, from {windDirection}
+                        <br />
+                        <strong>Sunset </strong>&nbsp;{sunset}
+                        <br />
+                        <strong>Humidity</strong>&nbsp;{humidity}
+                        <br />
+                        <strong>{lux}</strong>&nbsp;lumens per square meter
+                    </Typography>
+                </Grid>
+            </Grid>
+        </div>
     );
 }
 

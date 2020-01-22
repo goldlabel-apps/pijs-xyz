@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
     Advert,
     Debug,
-    Dashboard,
+    PiCard,
 } from './components';
 
 const useStyles = makeStyles(theme => ({
@@ -32,7 +32,9 @@ export default function MaterialView(props) {
     if (!complete) {
         screen = <Advert />;
     } else {
-        screen = <div className={classes.app}><Dashboard /></div >;
+        screen = <div className={classes.app}>
+            <PiCard />
+        </div >;
     }
 
     return (

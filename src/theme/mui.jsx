@@ -17,7 +17,7 @@ const theme = {
         },
         text: {
             primary: "rgba(241,221,63,1)",
-            secondary: "#212121",
+            secondary: "rgba(241,221,63,0.8)",
         },
     }
 }
