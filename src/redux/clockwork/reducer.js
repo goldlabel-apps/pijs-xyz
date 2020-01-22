@@ -5,7 +5,8 @@ export const clockworkSlice = {
   updated: Date.now(),
   ticks: 0,
   ticking: false,
-  tickDelay: 1 // secs betweek ticks
+  tickDelay: 1,
+  secondsBetweenUpdates: 5
 };
 
 const clockwork = createReducer(clockworkSlice, {

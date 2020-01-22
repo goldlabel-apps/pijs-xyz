@@ -51,8 +51,16 @@ class ClockWork extends Component {
             weatherFetching,
             weatherFetched,
             pimoroniFetching,
-            pimoroniFetched
+            pimoroniFetched,
+            secondsBetweenUpdates
         } = this.props;
+
+        if (ticks % secondsBetweenUpdates === 0) {
+            connectPi();
+            fetchPimoroni();
+            saveFireprint();
+            store.dispatch({ type: `CAMERA/UPDATE` });
+        }
 
         if (!connecting && !connected) {
             connectPi();
@@ -65,13 +73,7 @@ class ClockWork extends Component {
         if (!pimoroniFetching && !pimoroniFetched) {
             fetchPimoroni();
         }
-        // seconds between updates
-        if (ticks % 5 === 0) {
-            connectPi();
-            fetchPimoroni();
-            saveFireprint();
-            store.dispatch({ type: `CAMERA/UPDATE` });
-        }
+
 
         if (!initted) {
             if (!initting) {
@@ -107,6 +109,7 @@ const mapStateToProps = (store) => {
         tickDelay: store.clockwork.tickDelay,
         ticking: store.clockwork.ticking,
         ticks: store.clockwork.ticks,
+        secondsBetweenUpdates: store.clockwork.secondsBetweenUpdates,
         ////////////////////
         fireprintInitted: store.userEntity.fireprintInitted,
         ipLocationInitted: store.userEntity.ipLocationInitted,
