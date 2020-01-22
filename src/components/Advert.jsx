@@ -8,6 +8,8 @@ import {
     ByListingslab,
 } from './';
 
+// /png/twitter-card.png
+
 const baseDuration = 0.45;
 
 function fadeInLogo() {
