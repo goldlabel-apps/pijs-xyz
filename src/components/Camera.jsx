@@ -9,20 +9,9 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { Icon } from './';
 
 const useStyles = makeStyles(theme => ({
-    lux: {
-        position: 'absolute',
-        left: theme.spacing(4),
-        top: theme.spacing(15),
-        borderRadius: theme.spacing(0.5),
-        border: '1px solid rgba(241,221,63,1)',
-        background: 'rgba(241, 221, 63, 0.8)',
-        padding: theme.spacing(),
-        zIndex: 12343212,
-        color: '#212121',
-    },
     tools: {
         position: 'absolute',
-        left: theme.spacing(3),
+        right: theme.spacing(3),
         bottom: theme.spacing(),
         zIndex: 1234321,
     },
@@ -30,7 +19,7 @@ const useStyles = makeStyles(theme => ({
         maxWidth: '100%',
     },
     zoomButton: {
-        border: `1px solid ` + theme.palette.primary.main,
+        border: `1px solid ` + theme.palette.secondary.main,
         margin: theme.spacing(0.5)
     }
 }));
@@ -44,7 +33,7 @@ function Camera() {
         currentPhoto,
         error
     } = camera;
-
+    // let currentPhoto = `/current-photo.jpg`;
     return (
         <React.Fragment>
             <TransformWrapper>
@@ -59,21 +48,21 @@ function Camera() {
                                         size={`small`}
                                         color={`secondary`}
                                         onClick={resetTransform}>
-                                        <Icon icon={`reset`} color={`primary`} />
+                                        <Icon icon={`reset`} color={`inherit`} />
                                     </Fab>
                                     <Fab
                                         className={classes.zoomButton}
                                         size={`small`}
                                         color={`secondary`}
                                         onClick={zoomIn}>
-                                        <Icon icon={`zoomin`} color={`primary`} />
+                                        <Icon icon={`zoomin`} color={`inherit`} />
                                     </Fab>
                                     <Fab
                                         className={classes.zoomButton}
                                         size={`small`}
                                         color={`secondary`}
                                         onClick={zoomOut}>
-                                        <Icon icon={`zoomout`} color={`primary`} />
+                                        <Icon icon={`zoomout`} color={`inherit`} />
                                     </Fab>
 
                                 </div>

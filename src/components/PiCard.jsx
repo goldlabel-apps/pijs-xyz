@@ -2,16 +2,15 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-    Avatar,
+    // Button,
     Card,
+    // CardActions,
     CardContent,
     CardHeader,
     IconButton,
     Tooltip,
-    Typography,
 } from '@material-ui/core/';
 import { Icon } from './';
-
 // import { getStore } from '../';
 import {
     Camera,
@@ -25,54 +24,78 @@ const useStyles = makeStyles(theme => ({
     card: {
         position: 'relative',
     },
+    actionBtn: {
+        margin: theme.spacing(),
+    }
 }));
 
 
 function PiCard() {
     // const store = getStore();
     const classes = useStyles();
-    const { pi } = useSelector(state => state);
+    const { pi, userEntity } = useSelector(state => state);
+    const { isMobile } = userEntity;
+
     const {
-        baseUrl,
-        // ip,
+        ip,
         error,
         timeout,
         lastConnectSuccess,
     } = pi;
-    // console.log(pi)
-    let status = `connected`;
+    let status =
+    {
+        icon: `connected`,
+        color: `primary`,
+        subheader: `Connected to ${ip}`,
+    };
     if (Date.now() - lastConnectSuccess > timeout) {
-        status = `disconnected`;
+        status = {
+            icon: `disconnected`,
+            color: `secondary`,
+            subheader: `Problem connecting:  ${error}`,
+        }
     }
-    // console.log('error?', error, status);
     return (
         <React.Fragment>
             <div className={classes.screen}>
                 <Card className={classes.card}>
                     <CardHeader
                         title={`PiJS.app`}
-                        // subheader={`Deep stack JavaScript :)`}
-                        avatar={<Avatar src={`/icon.png`} />}
+                        subheader={status.subheader}
+                        avatar={
+                            <IconButton className={classes.none}>
+                                <Icon icon={`pi`} color={`primary`} />
+                            </IconButton>}
                         action={
-                            <IconButton>
+                            <IconButton className={classes.actionBtn}>
                                 <Tooltip title={error}>
-                                    <Icon icon={status} color={`primary`} />
+                                    <Icon icon={status.icon} color={status.color} />
                                 </Tooltip>
                             </IconButton>}
                     />
-                    {/* Connected to a Raspberry Pi4 at <strong>{ip}</strong> */}
-                    {status === `connected` ?
+                    {status.icon === `connected` ?
                         <CardContent>
                             <Camera />
-                            <Weather />
+                            {!isMobile ?
+                                <Weather />
+                                : null}
+
                         </CardContent>
                         :
-                        <CardContent>
-                            <Typography variant={`body1`}>
-                                Hmm, we're having problems connecting to <strong>{baseUrl}</strong>
-                            </Typography>
-                        </CardContent>
+                        null
                     }
+
+                    {/* <CardActions>
+                        <Button
+                            variant={`contained`}
+                            color={`secondary`}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                console.log(`dicks.`)
+                            }}>
+                            Share
+                        </Button>
+                    </CardActions> */}
 
                 </Card>
 

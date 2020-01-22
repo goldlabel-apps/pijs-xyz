@@ -50,9 +50,9 @@ export const userEntitySlice = {
 };
 
 const isMobile = device => {
-  let mobile = "no";
+  let mobile = false;
   if (device.vendor || device.model) {
-    mobile = "yes";
+    mobile = true;
   }
   return mobile;
 };

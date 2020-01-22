@@ -8,17 +8,16 @@ import {
     Typography,
 } from '@material-ui/core/';
 // import { Icon } from './';
-// import moment from 'moment';
 
 const useStyles = makeStyles(theme => ({
     weatherWrap: {
         maxWidth: 350,
         position: 'absolute',
-        left: theme.spacing(4),
-        bottom: theme.spacing(5),
+        right: theme.spacing(3),
+        top: theme.spacing(14),
         borderRadius: theme.spacing(0.5),
-        border: '1px solid rgba(241,221,63,1)',
-        background: 'rgba(241, 221, 63, 0.7)',
+        border: `1px solid ` + theme.palette.secondary.main,
+        background: 'rgba(241, 221, 63, 0.8)',
         padding: theme.spacing(),
     },
     chinese: {
@@ -32,9 +31,7 @@ function Weather() {
     const classes = useStyles();
     const { weather, pimoroni } = useSelector(state => state);
     const {
-        // updated,
         lastFetchSuccess,
-        // error,
         windSpeed,
         windDirection,
         temperature,
@@ -43,13 +40,27 @@ function Weather() {
         outlookIcon,
         sunset
     } = weather;
-    const { lux } = pimoroni;
-    // console.log('updated')
+
     if (!lastFetchSuccess) { return null }
+
+    const { lux } = pimoroni;
 
     return (
         <div className={classes.weatherWrap}>
             <Grid container>
+
+                <Grid item xs={7}>
+                    <Typography
+                        variant={`body1`} className={classes.chinese}>
+                        <strong>Wind </strong>&nbsp;{windSpeed}, {windDirection}
+                        <br />
+                        <strong>Sunset </strong>&nbsp;{sunset}
+                        <br />
+                        <strong>Humidity</strong>&nbsp;{humidity}
+                        <br />
+                        <strong>{lux}</strong>&nbsp;lux
+                    </Typography>
+                </Grid>
                 <Grid item xs={5}>
                     <Typography
                         variant={`h4`} className={classes.chinese}>
@@ -60,19 +71,6 @@ function Weather() {
                         {overview}
                     </Typography>
                     <Avatar src={outlookIcon} alt={`weather outlook`} />
-                </Grid>
-
-                <Grid item xs={7}>
-                    <Typography
-                        variant={`body1`} className={classes.chinese}>
-                        <strong>Wind </strong>&nbsp;{windSpeed}, from {windDirection}
-                        <br />
-                        <strong>Sunset </strong>&nbsp;{sunset}
-                        <br />
-                        <strong>Humidity</strong>&nbsp;{humidity}
-                        <br />
-                        <strong>{lux}</strong>&nbsp;lumens per square meter
-                    </Typography>
                 </Grid>
             </Grid>
         </div>

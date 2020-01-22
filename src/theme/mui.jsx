@@ -3,11 +3,14 @@ const theme = {
         type: 'dark',
         primary: {
             // main: 'rgba(255,222,255,0.9)',
-            main: 'rgba(241,221,63,1)',
+
+            main: 'rgba(255,255,255,0.99)',
             // main: '#F1DD3F',
         },
         secondary: {
-            main: '#212121',
+            // main: 'rgba(255,255,255,0.75)',
+            main: 'rgba(241,221,63,1)',
+            // main: '#FFFFFF',
         },
         background: {
             default: "#F1DD3F",
@@ -16,8 +19,8 @@ const theme = {
             contentFrame: "#F1DD3F"
         },
         text: {
-            primary: "rgba(241,221,63,1)",
-            secondary: "rgba(241,221,63,0.8)",
+            primary: "rgba(255,255,255,0.99)",
+            secondary: "rgba(255,255,255,0.99)",
         },
     }
 }
