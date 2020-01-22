@@ -1,7 +1,5 @@
-import storage from "redux-persist/lib/storage";
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { persistStore, persistReducer } from "redux-persist";
 import { reduxBatch } from "@manaflair/redux-batch";
 import { advert, advertSlice } from "./advert/reducer";
 import { camera, cameraSlice } from "./camera/reducer";
@@ -13,12 +11,7 @@ import { userEntity, userEntitySlice } from "./userEntity/reducer";
 import { weather, weatherSlice } from "./weather/reducer";
 
 const initRedux = () => {
-  const persistConfig = {
-    key: "pijs",
-    storage
-  };
-
-  const reducers = combineReducers({
+  const reducer = combineReducers({
     advert,
     camera,
     clockwork,
@@ -28,8 +21,6 @@ const initRedux = () => {
     userEntity,
     weather
   });
-
-  const persistedReducer = persistReducer(persistConfig, reducers);
 
   const preloadedState = {
     advert: advertSlice,
@@ -49,16 +40,14 @@ const initRedux = () => {
   ];
 
   const store = configureStore({
-    reducer: persistedReducer,
+    reducer,
     middleware,
     devTools: process.env.NODE_ENV !== "production",
     preloadedState,
     enhancers: [reduxBatch]
   });
 
-  const persistor = persistStore(store);
-
-  return { store, persistor };
+  return store;
 };
 
 export default initRedux;
