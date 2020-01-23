@@ -35,18 +35,19 @@ function PiCard() {
     const classes = useStyles();
     const { pi, userEntity } = useSelector(state => state);
     const { isMobile } = userEntity;
-
+    
     const {
-        ip,
         error,
         timeout,
         lastConnectSuccess,
+        location
     } = pi;
+
     let status =
     {
         icon: `connected`,
         color: `primary`,
-        subheader: `Connected to ${ip}`,
+        subheader: location,
     };
     if (Date.now() - lastConnectSuccess > timeout) {
         status = {

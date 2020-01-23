@@ -17,8 +17,9 @@ const useStyles = makeStyles(theme => ({
     },
     panPincher: {
         maxWidth: '100%',
-        border: `1px solid ` + theme.palette.secondary.main,
         borderRadius: theme.spacing(0.5),
+        border: `1px solid rgba(0, 0, 0, 0.9)`,
+        background: 'rgba(0, 0, 0, 0.8)',
     },
     zoomButton: {
         border: `1px solid ` + theme.palette.secondary.main,
