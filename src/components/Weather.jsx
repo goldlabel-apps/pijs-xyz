@@ -17,11 +17,11 @@ const useStyles = makeStyles(theme => ({
         top: theme.spacing(14),
         borderRadius: theme.spacing(0.5),
         border: `1px solid ` + theme.palette.secondary.main,
-        background: 'rgba(241, 221, 63, 0.8)',
+        background: 'rgba(0, 0, 0, 0.8)',
         padding: theme.spacing(),
     },
     chinese: {
-        color: '#212121',
+        // color: '#212121',
     },
 
 }));
