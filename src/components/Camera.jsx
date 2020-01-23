@@ -3,7 +3,7 @@ import { getStore } from '../';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-    Fab,
+    Button,
 } from '@material-ui/core/';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { Icon } from './';
@@ -22,9 +22,13 @@ const useStyles = makeStyles(theme => ({
         background: 'rgba(0, 0, 0, 0.8)',
     },
     zoomButton: {
-        border: `1px solid ` + theme.palette.secondary.main,
-        margin: theme.spacing(0.5)
+        marginLeft: theme.spacing()
+    },
+    iconPusher: {
+        marginLeft: theme.spacing(),
+        marginRight: theme.spacing()
     }
+
 }));
 
 function Camera() {
@@ -46,28 +50,34 @@ function Camera() {
                             <React.Fragment>
 
                                 <div className={classes.tools}>
-                                    <Fab
+                                    <Button
+                                        variant={`contained`}
                                         className={classes.zoomButton}
                                         size={`small`}
-                                        color={`secondary`}
+                                        color={`primary`}
                                         onClick={resetTransform}>
                                         <Icon icon={`reset`} color={`inherit`} />
-                                    </Fab>
-                                    <Fab
+                                        
+                                        <span className={classes.iconPusher}>reset</span>
+                                    </Button>
+                                    <Button
+                                        variant={`contained`}
                                         className={classes.zoomButton}
                                         size={`small`}
-                                        color={`secondary`}
+                                        color={`primary`}
                                         onClick={zoomIn}>
                                         <Icon icon={`zoomin`} color={`inherit`} />
-                                    </Fab>
-                                    <Fab
+                                        <span className={classes.iconPusher}>zoomin</span>
+                                    </Button>
+                                    <Button
+                                        variant={`contained`}
                                         className={classes.zoomButton}
                                         size={`small`}
-                                        color={`secondary`}
+                                        color={`primary`}
                                         onClick={zoomOut}>
                                         <Icon icon={`zoomout`} color={`inherit`} />
-                                    </Fab>
-
+                                        <span className={classes.iconPusher}>zoomout</span>
+                                    </Button>
                                 </div>
                             </React.Fragment>
                             : null}

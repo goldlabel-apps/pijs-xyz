@@ -10,7 +10,7 @@ import {
 
 // /png/twitter-card.png
 
-const baseDuration = 0.45;
+const baseDuration = 0.1;
 
 function fadeInLogo() {
     gsap.to(`#pijs-logo`, {

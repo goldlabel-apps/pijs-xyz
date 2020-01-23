@@ -2,14 +2,14 @@ const theme = {
     palette: {
         type: 'dark',
         primary: {
-            // main: 'rgba(255,222,255,0.9)',
-
-            main: 'rgba(255,255,255,0.99)',
+            main: '#212121',
+            // main: 'rgba(255,255,255,0.99)',
             // main: '#F1DD3F',
         },
         secondary: {
-            // main: 'rgba(255,255,255,0.75)',
             main: 'rgba(241,221,63,1)',
+            // main: 'rgba(255,255,255,0.75)',
+            // main: 'rgba(241,221,63,1)',
             // main: '#FFFFFF',
         },
         background: {

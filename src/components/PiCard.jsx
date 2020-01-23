@@ -53,7 +53,7 @@ function PiCard() {
         status = {
             icon: `disconnected`,
             color: `secondary`,
-            subheader: `Problem connecting:  ${error}`,
+            subheader: `Connecting ...`,
         }
     }
     return (
