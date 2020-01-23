@@ -9,18 +9,20 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { Icon } from './';
 
 const useStyles = makeStyles(theme => ({
-    tools: {
-        position: 'absolute',
-        right: theme.spacing(3),
-        bottom: theme.spacing(),
-        zIndex: 1234321,
-    },
     panPincher: {
-        maxWidth: '100%',
+        width: '100%',
+        maxHeight: '50vh',
         borderRadius: theme.spacing(0.5),
         border: `1px solid rgba(0, 0, 0, 0.9)`,
         background: 'rgba(0, 0, 0, 0.8)',
     },
+    tools: {
+        position: 'absolute',
+        left: theme.spacing(2),
+        bottom: theme.spacing(4),
+        zIndex: 1234321,
+    },
+
     zoomButton: {
         marginLeft: theme.spacing()
     },
@@ -34,7 +36,8 @@ const useStyles = makeStyles(theme => ({
 function Camera() {
     const store = getStore();
     const classes = useStyles();
-    const { camera } = useSelector(state => state);
+    const { camera, userEntity } = useSelector(state => state);
+    const { isMobile } = userEntity;
     const {
         expanded,
         currentPhoto,
@@ -57,8 +60,7 @@ function Camera() {
                                         color={`primary`}
                                         onClick={resetTransform}>
                                         <Icon icon={`reset`} color={`inherit`} />
-                                        
-                                        <span className={classes.iconPusher}>reset</span>
+                                        {!isMobile ? <span className={classes.iconPusher}>Reset</span> : null}
                                     </Button>
                                     <Button
                                         variant={`contained`}
@@ -67,7 +69,7 @@ function Camera() {
                                         color={`primary`}
                                         onClick={zoomIn}>
                                         <Icon icon={`zoomin`} color={`inherit`} />
-                                        <span className={classes.iconPusher}>zoomin</span>
+                                        {!isMobile ? <span className={classes.iconPusher}>Zoom In</span> : null}
                                     </Button>
                                     <Button
                                         variant={`contained`}
@@ -76,7 +78,7 @@ function Camera() {
                                         color={`primary`}
                                         onClick={zoomOut}>
                                         <Icon icon={`zoomout`} color={`inherit`} />
-                                        <span className={classes.iconPusher}>zoomout</span>
+                                        {!isMobile ? <span className={classes.iconPusher}>Zoom Out</span> : null}
                                     </Button>
                                 </div>
                             </React.Fragment>

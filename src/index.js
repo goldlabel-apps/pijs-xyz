@@ -13,7 +13,7 @@ let debugOn = false;
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.has("upgrade-from")) {
   localStorage.clear();
-  window.location.assign(`/?cb=${Date.now()}`);
+  window.location.assign(`/`);
 }
 
 console.log(
