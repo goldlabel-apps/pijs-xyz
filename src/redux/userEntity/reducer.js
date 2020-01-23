@@ -13,13 +13,13 @@ import {
 
 export const userEntitySlice = {
   updated: Date.now(),
+  fingerprint: null,
   expanded: false,
   created: null,
   initting: false,
   initted: false,
   ipLocationInitted: false,
   fireprintInitted: false,
-  fingerprint: null,
   resolutionWidth: null,
   resolutionHeight: null,
   userAgent: null,
