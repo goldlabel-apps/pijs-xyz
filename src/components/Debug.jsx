@@ -12,7 +12,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(theme => ({
     debug: {
-        position: 'absolute',
+        // position: 'absolute',
         backgroundColor: 'rgba(255,255,255,0.25)',
         border: '1px solid rgba(255,255,255,0.5)',
         zIndex: 12324124,

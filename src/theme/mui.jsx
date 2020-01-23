@@ -2,25 +2,20 @@ const theme = {
     palette: {
         type: 'dark',
         primary: {
-            main: '#212121',
-            // main: 'rgba(255,255,255,0.99)',
-            // main: '#F1DD3F',
+            main: 'rgba(33,33,33,1)',
         },
         secondary: {
             main: 'rgba(241,221,63,1)',
-            // main: 'rgba(255,255,255,0.75)',
-            // main: 'rgba(241,221,63,1)',
-            // main: '#FFFFFF',
         },
         background: {
-            default: "#F1DD3F",
-            paper: "#212121",
-            appBar: "#F1DD3F",
-            contentFrame: "#F1DD3F"
+            default: "rgba(241,221,63,1)",
+            paper: "rgba(0,0,0,0)",
+            appBar: "rgba(241,221,63,1)",
+            contentFrame: "rgba(241,221,63,1)"
         },
         text: {
-            primary: "rgba(255,255,255,0.99)",
-            secondary: "rgba(255,255,255,0.99)",
+            primary: "rgba(33,33,33,1)",
+            secondary: "rgba(33,33,33,1)",
         },
     }
 }

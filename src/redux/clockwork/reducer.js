@@ -3,10 +3,12 @@ import { init, start, pause, reset, tick } from "./actions";
 
 export const clockworkSlice = {
   updated: Date.now(),
+  started: Date.now(),
   ticks: 0,
   ticking: false,
   tickDelay: 1,
-  secondsBetweenUpdates: 5
+  secondsBetweenUpdates: 3,
+  timeoutSecs: 5
 };
 
 const clockwork = createReducer(clockworkSlice, {

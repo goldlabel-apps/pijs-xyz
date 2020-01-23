@@ -52,8 +52,18 @@ class ClockWork extends Component {
             weatherFetched,
             pimoroniFetching,
             pimoroniFetched,
-            secondsBetweenUpdates
+            secondsBetweenUpdates,
+            ticking,
+            // timeoutSecs,
+            // started,
         } = this.props;
+
+        if (!ticking) { return null }
+
+        // if (Date.now() - started > timeoutSecs * 1000) {
+        //     // console.log('GIVE UP!');
+        //     store.dispatch({ type: `CLOCKWORK/PAUSE` });
+        // }
 
         if (ticks % secondsBetweenUpdates === 0) {
             connectPi();
@@ -74,7 +84,6 @@ class ClockWork extends Component {
             fetchPimoroni();
         }
 
-
         if (!initted) {
             if (!initting) {
                 store.dispatch({ type: `USERENTITY/INIT` });
@@ -83,7 +92,6 @@ class ClockWork extends Component {
         if (fireprintInitted && ipLocationInitted && !initted) {
             store.dispatch({ type: `USERENTITY/INIT/COMPLETE` });
         }
-
 
     }
 
@@ -110,6 +118,8 @@ const mapStateToProps = (store) => {
         ticking: store.clockwork.ticking,
         ticks: store.clockwork.ticks,
         secondsBetweenUpdates: store.clockwork.secondsBetweenUpdates,
+        timeoutSecs: store.clockwork.timeoutSecs,
+        started: store.clockwork.started,
         ////////////////////
         fireprintInitted: store.userEntity.fireprintInitted,
         ipLocationInitted: store.userEntity.ipLocationInitted,

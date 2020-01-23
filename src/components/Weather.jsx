@@ -1,33 +1,19 @@
 import React from 'react';
-// import { getStore } from '../';
-// import { Icon } from './';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-    Grid,
-    Avatar,
     Typography,
 } from '@material-ui/core/';
 
 const useStyles = makeStyles(theme => ({
     weatherWrap: {
-        width: 175,
-        position: 'absolute',
-        right: theme.spacing(3),
-        top: theme.spacing(14),
-        borderRadius: theme.spacing(0.5),
-        border: `1px solid rgba(0, 0, 0, 0.9)`,
-        background: 'rgba(0, 0, 0, 0.8)',
-        padding: theme.spacing(),
+        marginTop: theme.spacing(),
     },
     grow: {
         flexGrow: 1,
     },
     chinese: {
-        // color: '#212121',
-        fontSize: 12,
     },
-
 }));
 
 function Weather() {
@@ -38,10 +24,8 @@ function Weather() {
         lastFetchSuccess,
         windSpeed,
         windDirection,
-        temperature,
         humidity,
         overview,
-        outlookIcon,
         sunset
     } = weather;
 
@@ -51,17 +35,6 @@ function Weather() {
 
     return (
         <div className={classes.weatherWrap}>
-            <Grid container>
-                <Grid item>
-                    <Typography variant={`h6`} >
-                        {temperature}
-                    </Typography>
-                </Grid>
-                <Grid item className={classes.grow} />
-                <Grid item>
-                    <Avatar src={outlookIcon} alt={`weather outlook`} />
-                </Grid>
-            </Grid>
             <Typography
                 variant={`body1`} className={classes.chinese}>
                 <strong>{overview}</strong>

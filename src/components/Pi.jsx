@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
         color: 'white',
     },
     tools: {
-        position: 'absolute',
+        // position: 'absolute',
         left: theme.spacing(4),
         bottom: theme.spacing(4),
         zIndex: 1234,

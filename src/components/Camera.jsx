@@ -11,20 +11,14 @@ import { Icon } from './';
 const useStyles = makeStyles(theme => ({
     panPincher: {
         width: '100%',
-        maxHeight: '50vh',
         borderRadius: theme.spacing(0.5),
-        border: `1px solid rgba(0, 0, 0, 0.9)`,
-        background: 'rgba(0, 0, 0, 0.8)',
+        border: `1px solid rgba(0, 0, 0, 0.2)`,
+        background: 'rgba(33, 33, 33, 1)',
     },
     tools: {
-        position: 'absolute',
-        left: theme.spacing(2),
-        bottom: theme.spacing(4),
-        zIndex: 1234321,
+        marginTop: theme.spacing(),
     },
-
     zoomButton: {
-        marginLeft: theme.spacing()
     },
     iconPusher: {
         marginLeft: theme.spacing(),
@@ -43,7 +37,6 @@ function Camera() {
         currentPhoto,
         error
     } = camera;
-    // let currentPhoto = `/current-photo.jpg`;
     return (
         <React.Fragment>
             <TransformWrapper>
@@ -51,13 +44,26 @@ function Camera() {
                     <React.Fragment>
                         {expanded ?
                             <React.Fragment>
-
+                                {!error ?
+                                    <TransformComponent>
+                                        <img
+                                            onLoad={(e) => {
+                                                store.dispatch({ type: `CAMERA/ERROR`, error: false })
+                                            }}
+                                            onError={(e) => {
+                                                store.dispatch({ type: `CAMERA/ERROR`, error: true })
+                                            }}
+                                            className={classes.panPincher}
+                                            src={currentPhoto}
+                                            alt={`Current`} />
+                                    </TransformComponent>
+                                    : null}
                                 <div className={classes.tools}>
                                     <Button
                                         variant={`contained`}
                                         className={classes.zoomButton}
                                         size={`small`}
-                                        color={`primary`}
+                                        color={`secondary`}
                                         onClick={resetTransform}>
                                         <Icon icon={`reset`} color={`inherit`} />
                                         {!isMobile ? <span className={classes.iconPusher}>Reset</span> : null}
@@ -66,7 +72,7 @@ function Camera() {
                                         variant={`contained`}
                                         className={classes.zoomButton}
                                         size={`small`}
-                                        color={`primary`}
+                                        color={`secondary`}
                                         onClick={zoomIn}>
                                         <Icon icon={`zoomin`} color={`inherit`} />
                                         {!isMobile ? <span className={classes.iconPusher}>Zoom In</span> : null}
@@ -75,7 +81,7 @@ function Camera() {
                                         variant={`contained`}
                                         className={classes.zoomButton}
                                         size={`small`}
-                                        color={`primary`}
+                                        color={`secondary`}
                                         onClick={zoomOut}>
                                         <Icon icon={`zoomout`} color={`inherit`} />
                                         {!isMobile ? <span className={classes.iconPusher}>Zoom Out</span> : null}
@@ -83,20 +89,7 @@ function Camera() {
                                 </div>
                             </React.Fragment>
                             : null}
-                        {!error ?
-                            <TransformComponent>
-                                <img
-                                    onLoad={(e) => {
-                                        store.dispatch({ type: `CAMERA/ERROR`, error: false })
-                                    }}
-                                    onError={(e) => {
-                                        store.dispatch({ type: `CAMERA/ERROR`, error: true })
-                                    }}
-                                    className={classes.panPincher}
-                                    src={currentPhoto}
-                                    alt={`Current`} />
-                            </TransformComponent>
-                            : null}
+
                     </React.Fragment>
                 )}
             </TransformWrapper>

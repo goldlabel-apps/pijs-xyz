@@ -3,39 +3,38 @@ import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import {
     // Button,
-    Card,
     // CardActions,
+    Card,
     CardContent,
     CardHeader,
     IconButton,
     Tooltip,
 } from '@material-ui/core/';
 import { Icon } from './';
-// import { getStore } from '../';
 import {
     Camera,
     Weather,
+    WeatherHeadline,
 } from './';
 
 const useStyles = makeStyles(theme => ({
     screen: {
         minHeight: '100vh',
+        display: 'flex',
     },
     card: {
-        position: 'relative',
+        flexGrow: 1,
+        boxShadow: 'none',
     },
     actionBtn: {
-        margin: theme.spacing(),
     }
 }));
 
-// 
+
 function PiCard() {
     // const store = getStore();
     const classes = useStyles();
-    const { pi, userEntity } = useSelector(state => state);
-    const { isMobile } = userEntity;
-    
+    const { pi } = useSelector(state => state);
     const {
         error,
         timeout,
@@ -56,6 +55,7 @@ function PiCard() {
             subheader: `Connecting ...`,
         }
     }
+
     return (
         <React.Fragment>
             <div className={classes.screen}>
@@ -74,18 +74,12 @@ function PiCard() {
                                 </Tooltip>
                             </IconButton>}
                     />
-                    {status.icon === `connected` ?
-                        <CardContent>
-                            <Camera />
-                            {!isMobile ?
-                                <Weather />
-                                : null}
-
-                        </CardContent>
-                        :
-                        null
-                    }
-
+                    <CardContent>
+                        <WeatherHeadline />
+                        <Camera />
+                        <Weather />
+                    </CardContent>
+                    {status.icon === `connected` ? null : null}
                     {/* <CardActions>
                         <Button
                             variant={`contained`}
@@ -97,9 +91,7 @@ function PiCard() {
                             Share
                         </Button>
                     </CardActions> */}
-
                 </Card>
-
             </div>
 
         </React.Fragment >

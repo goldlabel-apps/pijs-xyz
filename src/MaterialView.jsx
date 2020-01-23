@@ -12,7 +12,7 @@ import {
 const useStyles = makeStyles(theme => ({
     app: {
         margin: 'auto',
-        maxWidth: 800
+        maxWidth: 420
     },
 }));
 

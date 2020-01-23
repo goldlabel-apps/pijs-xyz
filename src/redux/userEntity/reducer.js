@@ -135,7 +135,7 @@ const userEntity = createReducer(userEntitySlice, {
 
   [ipLocationError]: (state, action) => {
     state.updated = Date.now();
-    state.ipLocationError = action.error;
+    state.ipLocationError = action.error.toString();
     return state;
   },
 

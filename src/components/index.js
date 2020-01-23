@@ -13,6 +13,7 @@ import PiJSLogo from "./PiJSLogo";
 import UserEntity from "./UserEntity";
 import Verbindungsstatus from "./Verbindungsstatus";
 import Weather from "./Weather";
+import WeatherHeadline from "./WeatherHeadline";
 
 export {
   Boot,
@@ -29,5 +30,6 @@ export {
   PiJSLogo,
   UserEntity,
   Verbindungsstatus,
-  Weather
+  Weather,
+  WeatherHeadline
 };
