@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-
+// 
 function PiCard() {
     // const store = getStore();
     const classes = useStyles();
@@ -53,7 +53,7 @@ function PiCard() {
         status = {
             icon: `disconnected`,
             color: `secondary`,
-            subheader: `Problem connecting:  ${error}`,
+            subheader: `Connecting ...`,
         }
     }
     return (
