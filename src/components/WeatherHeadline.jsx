@@ -12,11 +12,13 @@ import {
 const useStyles = makeStyles(theme => ({
     weatherHeadline: {
         // marginTop: theme.spacing(),
+        border: '1px solid black',
     },
     grow: {
         flexGrow: 1,
     },
-    chinese: {
+    rightSide: {
+        display: 'flex'
     },
 }));
 
@@ -28,6 +30,7 @@ function WeatherHeadline() {
         lastFetchSuccess,
         temperature,
         outlookIcon,
+        overview,
     } = weather;
 
     if (!lastFetchSuccess) { return null }
@@ -36,13 +39,17 @@ function WeatherHeadline() {
         <div className={classes.weatherHeadline}>
             <Grid container>
                 <Grid item>
+                    <Avatar src={outlookIcon} alt={`weather outlook`} />
+                </Grid>
+                <Grid item>
                     <Typography variant={`h6`} >
                         {temperature}
                     </Typography>
                 </Grid>
-                <Grid item className={classes.grow} />
                 <Grid item>
-                    <Avatar src={outlookIcon} alt={`weather outlook`} />
+                    <Typography variant={`body1`} >
+                        {overview}
+                    </Typography>
                 </Grid>
             </Grid>
         </div>

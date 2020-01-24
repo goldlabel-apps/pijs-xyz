@@ -1,6 +1,7 @@
 import Boot from "./Boot";
 import ByListingslab from "./ByListingslab";
 import Camera from "./Camera";
+import CameraControls from "./CameraControls";
 import Debug from "./Debug";
 import Dashboard from "./Dashboard";
 import Advert from "./Advert";
@@ -19,6 +20,7 @@ export {
   Boot,
   ByListingslab,
   Camera,
+  CameraControls,
   Dashboard,
   Advert,
   Debug,

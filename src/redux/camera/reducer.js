@@ -1,18 +1,28 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { toggleExpand, reset, update, error } from "./actions";
+import { reset, update, loaded, error } from "./actions";
 
 export const cameraSlice = {
   updated: Date.now(),
-  expanded: true,
+  running: true,
   error: false,
+  lastSuccessfulLoad: null,
   currentPhoto: `https://pi.listingslab.io/current-photo?cb=${Date.now()}`
 };
 
 const camera = createReducer(cameraSlice, {
   //
-  [error]: (state, action) => {
+  [loaded]: state => {
     state.updated = Date.now();
-    state.error = action.error;
+    state.lastSuccessfulLoad = Date.now();
+    state.error = false;
+    state.running = true;
+    return state;
+  },
+
+  [error]: state => {
+    state.updated = Date.now();
+    state.error = true;
+    state.running = false;
     return state;
   },
 
@@ -20,12 +30,6 @@ const camera = createReducer(cameraSlice, {
     state.updated = Date.now();
     state.currentPhoto = `https://pi.listingslab.io/current-photo?cb=${Date.now()}`;
     state.error = false;
-    return state;
-  },
-
-  [toggleExpand]: state => {
-    state.updated = Date.now();
-    state.expanded = !state.expanded;
     return state;
   },
 

@@ -8,6 +8,7 @@ import {
 const useStyles = makeStyles(theme => ({
     weatherWrap: {
         marginTop: theme.spacing(),
+        border: '1px solid blue',
     },
     grow: {
         flexGrow: 1,
@@ -25,7 +26,6 @@ function Weather() {
         windSpeed,
         windDirection,
         humidity,
-        overview,
         sunset
     } = weather;
 
@@ -37,8 +37,6 @@ function Weather() {
         <div className={classes.weatherWrap}>
             <Typography
                 variant={`body1`} className={classes.chinese}>
-                <strong>{overview}</strong>
-                <br />
                 Wind <strong>{windSpeed}, {windDirection}</strong>
                 <br />
                 Sunset <strong>{sunset}</strong>

@@ -25,8 +25,13 @@ const useStyles = makeStyles(theme => ({
     card: {
         flexGrow: 1,
         boxShadow: 'none',
+        border: '1px solid black',
+    },
+    cardHeader: {
+        border: '1px solid green',
     },
     actionBtn: {
+        margin: theme.spacing(),
     }
 }));
 
@@ -61,8 +66,9 @@ function PiCard() {
             <div className={classes.screen}>
                 <Card className={classes.card}>
                     <CardHeader
+                        className={classes.cardHeader}
                         title={`PiJS.app`}
-                        subheader={status.subheader}
+                        // subheader={status.subheader}
                         avatar={
                             <IconButton className={classes.none}>
                                 <Icon icon={`pi`} color={`primary`} />
