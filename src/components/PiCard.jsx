@@ -13,7 +13,6 @@ import {
 import { Icon } from './';
 import {
     Camera,
-    Weather,
     WeatherHeadline,
 } from './';
 
@@ -25,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     card: {
         flexGrow: 1,
         boxShadow: 'none',
-        border: '1px solid black',
+        border: '1px solid rgba(0,0,0,0.25)',
     },
     cardHeader: {
         border: '1px solid green',
@@ -81,9 +80,8 @@ function PiCard() {
                             </IconButton>}
                     />
                     <CardContent>
-                        <WeatherHeadline />
                         <Camera />
-                        <Weather />
+                        <WeatherHeadline />
                     </CardContent>
                     {status.icon === `connected` ? null : null}
                     {/* <CardActions>

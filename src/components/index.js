@@ -13,7 +13,6 @@ import PiCard from "./PiCard";
 import PiJSLogo from "./PiJSLogo";
 import UserEntity from "./UserEntity";
 import Verbindungsstatus from "./Verbindungsstatus";
-import Weather from "./Weather";
 import WeatherHeadline from "./WeatherHeadline";
 
 export {
@@ -32,6 +31,5 @@ export {
   PiJSLogo,
   UserEntity,
   Verbindungsstatus,
-  Weather,
   WeatherHeadline
 };

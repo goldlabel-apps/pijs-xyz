@@ -8,8 +8,6 @@ import {
 } from '@material-ui/core/';
 import {
     Camera,
-    // Pimoroni,
-    Weather,
     Verbindungsstatus,
 } from './';
 import { Icon } from './';
@@ -67,7 +65,6 @@ function Dashboard() {
                 </div>
                 <div className={classes.expansionPanels}>
                     <Camera />
-                    <Weather />
                     {/* <Pimoroni /> */}
                 </div>
             </div>

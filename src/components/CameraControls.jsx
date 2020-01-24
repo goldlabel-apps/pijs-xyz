@@ -3,12 +3,12 @@ import React from 'react';
 // import { Icon } from './';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-    Button,
-} from '@material-ui/core/';
-import {
-    Icon,
-} from './';
+// import {
+//     Button,
+// } from '@material-ui/core/';
+// import {
+//     Icon,
+// } from './';
 
 const useStyles = makeStyles(theme => ({
     cameraControls: {
@@ -35,7 +35,16 @@ function CameraControls() {
     return (
         <div className={classes.cameraControls}>
 
-            <Button
+
+        </div>
+    );
+}
+
+const MemodFuncComponent = React.memo(CameraControls);
+export default MemodFuncComponent;
+
+/*
+<Button
                 variant={`contained`}
                 className={classes.zoomButton}
                 size={`small`}
@@ -64,9 +73,4 @@ function CameraControls() {
                 <Icon icon={`zoomout`} color={`inherit`} />
                 {!isMobile ? <span className={classes.iconPusher}>Zoom Out</span> : null}
             </Button>
-        </div>
-    );
-}
-
-const MemodFuncComponent = React.memo(CameraControls);
-export default MemodFuncComponent;
+*/
