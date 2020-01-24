@@ -2,10 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-    // Button,
-    // CardActions,
     Card,
-    CardContent,
     CardHeader,
     IconButton,
     Tooltip,
@@ -79,10 +76,10 @@ function PiCard() {
                                 </Tooltip>
                             </IconButton>}
                     />
-                    <CardContent>
-                        <Camera />
-                        <WeatherHeadline />
-                    </CardContent>
+
+                    <Camera />
+                    <WeatherHeadline />
+
                     {status.icon === `connected` ? null : null}
                     {/* <CardActions>
                         <Button

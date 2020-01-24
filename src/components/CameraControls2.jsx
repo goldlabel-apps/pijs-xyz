@@ -1,12 +1,11 @@
 import React from 'react';
 // import { getStore } from '../';
-// import { Icon } from './';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import {
     AppBar,
     IconButton,
-    Toolbar,
+    Toolbar
 } from '@material-ui/core/';
 import {
     Icon,
@@ -22,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function CameraControls() {
+function CameraControls2() {
     // const store = getStore();
     const classes = useStyles();
     const { camera } = useSelector(state => state);
@@ -46,18 +45,9 @@ function CameraControls() {
                         onClick={() => { }}
                         color="inherit"
                     >
-                        <Icon icon={`home`} color={`inherit`} />
+                        <Icon icon={`contact`} color={`inherit`} />
                     </IconButton>
 
-                    <IconButton
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        onClick={() => { }}
-                        color="inherit"
-                    >
-                        <Icon icon={`privacy`} color={`inherit`} />
-                    </IconButton>
 
                 </Toolbar>
             </AppBar>
@@ -65,8 +55,14 @@ function CameraControls() {
     );
 }
 
-const MemodFuncComponent = React.memo(CameraControls);
+const MemodFuncComponent = React.memo(CameraControls2);
 export default MemodFuncComponent;
+
+
+
+
+
+
 
 /*
 <Button

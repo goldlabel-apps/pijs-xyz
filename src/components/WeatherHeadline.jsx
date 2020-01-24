@@ -23,12 +23,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function WeatherHeadline() {
-    // const store = getStore();
     const classes = useStyles();
     const { weather, pimoroni } = useSelector(state => state);
     const { lux } = pimoroni;
     const {
-        lastFetchSuccess,
+        // lastFetchSuccess,
         temperature,
         outlookIcon,
         overview,
@@ -37,8 +36,7 @@ function WeatherHeadline() {
         windDirection,
         sunset,
     } = weather;
-
-    if (!lastFetchSuccess) { return null }
+    // if (!lastFetchSuccess) { return null }
 
     return (
         <div className={classes.weatherHeadline}>

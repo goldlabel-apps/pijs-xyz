@@ -5,15 +5,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import {
     CameraControls,
+    CameraControls2,
 } from './';
 
 const useStyles = makeStyles(theme => ({
     camera: {
-        border: `1px solid red`,
     },
     panPincher: {
         width: '100%',
-        borderRadius: theme.spacing(0.5),
         border: `1px solid rgba(0, 0, 0, 0.2)`,
         background: 'rgba(33, 33, 33, 1)',
     },
@@ -48,6 +47,7 @@ function Camera() {
                     </TransformComponent>
                 )}
             </TransformWrapper>
+            <CameraControls2 />
         </div>
     );
 }
