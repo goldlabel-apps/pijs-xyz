@@ -2,10 +2,11 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-    Card,
-    CardHeader,
+    AppBar,
     IconButton,
     Tooltip,
+    Toolbar,
+    Typography,
 } from '@material-ui/core/';
 import { Icon } from './';
 import {
@@ -16,18 +17,12 @@ import {
 const useStyles = makeStyles(theme => ({
     screen: {
         minHeight: '100vh',
-        display: 'flex',
-    },
-    card: {
-        flexGrow: 1,
-        boxShadow: 'none',
-        border: '1px solid rgba(0,0,0,0.25)',
-    },
-    cardHeader: {
-        border: '1px solid green',
     },
     actionBtn: {
-        margin: theme.spacing(),
+        // margin: theme.spacing(),
+    },
+    grow: {
+        flexGrow: 1,
     }
 }));
 
@@ -60,41 +55,27 @@ function PiCard() {
     return (
         <React.Fragment>
             <div className={classes.screen}>
-                <Card className={classes.card}>
-                    <CardHeader
-                        className={classes.cardHeader}
-                        title={`PiJS.app`}
-                        // subheader={status.subheader}
-                        avatar={
-                            <IconButton className={classes.none}>
-                                <Icon icon={`pi`} color={`primary`} />
-                            </IconButton>}
-                        action={
-                            <IconButton className={classes.actionBtn}>
-                                <Tooltip title={error}>
-                                    <Icon icon={status.icon} color={status.color} />
-                                </Tooltip>
-                            </IconButton>}
-                    />
-
-                    <Camera />
-                    <WeatherHeadline />
-
-                    {status.icon === `connected` ? null : null}
-                    {/* <CardActions>
-                        <Button
-                            variant={`contained`}
-                            color={`secondary`}
-                            onClick={(e) => {
-                                e.preventDefault();
-                                console.log(`dicks.`)
-                            }}>
-                            Share
-                        </Button>
-                    </CardActions> */}
-                </Card>
+                <AppBar position="static">
+                    <Toolbar>
+                        <IconButton
+                            onClick={() => { }}
+                            color={`inherit`}>
+                            <Icon icon={`pi`} color={`inherit`} />
+                        </IconButton>
+                        <Typography variant={`h6`}>
+                            PiJS.app
+                        </Typography>
+                        <div className={classes.grow} />
+                        <IconButton className={classes.actionBtn}>
+                            <Tooltip title={error}>
+                                <Icon icon={status.icon} color={`inherit`} />
+                            </Tooltip>
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
+                <Camera />
+                <WeatherHeadline />
             </div>
-
         </React.Fragment >
     );
 }

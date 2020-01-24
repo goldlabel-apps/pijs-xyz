@@ -11,10 +11,9 @@ import {
 const useStyles = makeStyles(theme => ({
     camera: {
     },
-    panPincher: {
+    cameraImage: {
         width: '100%',
-        border: `1px solid rgba(0, 0, 0, 0.2)`,
-        background: 'rgba(33, 33, 33, 1)',
+        border: `1px solid rgba(241,221,63,1)`,
     },
 }));
 
@@ -24,7 +23,7 @@ function Camera() {
     const { camera } = useSelector(state => state);
     const {
         currentPhoto,
-        // error,
+        error,
     } = camera;
 
     return (
@@ -34,6 +33,7 @@ function Camera() {
                 {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
                     <TransformComponent>
                         <img
+                            className={classes.cameraImage}
                             alt={`Camera`}
                             onLoad={(e) => {
                                 store.dispatch({ type: `CAMERA/LOADED` })
@@ -41,8 +41,8 @@ function Camera() {
                             onError={(e) => {
                                 store.dispatch({ type: `CAMERA/ERROR` })
                             }}
-                            className={classes.panPincher}
-                            src={currentPhoto}
+
+                            src={!error ? currentPhoto : `/jpg/broken.jpg`}
                         />
                     </TransformComponent>
                 )}

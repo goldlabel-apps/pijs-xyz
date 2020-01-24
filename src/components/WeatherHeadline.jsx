@@ -20,6 +20,12 @@ const useStyles = makeStyles(theme => ({
     rightSide: {
         display: 'flex'
     },
+    primaryText: {
+        color: 'rgba(255,255,255,1)',
+    },
+    secondaryText: {
+        color: 'rgba(241,221,63,1)',
+    },
 }));
 
 function WeatherHeadline() {
@@ -40,10 +46,10 @@ function WeatherHeadline() {
 
     return (
         <div className={classes.weatherHeadline}>
-            <Grid container>
+            <Grid container className={classes.primaryText}>
 
                 <Grid item xs={12} sm={6} md={4}>
-                    <Typography variant={`h6`} >
+                    <Typography variant={`h6`} className={classes.secondaryText}>
                         {temperature}
                     </Typography>
                 </Grid>

@@ -8,14 +8,14 @@ const theme = {
             main: 'rgba(241,221,63,1)',
         },
         background: {
-            default: "rgba(241,221,63,1)",
-            paper: "rgba(0,0,0,0)",
-            appBar: "rgba(241,221,63,1)",
-            contentFrame: "rgba(241,221,63,1)"
+            default: "rgba(33,33,33,1)",
+            paper: "rgba(33,33,33,1)",
+            appBar: "rgba(33,33,33,1)",
+            contentFrame: "rgba(33,33,33,1)"
         },
         text: {
-            primary: "rgba(33,33,33,1)",
-            secondary: "rgba(33,33,33,1)",
+            primary: "rgba(255,255,255,1)",
+            secondary: "rgba(241,221,63,1)",
         },
     }
 }

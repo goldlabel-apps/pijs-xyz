@@ -18,7 +18,10 @@ const useStyles = makeStyles(theme => ({
     iconPusher: {
         marginLeft: theme.spacing(),
         marginRight: theme.spacing()
-    }
+    },
+    grow: {
+        flexGrow: 1,
+    },
 }));
 
 function CameraControls2() {
@@ -37,6 +40,7 @@ function CameraControls2() {
         <div className={classes.cameraControls}>
             <AppBar position="static">
                 <Toolbar>
+                    <div className={classes.grow} />
 
                     <IconButton
                         aria-label="account of current user"
@@ -45,7 +49,7 @@ function CameraControls2() {
                         onClick={() => { }}
                         color="inherit"
                     >
-                        <Icon icon={`contact`} color={`inherit`} />
+                        <Icon icon={`zoomin`} color={`inherit`} />
                     </IconButton>
 
 

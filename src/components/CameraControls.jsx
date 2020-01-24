@@ -19,7 +19,10 @@ const useStyles = makeStyles(theme => ({
     iconPusher: {
         marginLeft: theme.spacing(),
         marginRight: theme.spacing()
-    }
+    },
+    grow: {
+        flexGrow: 1,
+    },
 }));
 
 function CameraControls() {
@@ -39,15 +42,7 @@ function CameraControls() {
             <AppBar position="static">
                 <Toolbar>
 
-                    <IconButton
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        onClick={() => { }}
-                        color="inherit"
-                    >
-                        <Icon icon={`home`} color={`inherit`} />
-                    </IconButton>
+                    <div className={classes.grow} />
 
                     <IconButton
                         aria-label="account of current user"

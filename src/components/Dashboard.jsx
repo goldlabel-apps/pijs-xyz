@@ -14,7 +14,6 @@ import { Icon } from './';
 
 const useStyles = makeStyles(theme => ({
     dashboard: {
-        background: '#212121',
         minHeight: '100vh',
     },
     grow: {
