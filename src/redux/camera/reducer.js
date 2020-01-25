@@ -1,16 +1,25 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { reset, update, loaded, error } from "./actions";
-
+import { reset, update, loaded, error, effect } from "./actions";
 export const cameraSlice = {
   updated: Date.now(),
   running: true,
   error: false,
   lastSuccessfulLoad: null,
-  currentPhoto: `https://pi.listingslab.io/current-photo?cb=${Date.now()}`
+  currentPhoto: `https://pi.listingslab.io/current-photo?cb=${Date.now()}`,
+  effect: {
+    label: `None`,
+    slug: `none`,
+    description: `No effect selected`
+  }
 };
 
 const camera = createReducer(cameraSlice, {
-  //
+  [effect]: (state, action) => {
+    state.updated = Date.now();
+    state.effect = action.effect;
+    return state;
+  },
+
   [loaded]: state => {
     state.updated = Date.now();
     state.lastSuccessfulLoad = Date.now();
@@ -26,9 +35,16 @@ const camera = createReducer(cameraSlice, {
     return state;
   },
 
-  [update]: state => {
+  [update]: (state, action) => {
     state.updated = Date.now();
-    state.currentPhoto = `https://pi.listingslab.io/current-photo?cb=${Date.now()}`;
+    state.effect = action.effect;
+    let effectEndpoint = `/`;
+
+    if (action.effect.slug !== "none") {
+      effectEndpoint += `${action.effect.slug}/`;
+    }
+    console.log("effectEndpoint", effectEndpoint);
+    state.currentPhoto = `https://pi.listingslab.io/current-photo${effectEndpoint}?cb=${Date.now()}`;
     state.error = false;
     return state;
   },

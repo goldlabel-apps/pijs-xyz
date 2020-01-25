@@ -64,7 +64,6 @@ function Dashboard() {
                 </div>
                 <div className={classes.expansionPanels}>
                     <Camera />
-                    {/* <Pimoroni /> */}
                 </div>
             </div>
         </React.Fragment >

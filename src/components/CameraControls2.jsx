@@ -13,7 +13,8 @@ import {
 
 const useStyles = makeStyles(theme => ({
     cameraControls: {
-        border: '1px solid purple',
+        border: 'none',
+        boxShadow: 'none',
     },
     iconPusher: {
         marginLeft: theme.spacing(),

@@ -56,6 +56,7 @@ class ClockWork extends Component {
             ticking,
             // timeoutSecs,
             // started,
+            effect,
         } = this.props;
 
         if (!ticking) { return null }
@@ -69,7 +70,10 @@ class ClockWork extends Component {
             connectPi();
             fetchPimoroni();
             saveFireprint();
-            store.dispatch({ type: `CAMERA/UPDATE` });
+            store.dispatch({
+                type: `CAMERA/UPDATE`,
+                effect
+            });
         }
 
         if (!connecting && !connected) {
@@ -120,6 +124,8 @@ const mapStateToProps = (store) => {
         secondsBetweenUpdates: store.clockwork.secondsBetweenUpdates,
         timeoutSecs: store.clockwork.timeoutSecs,
         started: store.clockwork.started,
+        ////////////////////
+        effect: store.camera.effect,
         ////////////////////
         fireprintInitted: store.userEntity.fireprintInitted,
         ipLocationInitted: store.userEntity.ipLocationInitted,

@@ -1,20 +1,22 @@
 import React from 'react';
-// import { getStore } from '../';
-// import { Icon } from './';
+import { getStore } from '../';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
+// import {
+//     AppBar,
+//     Toolbar,
+// } from '@material-ui/core/';
 import {
-    AppBar,
-    IconButton,
-    Toolbar,
-} from '@material-ui/core/';
-import {
-    Icon,
+    EffectsMenu,
 } from './';
 
 const useStyles = makeStyles(theme => ({
     cameraControls: {
-        border: '1px solid purple',
+        // border: '1px solid white',
+    },
+    appbar: {
+        border: 'none',
+        boxShadow: 'none',
     },
     iconPusher: {
         marginLeft: theme.spacing(),
@@ -26,7 +28,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function CameraControls() {
-    // const store = getStore();
+    const store = getStore();
+
     const classes = useStyles();
     const { camera } = useSelector(state => state);
     const {
@@ -39,23 +42,8 @@ function CameraControls() {
 
     return (
         <div className={classes.cameraControls}>
-            <AppBar position="static">
-                <Toolbar>
-
-                    <div className={classes.grow} />
-
-                    <IconButton
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        onClick={() => { }}
-                        color="inherit"
-                    >
-                        <Icon icon={`privacy`} color={`inherit`} />
-                    </IconButton>
-
-                </Toolbar>
-            </AppBar>
+            {store.d}
+            <EffectsMenu />
         </div>
     );
 }

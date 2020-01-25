@@ -36,6 +36,7 @@ import PiJSSVG from '../graphics/PiJSSVG';
 import SpadeSVG from '../graphics/SpadeSVG';
 import IconDarkmode from '@material-ui/icons/Highlight';
 import IconTrash from '@material-ui/icons/DeleteForeverOutlined';
+import IconEffect from '@material-ui/icons/BrightnessMedium';
 
 const styles = theme => ({
     navIcon: {
@@ -58,11 +59,14 @@ class Icon extends Component {
             icon,
             color,
         } = this.props;
-        let iconColor = `secondary`;
+        let iconColor = `inherit`;
         if (color) {
             iconColor = color
         }
         switch (icon) {
+
+            case `effect`:
+                return (<IconEffect color={iconColor} />);
 
             case `trash`:
                 return (<IconTrash color={iconColor} />);

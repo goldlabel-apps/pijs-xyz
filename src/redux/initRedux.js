@@ -7,6 +7,7 @@ import { clockwork, clockworkSlice } from "./clockwork/reducer";
 import { firebase, firebaseSlice } from "./firebase/reducer";
 import { pi, piSlice } from "./pi/reducer";
 import { pimoroni, pimoroniSlice } from "./pimoroni/reducer";
+import { system, systemSlice } from "./system/reducer";
 import { userEntity, userEntitySlice } from "./userEntity/reducer";
 import { weather, weatherSlice } from "./weather/reducer";
 
@@ -18,6 +19,7 @@ const initRedux = () => {
     firebase,
     pi,
     pimoroni,
+    system,
     userEntity,
     weather
   });
@@ -29,6 +31,7 @@ const initRedux = () => {
     firebase: firebaseSlice,
     pi: piSlice,
     pimoroni: pimoroniSlice,
+    system: systemSlice,
     userEntity: userEntitySlice,
     weather: weatherSlice
   };
