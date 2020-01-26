@@ -12,7 +12,7 @@ import {
 
 const useStyles = makeStyles(theme => ({
     weatherHeadline: {
-        // paddingLeft: theme.spacing(3),
+        padding: theme.spacing(3),
         // paddingRight: theme.spacing(3),
         // border: '1px solid white',
     },
@@ -54,7 +54,7 @@ function WeatherHeadline() {
         <div className={classes.weatherHeadline}>
             <Grid container className={classes.primaryText}>
 
-                <Grid item xs={8}>
+                <Grid item xs={7}>
                     <Typography variant={`body2`} >
                         {overview}
                     </Typography>
@@ -65,7 +65,7 @@ function WeatherHeadline() {
                     </Typography>
                 </Grid>
 
-                <Grid item xs={4}>
+                <Grid item xs={5}>
                     <Typography variant={`h6`} className={classes.pullRight}>
                         <Avatar src={outlookIcon} alt={`weather outlook`} />
                         {temperature}

@@ -8,9 +8,9 @@ export const saveFireprint = () => {
   const store = getStore();
   const { userEntity } = store.getState();
   const { fingerprint } = userEntity;
-  // console.log(`saveFireprint`, fingerprint);
-  if (fingerprint) {
-    const doc = db.collection("userEntities").doc(fingerprint);
-    doc.set({ userEntity }, { merge: true });
-  }
+  console.log(`update firestore`, fingerprint);
+  //   if (fingerprint) {
+  //     const doc = db.collection("userEntities").doc(fingerprint);
+  //     doc.set({ userEntity }, { merge: true });
+  //   }
 };
