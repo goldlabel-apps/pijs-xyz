@@ -39,11 +39,9 @@ const camera = createReducer(cameraSlice, {
     state.updated = Date.now();
     state.effect = action.effect;
     let effectEndpoint = `/`;
-
     if (action.effect.slug !== "none") {
       effectEndpoint += `${action.effect.slug}/`;
     }
-    console.log("effectEndpoint", effectEndpoint);
     state.currentPhoto = `https://pi.listingslab.io/current-photo${effectEndpoint}?cb=${Date.now()}`;
     state.error = false;
     return state;

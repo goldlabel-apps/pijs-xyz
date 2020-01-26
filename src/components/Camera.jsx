@@ -29,6 +29,7 @@ function Camera() {
 
     return (
         <div className={classes.camera}>
+            <CameraControls />
             <TransformWrapper>
                 {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
                     <TransformComponent>
@@ -49,7 +50,7 @@ function Camera() {
                     </TransformComponent>
                 )}
             </TransformWrapper>
-            <CameraControls />
+
             {/* <CameraControls2 /> */}
         </div>
     );
