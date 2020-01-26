@@ -8,7 +8,7 @@ import MaterialView from "./MaterialView";
 import ClockWork from "./ClockWork";
 import { CssBaseline } from "@material-ui/core/";
 
-let debugOn = false;
+let debugOn = true;
 
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.has("upgrade-from")) {
