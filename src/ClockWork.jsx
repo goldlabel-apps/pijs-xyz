@@ -5,8 +5,7 @@ import { getStore } from './';
 import { connectPi } from './redux/pi/actions';
 import { fetchWeather } from './redux/weather/actions';
 import { fetchPimoroni } from './redux/pimoroni/actions';
-
-import { saveFireprint } from './redux/firebase/actions';
+import { prepareEntity } from './redux/firebase/actions';
 
 class ClockWork extends Component {
 
@@ -21,12 +20,10 @@ class ClockWork extends Component {
     startTimer = () => {
         const store = getStore();
         store.dispatch({ type: `CLOCKWORK/START` });
-
         store.dispatch({
             type: "PI/SET_CONNECTING",
-            connecting: false
+            connecting: true
         });
-
         const { tickDelay } = this.props;
         const {
             timer
@@ -69,7 +66,7 @@ class ClockWork extends Component {
         if (ticks % secondsBetweenUpdates === 0) {
             connectPi();
             fetchPimoroni();
-            saveFireprint();
+            prepareEntity();
             store.dispatch({
                 type: `CAMERA/UPDATE`,
                 effect

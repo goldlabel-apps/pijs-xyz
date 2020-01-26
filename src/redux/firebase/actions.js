@@ -3,7 +3,7 @@ import { getStore } from "../../";
 // import { db } from "./fire";
 
 export const reset = createAction(`FIREBASE/RESET`);
-export const prepareEntity = createAction(`FIREBASE/PREPARE`);
+export const prepare = createAction(`FIREBASE/PREPARE`);
 
 export const firestoreForget = payload => {
   console.log(`firestoreForget`, payload);
@@ -11,6 +11,14 @@ export const firestoreForget = payload => {
 
 export const firestoreListen = payload => {
   console.log(`firestoreListen`, payload);
+};
+
+export const prepareEntity = () => {
+  const store = getStore();
+  store.dispatch({
+    type: `FIREBASE/PREPARE`,
+    niceState: store.getState()
+  });
 };
 
 export const saveFireprint = () => {

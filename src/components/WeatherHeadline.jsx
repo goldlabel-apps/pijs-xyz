@@ -1,6 +1,4 @@
 import React from 'react';
-// import { getStore } from '../';
-// import { Icon } from './';
 import moment from 'moment';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
@@ -12,9 +10,8 @@ import {
 
 const useStyles = makeStyles(theme => ({
     weatherHeadline: {
-        padding: theme.spacing(3),
-        // paddingRight: theme.spacing(3),
-        // border: '1px solid white',
+        padding: theme.spacing(),
+        paddingRight: theme.spacing(),
     },
     grow: {
         flexGrow: 1,
@@ -53,37 +50,31 @@ function WeatherHeadline() {
     return (
         <div className={classes.weatherHeadline}>
             <Grid container className={classes.primaryText}>
+                <Grid item xs={4}>
+                    <Typography
+                        variant={`h6`}
+                        className={classes.pullRight}>
 
-                <Grid item xs={7}>
-                    <Typography variant={`body2`} >
-                        {overview}
-                    </Typography>
-                    <Typography variant={`body2`} >
-                        Humidity <strong>{humidity}</strong><br />
-                        Lux <strong>{lux}</strong><br />
-                        Sunset {sunset}
-                    </Typography>
-                </Grid>
-
-                <Grid item xs={5}>
-                    <Typography variant={`h6`} className={classes.pullRight}>
-                        <Avatar src={outlookIcon} alt={`weather outlook`} />
+                        <Avatar
+                            src={outlookIcon}
+                            alt={`weather outlook`}
+                        />
                         {temperature}
                     </Typography>
-                </Grid>
-
-                <Grid item xs={12}>
-                    <Typography variant={`body2`} >
-                        Wind <strong>{windSpeed}</strong>, {windDirection}
+                    <Typography variant={`body1`} >
+                        Humidity <strong>{humidity}</strong><br />
+                        {overview}
                     </Typography>
                 </Grid>
 
-                <Grid item>
+                <Grid item xs={8}>
                     <Typography variant={`body2`} >
+                        Lux <strong>{lux}</strong><br />
+                        Sunset {sunset}<br />
+                        Wind <strong>{windSpeed}</strong>, {windDirection}<br />
                         Updated {moment(lastFetchSuccess).fromNow()}
                     </Typography>
                 </Grid>
-
 
             </Grid>
         </div>
