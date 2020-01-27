@@ -1,3 +1,4 @@
+import App from "./App";
 import Boot from "./Boot";
 import ByListingslab from "./ByListingslab";
 import Camera from "./Camera";
@@ -12,7 +13,7 @@ import Icon from "./Icon";
 import Pi from "./Pi";
 import Connection from "./Connection";
 import Privacy from "./Privacy";
-import PiCard from "./PiCard";
+
 import PiJSLogo from "./PiJSLogo";
 import PopupMenu from "./PopupMenu";
 import UserEntity from "./UserEntity";
@@ -20,6 +21,7 @@ import Verbindungsstatus from "./Verbindungsstatus";
 import WeatherHeadline from "./WeatherHeadline";
 
 export {
+  App,
   Boot,
   ByListingslab,
   Camera,
@@ -34,7 +36,6 @@ export {
   Pi,
   Connection,
   Privacy,
-  PiCard,
   PiJSLogo,
   PopupMenu,
   UserEntity,

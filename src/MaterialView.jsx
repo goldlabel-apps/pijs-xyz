@@ -1,13 +1,15 @@
 import React from 'react';
+import { getStore } from './';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import muiTheme from './theme/mui';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import { isFirstRun } from './redux/firebase/actions'
+import { checkFirstRun, syncFirebase, locateUser } from './redux/firebase/actions'
+import { fetchWeather } from "./redux/weather/actions";
 import {
     // Advert,
     Debug,
-    // PiCard,
+    // App,
 } from './components';
 
 const useStyles = makeStyles(theme => ({
@@ -17,47 +19,52 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-
 export default function MaterialView(props) {
-    // const classes = useStyles();
+    const store = getStore();
+    const classes = useStyles();
     const {
-        // advert,
-        system,
         firebase,
+        weather,
     } = useSelector(state => state);
 
-    // console.log('firstRun', firstRun);
-    let screen = `First run?`;
+    let screen = null;
+    const {
+        firstRunCheck,
+        firstRunChecking,
+        entity,
+        location,
+        locating
+    } = firebase;
+    let shouldWeShowIt = true;
+    if (!firstRunCheck && !firstRunChecking) {
+        setTimeout(checkFirstRun(), 3500);
+    }
 
-    const { firstRun } = system;
-    const { connected, connecting } = firebase;
-
-    if (!connected && !connecting) {
-        isFirstRun();
+    if (!location && !locating) {
+        locateUser(store);
         return null;
     }
-
-    if (!firstRun) {
-        screen = `Not checked yet....`;
-    }
-
-    // const { firstRun } = system;
-    // const { complete } = advert;
-
-
-    // if (!complete) {
-    //     screen = <Advert />;
-    // } else {
-    //     screen = <div className={classes.app}>
-    //         <PiCard />
-    //     </div >;
-    // }
 
     let debug = null;
     const { debugOn } = props;
     if (debugOn) {
         debug = <Debug />;
     }
+
+    const weatherFetching = weather.fetching;
+    const weatherFetched = weather.fetched;
+    if (!weatherFetching && !weatherFetched) {
+        fetchWeather();
+    }
+
+    if (shouldWeShowIt) {
+        screen = <pre className={classes.stringified}>
+            {JSON.stringify(entity, null, 2)}
+        </pre>;
+    }
+
+    // syncFirebase(store);
+
     return (
         <React.Fragment>
             <MuiThemeProvider theme={createMuiTheme(muiTheme)}>

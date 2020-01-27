@@ -8,7 +8,6 @@ import { firebase, firebaseSlice } from "./firebase/reducer";
 import { pi, piSlice } from "./pi/reducer";
 import { pimoroni, pimoroniSlice } from "./pimoroni/reducer";
 import { system, systemSlice } from "./system/reducer";
-import { userEntity, userEntitySlice } from "./userEntity/reducer";
 import { weather, weatherSlice } from "./weather/reducer";
 
 const initRedux = () => {
@@ -20,7 +19,6 @@ const initRedux = () => {
     pi,
     pimoroni,
     system,
-    userEntity,
     weather
   });
 
@@ -32,7 +30,6 @@ const initRedux = () => {
     pi: piSlice,
     pimoroni: pimoroniSlice,
     system: systemSlice,
-    userEntity: userEntitySlice,
     weather: weatherSlice
   };
 
