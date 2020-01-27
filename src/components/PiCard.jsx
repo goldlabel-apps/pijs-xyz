@@ -97,16 +97,7 @@ function PiCard() {
                                 <Icon icon={status.icon} color={`primary`} />
                             </IconButton>
                         </Tooltip>
-                        <Tooltip title={`Open Source on Github`}>
-                            <IconButton
-                                color={`inherit`}
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    window.open(`https://github.com/listingslab-hardware/pijs-app`, `_blank`);
-                                }}>
-                                <Icon icon={`github`} color={`rgba(241,221,63,1)`} />
-                            </IconButton>
-                        </Tooltip>
+
                         <UserEntity />
                     </div>
                 </div>

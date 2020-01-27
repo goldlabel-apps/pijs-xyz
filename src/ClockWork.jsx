@@ -2,42 +2,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getStore } from './';
-import { connectPi } from './redux/pi/actions';
+import { fetchPi } from './redux/pi/actions';
 import { fetchWeather } from './redux/weather/actions';
 import { fetchPimoroni } from './redux/pimoroni/actions';
-import { prepareEntity } from './redux/firebase/actions';
 
 class ClockWork extends Component {
 
     state = { timer: null }
-
     componentDidMount() {
-        this.startTimer();
+        //this.startTimer() 
     }
-
     componentWillUnmount() { this.stopTimer() }
-
-    startTimer = () => {
-        const store = getStore();
-        store.dispatch({ type: `CLOCKWORK/START` });
-        store.dispatch({
-            type: "PI/SET_CONNECTING",
-            connecting: true
-        });
-        const { tickDelay } = this.props;
-        const {
-            timer
-        } = this.state;
-        if (!timer) {
-            this.setState({ timer: setInterval(this.tick, tickDelay * 1000) });
-        }
-        setTimeout(this.tick, tickDelay / 3);
-    }
 
     tick = () => {
         const store = getStore();
         store.dispatch({ type: `CLOCKWORK/TICK` });
         const {
+            ticking,
             fireprintInitted,
             ipLocationInitted,
             initting,
@@ -50,41 +31,27 @@ class ClockWork extends Component {
             pimoroniFetching,
             pimoroniFetched,
             secondsBetweenUpdates,
-            ticking,
-            // timeoutSecs,
-            // started,
             effect,
         } = this.props;
-
         if (!ticking) { return null }
 
-        // if (Date.now() - started > timeoutSecs * 1000) {
-        //     // console.log('GIVE UP!');
-        //     store.dispatch({ type: `CLOCKWORK/PAUSE` });
-        // }
-
         if (ticks % secondsBetweenUpdates === 0) {
-            connectPi();
+            fetchPi();
             fetchPimoroni();
-            prepareEntity();
             store.dispatch({
                 type: `CAMERA/UPDATE`,
                 effect
             });
         }
-
         if (!connecting && !connected) {
-            connectPi();
+            fetchPi();
         }
-
         if (!weatherFetching && !weatherFetched) {
             fetchWeather();
         }
-
         if (!pimoroniFetching && !pimoroniFetched) {
             fetchPimoroni();
         }
-
         if (!initted) {
             if (!initting) {
                 store.dispatch({ type: `USERENTITY/INIT` });
@@ -93,7 +60,19 @@ class ClockWork extends Component {
         if (fireprintInitted && ipLocationInitted && !initted) {
             store.dispatch({ type: `USERENTITY/INIT/COMPLETE` });
         }
+    }
 
+    startTimer = () => {
+        const store = getStore();
+        store.dispatch({ type: `CLOCKWORK/START` });
+        const { tickDelay } = this.props;
+        const {
+            timer
+        } = this.state;
+        if (!timer) {
+            this.setState({ timer: setInterval(this.tick, tickDelay * 1000) });
+        }
+        setTimeout(this.tick, tickDelay / 3);
     }
 
     stopTimer = () => {
@@ -140,6 +119,5 @@ const mapStateToProps = (store) => {
         pimoroniLastFetchSuccess: store.pimoroni.lastFetchSuccess,
     };
 };
-
 
 export default (connect(mapStateToProps, null)(ClockWork));

@@ -81,7 +81,7 @@ const userEntity = createReducer(userEntitySlice, {
   },
 
   [initComplete]: state => {
-    // console.log("initComplete");
+    console.log("initComplete");
     state.updated = Date.now();
     state.initting = false;
     state.initted = true;

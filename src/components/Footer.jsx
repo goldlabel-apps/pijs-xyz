@@ -12,10 +12,10 @@ import {
 
 const useStyles = makeStyles(theme => ({
     footer: {
-        border: 'none',
+        // border: '1px solid yellow',
         boxShadow: 'none',
+        // textAlign: 'center',
     },
-
     appBar: {
         top: 'auto',
         bottom: 0,
@@ -35,18 +35,27 @@ function Footer() {
     return (
         <div className={classes.footer}>
 
+            <Tooltip title={`Open Source on Github`}>
+                <IconButton
+                    color={`inherit`}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        window.open(`https://github.com/listingslab-hardware/pijs-app`, `_blank`);
+                    }}>
+                    <Icon icon={`github`} color={`rgba(255,255,255,0.33)`} />
+                </IconButton>
+            </Tooltip>
+
             <Tooltip title={`by listingslab`}>
                 <IconButton
                     className={classes.connectionBtn}
                     onClick={(e) => {
+                        window.open(`https://listingslab.com/pi`, `_blank`);
                         e.preventDefault();
                     }}>
-                    <Icon icon={`spade`} color={`primary`} />
+                    <Icon icon={`spade`} color={`rgba(255,255,255,0.33)`} />
                 </IconButton>
             </Tooltip>
-
-
-
         </div>
     );
 }

@@ -24,12 +24,12 @@ const useStyles = makeStyles(theme => ({
 
 function CameraControls() {
     const classes = useStyles();
-    const { camera } = useSelector(state => state);
+    const { pi } = useSelector(state => state);
     const {
-        running,
-    } = camera;
+        lastConnectSuccess,
+    } = pi;
 
-    if (!running) { return null }
+    if (!lastConnectSuccess) { return null }
 
     return (
         <div className={classes.cameraControls}>

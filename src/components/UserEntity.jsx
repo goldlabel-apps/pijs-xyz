@@ -38,7 +38,7 @@ function UserEntity() {
     const { entity } = firebase;
     const { userEntityOpen } = system;
     //console.log(entity)
-    if (!entity.location.ip) return null;
+    if (!entity) return null;
     return (
         <React.Fragment>
             <React.Fragment>

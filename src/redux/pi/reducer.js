@@ -48,6 +48,7 @@ const pi = createReducer(piSlice, {
 
   [onError]: (state, action) => {
     state.updated = Date.now();
+    state.lastConnectSuccess = null;
     state.error = action.error;
     return state;
   },

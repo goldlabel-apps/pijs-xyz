@@ -10,10 +10,10 @@ export const save = createAction(`PI/SAVE`);
 
 // https://pi.listingslab.io/pimoroni
 
-export const connectPi = () => {
+export const fetchPi = () => {
   const store = getStore();
   const { baseUrl } = store.getState().pi;
-  // console.log("connectPi", baseUrl);
+  // console.log("fetchPi", baseUrl);
   store.dispatch({
     type: "PI/SET_CONNECTING",
     connecting: true

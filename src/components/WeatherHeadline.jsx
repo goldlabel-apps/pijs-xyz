@@ -45,7 +45,7 @@ function WeatherHeadline() {
         windDirection,
         sunset,
     } = weather;
-    // if (!lastFetchSuccess) { return null }
+    if (!temperature) { return null }
 
     return (
         <div className={classes.weatherHeadline}>
@@ -61,14 +61,15 @@ function WeatherHeadline() {
                         />
                         {temperature}
                     </Typography>
-                    <Typography variant={`body1`} >
-                        Humidity <strong>{humidity}</strong><br />
-                        {overview}
-                    </Typography>
+
                 </Grid>
 
                 <Grid item xs={8}>
+                    <Typography variant={`body1`} >
+                        Humidity <strong>{humidity}</strong>
+                    </Typography>
                     <Typography variant={`body2`} >
+                        {overview}<br />
                         Lux <strong>{lux}</strong><br />
                         Sunset {sunset}<br />
                         Wind <strong>{windSpeed}</strong>, {windDirection}<br />
