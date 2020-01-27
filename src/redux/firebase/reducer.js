@@ -1,12 +1,24 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { reset, prepare } from "./actions";
+import { reset, prepare, connecting, fingerprint } from "./actions";
 
 export const firebaseSlice = {
   updated: Date.now(),
-  entity: null
+  entity: null,
+  connected: false,
+  connecting: false,
+  fingerprint: null
 };
 
 const firebase = createReducer(firebaseSlice, {
+  [fingerprint]: (state, action) => {
+    state.fingerprint = action.fingerprint;
+    return state;
+  },
+  [connecting]: (state, action) => {
+    // console.log("connecting", action);
+    state.connecting = action.connecting;
+    return state;
+  },
   [prepare]: (state, action) => {
     state.updated = Date.now();
     // console.log("niceState", action.niceState);

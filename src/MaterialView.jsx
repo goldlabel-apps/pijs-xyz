@@ -3,10 +3,11 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import muiTheme from './theme/mui';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
+import { isFirstRun } from './redux/firebase/actions'
 import {
-    Advert,
+    // Advert,
     Debug,
-    PiCard,
+    // PiCard,
 } from './components';
 
 const useStyles = makeStyles(theme => ({
@@ -18,25 +19,45 @@ const useStyles = makeStyles(theme => ({
 
 
 export default function MaterialView(props) {
-    const { debugOn } = props;
-    const classes = useStyles();
+    // const classes = useStyles();
     const {
-        advert,
+        // advert,
+        system,
+        firebase,
     } = useSelector(state => state);
-    const { complete } = advert;
-    let screen = null;
+
+    // console.log('firstRun', firstRun);
+    let screen = `First run?`;
+
+    const { firstRun } = system;
+    const { connected, connecting } = firebase;
+
+    if (!connected && !connecting) {
+        isFirstRun();
+        return null;
+    }
+
+    if (!firstRun) {
+        screen = `Not checked yet....`;
+    }
+
+    // const { firstRun } = system;
+    // const { complete } = advert;
+
+
+    // if (!complete) {
+    //     screen = <Advert />;
+    // } else {
+    //     screen = <div className={classes.app}>
+    //         <PiCard />
+    //     </div >;
+    // }
+
     let debug = null;
+    const { debugOn } = props;
     if (debugOn) {
         debug = <Debug />;
     }
-    if (!complete) {
-        screen = <Advert />;
-    } else {
-        screen = <div className={classes.app}>
-            <PiCard />
-        </div >;
-    }
-
     return (
         <React.Fragment>
             <MuiThemeProvider theme={createMuiTheme(muiTheme)}>

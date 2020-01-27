@@ -1,5 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
+  firstRun,
   connectionDialog,
   reset,
   restart,
@@ -15,10 +16,16 @@ export const systemSlice = {
   error: false,
   connectionOpen: false,
   effectsMenuOpen: false,
-  userEntityOpen: false
+  userEntityOpen: false,
+  firstRun: null
 };
 
 const system = createReducer(systemSlice, {
+  [firstRun]: (state, action) => {
+    state.updated = Date.now();
+    state.firstRun = action.firstRun;
+    return state;
+  },
   [toggleUserEntity]: (state, action) => {
     state.updated = Date.now();
     state.userEntityOpen = action.open;
