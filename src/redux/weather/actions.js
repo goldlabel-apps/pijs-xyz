@@ -2,8 +2,7 @@ import { createAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { getStore } from "../../";
 
-export const onError = createAction(`WEATHER/ERROR`);
-export const toggleExpand = createAction(`WEATHER/TOGGLE_EXPAND`);
+export const error = createAction(`WEATHER/ERROR`);
 export const reset = createAction(`WEATHER/RESET`);
 export const save = createAction(`WEATHER/SAVE`);
 export const fetching = createAction(`WEATHER/FETCHING`);
@@ -32,5 +31,15 @@ export const fetchWeather = () => {
         type: "WEATHER/ERROR",
         error: error.toString()
       });
-    });
+    })
+    .finally(function () {
+      store.dispatch({
+        type: "WEATHER/FETCHING",
+        fetching: false
+      })
+      store.dispatch({
+        type: "FIREBASE/PREPARE",
+        state: store.getState(),
+      })
+    })
 };

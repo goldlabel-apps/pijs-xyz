@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { fetching, toggleExpand, onError, reset, save } from "./actions";
+import { fetching, error, reset, save } from "./actions";
 import moment from "moment";
 
 export const weatherSlice = {
@@ -48,10 +48,13 @@ function degToCompass(num) {
 const weather = createReducer(weatherSlice, {
   //
   [save]: (state, action) => {
-    // console.log("windSpeed", action.data);
-    state.error = false;
+    // console.log("save", action.data);
+
     state.updated = Date.now();
     state.lastFetchSuccess = Date.now();
+    state.fetched = true;
+    state.error = false;
+
     state.windSpeed = `${Math.round(action.data.wind.speed * 3.6 * 10) /
       10} km/h`;
     state.windDirection = `${degToCompass(action.data.wind.deg)}`;
@@ -66,22 +69,16 @@ const weather = createReducer(weatherSlice, {
   },
 
   [fetching]: (state, action) => {
-    // console.log("onError", action.error);
+    // console.log("fetching", action.fetching);
     state.updated = Date.now();
     state.fetching = action.fetching;
     return state;
   },
 
-  [onError]: (state, action) => {
+  [error]: (state, action) => {
     // console.log("onError", action.error);
     state.updated = Date.now();
     state.error = action.error.toString();
-    return state;
-  },
-
-  [toggleExpand]: state => {
-    state.updated = Date.now();
-    state.expanded = !state.expanded;
     return state;
   },
 

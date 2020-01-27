@@ -19,10 +19,6 @@ class ClockWork extends Component {
         store.dispatch({ type: `CLOCKWORK/TICK` });
         const {
             ticking,
-            fireprintInitted,
-            ipLocationInitted,
-            initting,
-            initted,
             ticks,
             connecting,
             connected,
@@ -51,14 +47,6 @@ class ClockWork extends Component {
         }
         if (!pimoroniFetching && !pimoroniFetched) {
             fetchPimoroni();
-        }
-        if (!initted) {
-            if (!initting) {
-                store.dispatch({ type: `USERENTITY/INIT` });
-            }
-        }
-        if (fireprintInitted && ipLocationInitted && !initted) {
-            store.dispatch({ type: `USERENTITY/INIT/COMPLETE` });
         }
     }
 
@@ -102,11 +90,6 @@ const mapStateToProps = (store) => {
         started: store.clockwork.started,
         ////////////////////
         effect: store.camera.effect,
-        ////////////////////
-        fireprintInitted: store.userEntity.fireprintInitted,
-        ipLocationInitted: store.userEntity.ipLocationInitted,
-        initting: store.userEntity.initting,
-        initted: store.userEntity.initted,
         ////////////////////
         connected: store.pi.connected,
         connecting: store.pi.connecting,

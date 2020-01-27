@@ -18,20 +18,12 @@ import {
 const useStyles = makeStyles(theme => ({
     screen: {
         minHeight: '100vh',
-        border: '1px solid rgba(241,221,63,0)',
+        border: '1px solid rgba(241,221,63,1)',
     },
-    actions: {
+    flex: {
         display: 'flex',
-    },
-    heading: {
-        // border: '1px solid white',
-        display: 'flex',
-    },
-    headingRight: {
-        // border: '1px solid pink',
     },
     headingAppName: {
-        // border: '1px solid pink',
         paddingTop: theme.spacing(),
     },
     grow: {
@@ -43,34 +35,30 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-function PiCard() {
+function App() {
     const store = getStore();
     const classes = useStyles();
     const { pi } = useSelector(state => state);
     const {
         timeout,
         lastConnectSuccess,
-        location
     } = pi;
 
-    let status =
-    {
+    let status = {
         icon: `connected`,
         color: `primary`,
-        subheader: location,
     };
     if (Date.now() - lastConnectSuccess > timeout) {
         status = {
             icon: `disconnected`,
             color: `secondary`,
-            subheader: `Connecting ...`,
         }
     }
 
     return (
         <React.Fragment>
             <div className={classes.screen}>
-                <div className={classes.heading}>
+                <div className={classes.flex}>
                     <div className={classes.headingLogo}>
                         <Tooltip title={`Restart`}>
                             <IconButton
@@ -97,7 +85,6 @@ function PiCard() {
                                 <Icon icon={status.icon} color={`primary`} />
                             </IconButton>
                         </Tooltip>
-
                         <UserEntity />
                     </div>
                 </div>
@@ -109,5 +96,5 @@ function PiCard() {
     );
 }
 
-const MemodFuncComponent = React.memo(PiCard);
+const MemodFuncComponent = React.memo(App);
 export default MemodFuncComponent;

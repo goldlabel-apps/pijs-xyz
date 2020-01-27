@@ -36,9 +36,12 @@ function UserEntity() {
     const classes = useStyles();
     const { firebase, system } = useSelector(state => state);
     const { entity } = firebase;
+    const { location } = entity;
+    
     const { userEntityOpen } = system;
-    //console.log(entity)
-    if (!entity) return null;
+
+    if (location === null) return null;
+
     return (
         <React.Fragment>
             <React.Fragment>
@@ -56,9 +59,9 @@ function UserEntity() {
                             title={`UserEntity`}
                             avatar={<Avatar
                                 alt={`country flag`}
-                                src={entity.location.countryFlag}
+                                src={location.countryFlag || ''}
                             />}
-                            subheader={`${entity.location.countryName} ${entity.location.city} ${entity.location.district}`}
+                            subheader={`${location.countryName} ${entity.location.city} ${entity.location.district}`}
                             action={<Tooltip title={`Close`}>
                                 <IconButton
                                     onClick={() => {
@@ -75,17 +78,7 @@ function UserEntity() {
                         <CardContent>
                             <div className={classes.minWidth}>
                                 <Typography>
-                                    {/* latitude {entity.location.latitude}<br />
-                                longitude {entity.location.longitude}<br /> */}
-                                    {/* {entity.displayName}<br /> */}
-                                    {/* {entity.location.currencyName} ({entity.location.currencySymbol})<br /> */}
-                                    IP {entity.location.ip}<br />
-                                    {/* {entity.system.languages}&nbsp; */}
-                                    {entity.system.device}&nbsp;
-                                    {entity.system.os}&nbsp;
-                                    {entity.system.osVersion}&nbsp;
-                                    {entity.system.browser}&nbsp;
-                                    {entity.system.browserVersion}<br />
+
                                 </Typography>
                             </div>
                         </CardContent>
