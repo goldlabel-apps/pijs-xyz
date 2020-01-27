@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import IconPrivacy from '@material-ui/icons/Accessibility';
-import IconUserEntity from '@material-ui/icons/AccountCircle';
+import IconUserEntity from '@material-ui/icons/EmojiPeople';
 import IconHome from '@material-ui/icons/Home';
 import IconGo from '@material-ui/icons/PlayCircleOutline';
 import IconSettings from '@material-ui/icons/Settings';

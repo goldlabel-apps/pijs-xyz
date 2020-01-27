@@ -7,17 +7,20 @@ import {
     Tooltip,
     Typography,
 } from '@material-ui/core/';
-import { Icon } from './';
 import {
     Camera,
-    Connection,
+    Icon,
     WeatherHeadline,
+    UserEntity,
 } from './';
 
 const useStyles = makeStyles(theme => ({
     screen: {
         minHeight: '100vh',
         border: '1px solid rgba(241,221,63,0)',
+    },
+    actions: {
+        display: 'flex',
     },
     heading: {
         // border: '1px solid white',
@@ -48,12 +51,8 @@ const useStyles = makeStyles(theme => ({
 function PiCard() {
     const store = getStore();
     const classes = useStyles();
-    const { pi, system } = useSelector(state => state);
+    const { pi } = useSelector(state => state);
     const {
-        connectionOpen,
-    } = system;
-    const {
-        // error,
         timeout,
         lastConnectSuccess,
         location
@@ -97,22 +96,17 @@ function PiCard() {
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.actions}>
-                        {connectionOpen ?
-                            <Connection />
-                            :
-                            <Tooltip title={`Open Connection`}>
-                                <IconButton
-                                    className={classes.connectionBtn}
-                                    onClick={() => {
-                                        store.dispatch({
-                                            type: `SYSTEM/DIALOG/CONNECTION`,
-                                            open: true
-                                        });
-                                    }}>
-                                    <Icon icon={status.icon} color={`secondary`} />
-                                </IconButton>
-                            </Tooltip>
-                        }
+                        <UserEntity />
+                        <Tooltip title={status.icon}>
+                            <IconButton
+                                className={classes.connectionBtn}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                }}>
+                                <Icon icon={status.icon} color={`primary`} />
+                            </IconButton>
+                        </Tooltip>
+
                     </div>
                 </div>
                 <Camera />

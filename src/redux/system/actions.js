@@ -10,3 +10,5 @@ export const restart = createAction(`SYSTEM/RESTART`);
 export const connectionDialog = createAction(`SYSTEM/DIALOG/CONNECTION`);
 
 export const toggleEffectMenu = createAction(`SYSTEM/MENU_TOGGLE/EFFECTS`);
+
+export const toggleUserEntity = createAction(`SYSTEM/TOGGLE/USERENTITY`);

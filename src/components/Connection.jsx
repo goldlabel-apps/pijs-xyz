@@ -45,9 +45,7 @@ function Connection() {
                             open: false
                         });
                     }}
-                >
-                    Done
-                </Button>
+                >OK</Button>
             </Dialog>
         </React.Fragment>
     );

@@ -3,14 +3,12 @@ import { getStore } from '../';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-    IconButton,
+    Button,
     Menu,
     ListItem,
     ListItemText,
-    Typography,
 } from '@material-ui/core/';
-// import { Icon } from './';
-import MoreVertIcon from '@material-ui/icons/BrightnessMedium';
+import { Icon } from './';
 
 const effects = [
     {
@@ -38,11 +36,13 @@ const useStyles = makeStyles(theme => ({
     flex: {
         display: 'flex',
     },
-    menuTitle: {
-        // border: '1px solid white',
+    effectsTitle: {
         color: 'white',
-        paddingTop: theme.spacing(1.5),
     },
+    btnTxt: {
+        marginLeft: theme.spacing(),
+        marginRight: theme.spacing()
+    }
 }));
 
 export default function EffectsMenu() {
@@ -62,17 +62,19 @@ export default function EffectsMenu() {
         <div className={classes.menu}>
 
             <div className={classes.flex}>
-                <IconButton
+                <Button
+                    variant={`text`}
+                    color={`secondary`}
+                    onClick={handleClick}
                     aria-label="effects"
                     aria-controls="effects-menu"
                     aria-haspopup="true"
-                    onClick={handleClick}>
-                    <MoreVertIcon />
-                </IconButton>
-                <Typography variant={`body1`} className={classes.menuTitle}>
-                    {effect.label !== 'None' ? effect.label : null}
-                </Typography>
-
+                >
+                    <Icon icon={`effect`} color={`inherit`} />
+                    <span className={classes.btnTxt}>
+                        {effect.label !== 'None' ? `${effect.label}` : `Select Effect`}
+                    </span>
+                </Button>
             </div>
             <Menu
                 id="effects-menu"

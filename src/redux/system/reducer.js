@@ -6,17 +6,24 @@ import {
   update,
   loaded,
   error,
-  toggleEffectMenu
+  toggleEffectMenu,
+  toggleUserEntity
 } from "./actions";
 
 export const systemSlice = {
   updated: Date.now(),
   error: false,
   connectionOpen: false,
-  effectsMenuOpen: false
+  effectsMenuOpen: false,
+  userEntityOpen: false
 };
 
 const system = createReducer(systemSlice, {
+  [toggleUserEntity]: (state, action) => {
+    state.updated = Date.now();
+    state.userEntityOpen = action.open;
+    return state;
+  },
   [toggleEffectMenu]: (state, action) => {
     // console.log("[toggleEffectMenu]");
     state.updated = Date.now();
@@ -31,7 +38,7 @@ const system = createReducer(systemSlice, {
     return state;
   },
   [restart]: state => {
-    console.log("[restart]");
+    // console.log("[restart]");
     state.updated = Date.now();
     return state;
   },
