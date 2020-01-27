@@ -10,6 +10,7 @@ import {
 import {
     Camera,
     Icon,
+    Footer,
     WeatherHeadline,
     UserEntity,
 } from './';
@@ -32,12 +33,6 @@ const useStyles = makeStyles(theme => ({
     headingAppName: {
         // border: '1px solid pink',
         paddingTop: theme.spacing(),
-    },
-    homeBtn: {
-        // border: '1px solid rgba(241,221,63,0.4)',
-    },
-    connectionBtn: {
-        // border: '1px solid rgba(241,221,63,0.4)',
     },
     grow: {
         flexGrow: 1,
@@ -76,11 +71,9 @@ function PiCard() {
         <React.Fragment>
             <div className={classes.screen}>
                 <div className={classes.heading}>
-
                     <div className={classes.headingLogo}>
                         <Tooltip title={`Restart`}>
                             <IconButton
-                                className={classes.homeBtn}
                                 onClick={() => {
                                     store.dispatch({ type: `SYSTEM/RESTART` });
                                 }}
@@ -96,21 +89,30 @@ function PiCard() {
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.actions}>
-                        <UserEntity />
                         <Tooltip title={status.icon}>
                             <IconButton
-                                className={classes.connectionBtn}
                                 onClick={(e) => {
                                     e.preventDefault();
                                 }}>
                                 <Icon icon={status.icon} color={`primary`} />
                             </IconButton>
                         </Tooltip>
-
+                        <Tooltip title={`Open Source on Github`}>
+                            <IconButton
+                                color={`inherit`}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    window.open(`https://github.com/listingslab-hardware/pijs-app`, `_blank`);
+                                }}>
+                                <Icon icon={`github`} color={`rgba(241,221,63,1)`} />
+                            </IconButton>
+                        </Tooltip>
+                        <UserEntity />
                     </div>
                 </div>
                 <Camera />
                 <WeatherHeadline />
+                <Footer />
             </div>
         </React.Fragment >
     );

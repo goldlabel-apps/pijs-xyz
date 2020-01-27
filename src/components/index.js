@@ -6,6 +6,7 @@ import CameraControls2 from "./CameraControls2";
 import Debug from "./Debug";
 import Dashboard from "./Dashboard";
 import EffectsMenu from "./EffectsMenu";
+import Footer from "./Footer";
 import Advert from "./Advert";
 import Icon from "./Icon";
 import Pi from "./Pi";
@@ -26,6 +27,7 @@ export {
   CameraControls2,
   Dashboard,
   EffectsMenu,
+  Footer,
   Advert,
   Debug,
   Icon,
