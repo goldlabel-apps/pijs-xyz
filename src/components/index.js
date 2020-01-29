@@ -4,7 +4,6 @@ import ByListingslab from "./ByListingslab";
 import Camera from "./Camera";
 import CameraControls from "./CameraControls";
 import CameraControls2 from "./CameraControls2";
-import Debug from "./Debug";
 import Dashboard from "./Dashboard";
 import EffectsMenu from "./EffectsMenu";
 import Footer from "./Footer";
@@ -13,7 +12,6 @@ import Icon from "./Icon";
 import Pi from "./Pi";
 import Connection from "./Connection";
 import Privacy from "./Privacy";
-
 import PiJSLogo from "./PiJSLogo";
 import PopupMenu from "./PopupMenu";
 import UserEntity from "./UserEntity";
@@ -31,7 +29,6 @@ export {
   EffectsMenu,
   Footer,
   Advert,
-  Debug,
   Icon,
   Pi,
   Connection,

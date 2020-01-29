@@ -1,23 +1,14 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { setConnecting, toggleExpand, onError, reset, save } from "./actions";
+import { fetching, error, reset, save } from "./actions";
 
 export const piSlice = {
   updated: Date.now(),
   baseUrl: `https://pi.listingslab.io/`,
-  timeout: 6000,
-  expanded: false,
-  connected: false,
-  connecting: false,
+  timeout: 5000,
+  fetched: false,
+  fetching: false,
   lastConnectSuccess: null,
-  url: null,
-  ip: null,
-  piEpoch: null,
-  piTime: null,
-  name: null,
-  error: true,
-  location: null,
-  lat: null,
-  lng: null
+  data: null,
 };
 
 const pi = createReducer(piSlice, {
@@ -25,37 +16,24 @@ const pi = createReducer(piSlice, {
   [save]: (state, action) => {
     state.updated = Date.now();
     state.error = false;
-    state.connecting = false;
-    state.connected = true;
+    state.fetching = false;
+    state.fetched = true;
     state.lastConnectSuccess = Date.now();
-    state.piEpoch = action.data.piEpoch;
-    state.piTime = action.data.piTime;
-    state.firmwareVersion = action.data.firmwareVersion;
-    state.name = action.data.name;
-    state.ip = action.data.ip;
-    state.url = action.data.url;
-    state.location = action.data.location;
-    state.lat = action.data.lat;
-    state.lng = action.data.lng;
+    state.data = action.pi
+    delete(state.data.endpoints)
     return state;
   },
 
-  [setConnecting]: (state, action) => {
+  [fetching]: (state, action) => {
     state.updated = Date.now();
     state.connecting = action.connecting;
     return state;
   },
 
-  [onError]: (state, action) => {
+  [error]: (state, action) => {
     state.updated = Date.now();
     state.lastConnectSuccess = null;
     state.error = action.error;
-    return state;
-  },
-
-  [toggleExpand]: state => {
-    state.updated = Date.now();
-    state.expanded = !state.expanded;
     return state;
   },
 

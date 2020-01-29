@@ -31,5 +31,15 @@ export const fetchWeather = () => {
         type: "WEATHER/ERROR",
         error: error.toString()
       });
-    });
+    })
+    .finally(function () {
+      store.dispatch({
+        type: "WEATHER/FETCHING",
+        fetching: false
+      })
+      store.dispatch({
+        type: "FIREBASE/PREPARE",
+        state: store.getState(),
+      })
+    })
 };
