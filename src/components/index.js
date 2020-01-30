@@ -1,3 +1,4 @@
 import Boot from "./Boot";
+import ClockWork from "./ClockWork";
 
-export { Boot };
+export { Boot, ClockWork };
