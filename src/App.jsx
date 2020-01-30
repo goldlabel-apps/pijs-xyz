@@ -1,8 +1,8 @@
-import { makeStyles } from '@material-ui/core/styles';
-import React from 'react';
+import { makeStyles } from '@material-ui/core/styles'
+import React from 'react'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { themeLight } from './theme/mui.js'
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 import {
     Button,
     Typography,
@@ -11,6 +11,7 @@ import {
     IconButton,
 } from '@material-ui/core/'
 import Github from './svg/Github'
+import { Shell } from './components'
 
 const useStyles = makeStyles(theme => ({
     app: {
@@ -35,18 +36,25 @@ const useStyles = makeStyles(theme => ({
     title: {
         flexGrow: 1,
     },
-}));
+}))
 
 export default function App() {
-    const classes = useStyles();
+    const classes = useStyles()
     const {
         entity,
-    } = useSelector(state => state);
+    } = useSelector(state => state)
     // console.log(entity)
     // https://www.npmjs.com/package/react-countdown-circle-timer
     return (
 
         <MuiThemeProvider theme={createMuiTheme(themeLight)}>
+
+        </MuiThemeProvider>
+    )
+}
+
+
+/*
         <div className={classes.app}>
             <AppBar position="static">
                 <Toolbar>
@@ -59,7 +67,7 @@ export default function App() {
                     <Button
                         variant={`contained`}
                         color={`secondary`}
-                        onClick={(e) => { 
+                        onClick={(e) => {
                             window.open(`https://github.com/listingslab-hardware/pijs-app`,`_blank`)
                         }}>
                         Github
@@ -72,7 +80,7 @@ export default function App() {
                     variant={`contained`}
                     color={`primary`}
                     onClick={(e) => {
-                        e.preventDefault();
+                        e.preventDefault()
                     }}>
                     Primary
                 </Button>
@@ -81,7 +89,7 @@ export default function App() {
                     variant={`contained`}
                     color={`secondary`}
                     onClick={(e) => {
-                        e.preventDefault();
+                        e.preventDefault()
                     }}>
                     Secondary
                 </Button>
@@ -90,6 +98,4 @@ export default function App() {
                 </Typography>
             </div>
             </div>
-        </MuiThemeProvider>
-    );
-}
+*/
