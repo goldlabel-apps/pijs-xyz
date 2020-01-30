@@ -1,5 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import { themeLight } from './theme/mui.js'
 import { useSelector } from 'react-redux';
 import {
     Button,
@@ -43,6 +45,8 @@ export default function App() {
     // console.log(entity)
     // https://www.npmjs.com/package/react-countdown-circle-timer
     return (
+
+        <MuiThemeProvider theme={createMuiTheme(themeLight)}>
         <div className={classes.app}>
             <AppBar position="static">
                 <Toolbar>
@@ -55,11 +59,10 @@ export default function App() {
                     <Button
                         variant={`contained`}
                         color={`secondary`}
-                        onClick={(e) => {
-                            window.open(`https://github.com/listingslab-hardware/pijs-app`, `_blank`)
-                        }}
-                    >
-                        Repo
+                        onClick={(e) => { 
+                            window.open(`https://github.com/listingslab-hardware/pijs-app`,`_blank`)
+                        }}>
+                        Github
                     </Button>
                 </Toolbar>
             </AppBar>
@@ -86,6 +89,7 @@ export default function App() {
                     {entity.fingerprint}
                 </Typography>
             </div>
-        </div>
+            </div>
+        </MuiThemeProvider>
     );
 }
