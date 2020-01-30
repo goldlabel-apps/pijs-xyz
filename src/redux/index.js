@@ -2,15 +2,18 @@ import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import { reduxBatch } from "@manaflair/redux-batch";
 import { entityReducer } from "./entity/reducer";
+import { appReducer, appSlice } from "./app/reducer";
 
 const reduxStore = (entity) => {
   
   const reducer = combineReducers({
+    app: appReducer,
     entity: entityReducer
   });
 
   const preloadedState = {
-    entity
+    app: appSlice,
+    entity,
   };
 
   const middleware = [

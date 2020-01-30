@@ -4,7 +4,7 @@ import { createAction } from "@reduxjs/toolkit";
 // import userAgentParser from "ua-parser-js";
 // import { fstore } from "../../fire";
 
-export const reset = createAction(`ENTITY/RESET`);
+export const reset = createAction(`APP/RESET`);
 
 export const updateEntity = payload => {
   return null;
