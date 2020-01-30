@@ -1,17 +1,31 @@
 import pJSON from "../package.json";
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import reduxStore from './redux';
 import Fingerprint2 from "fingerprintjs2";
 import { fstore } from "./fire";
+import App from './App';
 import * as serviceWorker from "./serviceWorker";
 
-console.log(`${pJSON.name} ${pJSON.version} (${process.env.REACT_APP_ENV})`);
-console.log("bootTime", Date.now());
+// console.log(`${pJSON.name} ${pJSON.version} (${process.env.REACT_APP_ENV})`);
+
+let store;
 let entity = {
   bootTime: Date.now(),
   vs: pJSON.version
 };
 
-const initRedux = () => {
-  console.log("initRedux", entity);
+const startReact = () => {
+  store = reduxStore(entity);
+  ReactDOM.render(
+    <Provider store={store}>
+      <React.Fragment>
+        <App />
+      </React.Fragment>
+    </Provider>,
+    document.getElementById("pijs")
+  );
 };
 
 const returning = () => {
@@ -24,7 +38,7 @@ const returning = () => {
       ...entity,
       fstore: data
     };
-    initRedux();
+    startReact();
   });
 };
 
@@ -73,5 +87,3 @@ const createFingerprint = () => {
 setTimeout(createFingerprint, 200);
 
 serviceWorker.register();
-
-// merge entity

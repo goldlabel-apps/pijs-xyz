@@ -3,10 +3,10 @@ import { reset } from "./actions";
 
 export const entitySlice = {};
 
-const entity = createReducer(entitySlice, {
+const entityReducer = createReducer(entitySlice, {
   [reset]: () => {
     return entitySlice;
   }
 });
 
-export { entity };
+export { entityReducer };
