@@ -5,6 +5,8 @@ import { Provider } from "react-redux";
 import reduxStore from './redux';
 import Fingerprint2 from "fingerprintjs2";
 import { fstore } from "./fire";
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import { themeLight } from './theme/mui.js'
 import App from './App';
 import * as serviceWorker from "./serviceWorker";
 
@@ -20,9 +22,9 @@ const startReact = () => {
   store = reduxStore(entity);
   ReactDOM.render(
     <Provider store={store}>
-      <React.Fragment>
+      <MuiThemeProvider theme={createMuiTheme(themeLight)}>
         <App />
-      </React.Fragment>
+      </MuiThemeProvider>
     </Provider>,
     document.getElementById("react")
   );
