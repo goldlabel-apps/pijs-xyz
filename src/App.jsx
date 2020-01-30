@@ -43,8 +43,6 @@ export default function App() {
     // console.log(entity)
     // https://www.npmjs.com/package/react-countdown-circle-timer
     return (
-
-
         <div className={classes.app}>
             <AppBar position="static">
                 <Toolbar>
@@ -57,8 +55,8 @@ export default function App() {
                     <Button
                         variant={`contained`}
                         color={`secondary`}
-                        onClick={(e) => { 
-                            window.open(`https://github.com/listingslab-hardware/pijs-app`,`_blank`)
+                        onClick={(e) => {
+                            window.open(`https://github.com/listingslab-hardware/pijs-app`, `_blank`)
                         }}
                     >
                         Repo
@@ -75,7 +73,6 @@ export default function App() {
                     }}>
                     Primary
                 </Button>
-
                 <Button
                     className={classes.btn}
                     variant={`contained`}
@@ -85,13 +82,9 @@ export default function App() {
                     }}>
                     Secondary
                 </Button>
-
                 <Typography className={classes.fingerprint}>
                     {entity.fingerprint}
                 </Typography>
-
-                
-
             </div>
         </div>
     );

@@ -2,12 +2,12 @@ import pJSON from "../package.json";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import reduxStore from './redux';
+import reduxStore from "./redux";
 import Fingerprint2 from "fingerprintjs2";
 import { fstore } from "./fire";
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import { themeLight } from './theme/mui.js'
-import App from './App';
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { themeLight } from "./theme/mui.js";
+import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 // console.log(`${pJSON.name} ${pJSON.version} (${process.env.REACT_APP_ENV})`);
@@ -34,8 +34,8 @@ const returning = () => {
   const docRef = fstore.collection("userentities").doc(entity.fingerprint);
   docRef.get().then(function(fsdoc) {
     const data = fsdoc.data();
-    delete data.fingerprint;
-    delete data.bootTime;
+    // delete data.fingerprint;
+    // delete data.bootTime;
     entity = {
       ...entity,
       fstore: data
