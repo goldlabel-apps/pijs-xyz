@@ -13,7 +13,7 @@ import * as serviceWorker from "./serviceWorker";
 let store;
 let entity = {
   bootTime: Date.now(),
-  vs: pJSON.version
+  app_version: pJSON.version
 };
 
 const startReact = () => {
@@ -24,12 +24,12 @@ const startReact = () => {
         <App />
       </React.Fragment>
     </Provider>,
-    document.getElementById("pijs")
+    document.getElementById("react")
   );
 };
 
 const returning = () => {
-  const docRef = fstore.collection("entities").doc(entity.fingerprint);
+  const docRef = fstore.collection("userentities").doc(entity.fingerprint);
   docRef.get().then(function(fsdoc) {
     const data = fsdoc.data();
     delete data.fingerprint;
@@ -44,9 +44,7 @@ const returning = () => {
 
 const firstRun = () => {
   entity.visits = 1;
-  entity.created = Date.now();
-  //   console.log("firstRun set entity", entity);
-  const docRef = fstore.collection("entities").doc(entity.fingerprint);
+  const docRef = fstore.collection("userentities").doc(entity.fingerprint);
   docRef
     .set(entity, { merge: true })
     .then(function() {
@@ -84,6 +82,6 @@ const createFingerprint = () => {
   });
 };
 
-setTimeout(createFingerprint, 200);
+setTimeout(createFingerprint, 50);
 
 serviceWorker.register();
