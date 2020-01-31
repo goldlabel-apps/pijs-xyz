@@ -1,30 +1,60 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux';
 import commonStyles from '../theme/commonStyles'
 import { useTheme } from '@material-ui/core/styles'
 import { makeStyles } from '@material-ui/core/styles';
 // import { useSelector } from 'react-redux';
-// import {
-//     Button,
-// } from '@material-ui/core/'
+import {
+    Grid,
+    Switch,
+    Typography,
+} from '@material-ui/core/'
 // import Github from './svg/Github'
-import { SwitchTheme } from './'
 
 const style = makeStyles(theme => ({
-    shell: {
+    switchTheme: {
         background: theme.palette.background.default,
-        // border: '1px solid green',
-        margin: theme.spacing(),
-        padding: theme.spacing(),
+    },
+    textColor: {
+        color: theme.palette.text.main
     }
 }));
 
-export default function Shell() {
+export default function SwitchTheme() {
+    const dispatch = useDispatch()
     const classesCommon = commonStyles();
     const classes = style(useTheme());
-    // console.log(useTheme())
+    const {
+        app,
+    } = useSelector(state => state)
+    const { mode } = app.theme
     return (
-        <div className={classes.shell}>
-            <SwitchTheme className={classesCommon.none} />
+        <div className={classes.switchTheme}>
+            <Grid container>
+                <Grid item>
+                    <Typography variant={`body2`} className={classes.textColor}>
+                        light
+                    </Typography>
+                </Grid>
+                <Grid item>
+                    <Switch
+                        className={classesCommon.none}
+                        color={`primary`}
+                        onChange={(e) => {
+                            dispatch({
+                                type: `APP/THEME/SWITCH`,
+                                newMode: mode === `dark` ? `light` : `dark`
+                            })
+                        }}
+                    />
+                </Grid>
+                <Grid item>
+                    <Typography variant={`body2`} className={classes.textColor}>
+                        dark
+                    </Typography>
+                </Grid>
+            </Grid>
         </div>
     );
 }
