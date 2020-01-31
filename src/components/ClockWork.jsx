@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 // import { getStore } from './';
 
 class ClockWork extends Component {
@@ -10,6 +11,7 @@ class ClockWork extends Component {
     componentWillUnmount() { this.stopTimer() }
 
     tick = () => {
+        // console.log ('tick', Date.now())
         // const store = getStore();
         // store.dispatch({ type: `APP/CLOCKWORK/TICK` });
         // const {
@@ -29,7 +31,7 @@ class ClockWork extends Component {
         if (!timer) {
             this.setState({ timer: setInterval(this.tick, tickDelay * 1000) });
         }
-        setTimeout(this.tick, tickDelay / 3);
+        this.tick()
     }
 
     stopTimer = () => {
@@ -45,7 +47,12 @@ class ClockWork extends Component {
     }
 
     render() {
-        return null;
+        return <CountdownCircleTimer
+            isPlaying
+            durationSeconds={60}
+            startAt={20}
+            colors={[['#A30000']]}
+        />;
     }
 }
 

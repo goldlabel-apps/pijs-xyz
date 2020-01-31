@@ -14,7 +14,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const styles = makeStyles(theme => ({
     shell: {
-        border: '2px solid green'
     }
 }));
 
@@ -23,10 +22,9 @@ export default function Shell() {
     const classes = styles(useTheme());
     return (
         <div className={classes.shell}>
-                Shell
-                <div className={classesCommon.commonSKHD}>
-                    commonSKHD
-                </div>
+            <div className={classesCommon.grow}>
+                {/* Shell */}
+            </div>
         </div>
     );
 }
@@ -82,5 +80,5 @@ export default function Shell() {
                     {entity.fingerprint}
                 </Typography>
             </div>
-            </div>
+        </div>
 */

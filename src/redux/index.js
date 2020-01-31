@@ -23,9 +23,9 @@ const reduxStore = (entity) => {
   ];
 
   const store = configureStore({
+    devTools: process.env.NODE_ENV !== "production",
     reducer,
     middleware,
-    devTools: process.env.NODE_ENV !== "production",
     preloadedState,
     enhancers: [reduxBatch]
   });
