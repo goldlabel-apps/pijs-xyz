@@ -27,7 +27,7 @@ const themeLight = {
             main: 'rgba(255,255,255,1)',
         },
         background: {
-            default: "rgba(0,0,0,0.1)",
+            default: "rgba(0,0,0,0.0.5)",
         },
         text: {
             main: "rgba(33,33,33,1)",

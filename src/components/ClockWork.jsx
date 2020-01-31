@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getStore } from './';
+// import { getStore } from './';
 
 class ClockWork extends Component {
 
@@ -10,8 +10,8 @@ class ClockWork extends Component {
     componentWillUnmount() { this.stopTimer() }
 
     tick = () => {
-        const store = getStore();
-        store.dispatch({ type: `APP/CLOCKWORK/TICK` });
+        // const store = getStore();
+        // store.dispatch({ type: `APP/CLOCKWORK/TICK` });
         // const {
         //     tickDelay,
         //     ticking,
@@ -20,8 +20,8 @@ class ClockWork extends Component {
     }
 
     startTimer = () => {
-        const store = getStore();
-        store.dispatch({ type: `APP/CLOCKWORK/START` });
+        // const store = getStore();
+        // store.dispatch({ type: `APP/CLOCKWORK/START` });
         const { tickDelay } = this.props;
         const {
             timer
@@ -33,8 +33,8 @@ class ClockWork extends Component {
     }
 
     stopTimer = () => {
-        const store = getStore();
-        store.dispatch({ type: `APP/CLOCKWORK/PAUSE` });
+        // const store = getStore();
+        // store.dispatch({ type: `APP/CLOCKWORK/PAUSE` });
         const {
             timer
         } = this.state;
