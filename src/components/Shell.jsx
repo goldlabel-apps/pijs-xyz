@@ -3,19 +3,21 @@ import commonStyles from '../theme/commonStyles'
 import { useTheme } from '@material-ui/core/styles'
 import { makeStyles } from '@material-ui/core/styles';
 // import { useSelector } from 'react-redux';
-// import {
-//     Button,
-// } from '@material-ui/core/'
-// import Github from './svg/Github'
 import {
-    BottomAppBar,
-    PrimarySearchAppBar,
+    Grid,
+} from '@material-ui/core/'
+import {
+    Bottom,
+    Snackbars,
+    Camera,
+    Map,
+    PrimaryAppBar,
+    Weather,
 } from './'
 
 const style = makeStyles(theme => ({
     shell: {
-        background: theme.palette.background.default,
-        // border: '1px solid green',
+        // background: theme.palette.background.default,
         height: "100vh",
         width: "100vw"
     }
@@ -27,8 +29,18 @@ export default function Shell() {
     // console.log(useTheme())
     return (
         <div className={classes.shell}>
-            <PrimarySearchAppBar className={classesCommon.none} />
-            <BottomAppBar />
+            <PrimaryAppBar className={classesCommon.none} />
+            <Snackbars />
+            <Grid container>
+                <Grid item xs={12} sm={12} md={8} lg={4} xl={4}>
+                    <Camera />
+                </Grid>
+                <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+                    <Map />
+                    <Weather />
+                </Grid>
+            </Grid>
+            <Bottom />
         </div>
     );
 }

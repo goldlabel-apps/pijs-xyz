@@ -108,8 +108,6 @@ class Icon extends Component {
             case `time`:
                 return (<IconTime color={iconColor} />);
 
-
-
             case `weather`:
                 return (<IconWeather color={iconColor} />);
 
