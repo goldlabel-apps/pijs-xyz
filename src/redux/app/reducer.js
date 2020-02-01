@@ -1,7 +1,36 @@
 import { createReducer } from "@reduxjs/toolkit"
-import { play, played, clockTick, reset, switchTheme } from "./actions"
+import {
+  fetchingWeather,
+  saveWeather,
+  errorWeather,
+  play,
+  played,
+  clockTick,
+  reset,
+  switchTheme
+} from "./actions"
 
 export const appSlice = {
+  weather: {
+    fetching: false,
+    fetched: false,
+    data: null,
+    error: null,
+    lastFetchSuccess: null
+  },
+  camera: {
+    fetching: false,
+    fetched: false,
+    data: null,
+    error: null
+  },
+
+  map: {
+    fetching: false,
+    fetched: false,
+    data: null,
+    error: null
+  },
   theme: {
     mode: `dark`
   },
@@ -17,6 +46,21 @@ export const appSlice = {
 }
 
 const appReducer = createReducer(appSlice, {
+  [errorWeather]: (state, action) => {
+    state.weather.error = action.error.toString()
+    return state
+  },
+  [saveWeather]: (state, action) => {
+    state.weather.data = action.data
+    state.weather.error = null
+    state.weather.lastFetchSuccess = Date.now()
+    return state
+  },
+  [fetchingWeather]: (state, action) => {
+    state.weather.fetching = action.fetching
+    return state
+  },
+
   [play]: state => {
     state.zxSpectrum.playing = true
     return state

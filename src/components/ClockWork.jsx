@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateEntity } from '../redux/entity/actions'
 import { getStore } from '../'
+import { fetchWeather } from '../redux/app/actions'
 
 class ClockWork extends Component {
 
@@ -10,9 +11,16 @@ class ClockWork extends Component {
     componentWillUnmount() { this.stopTimer() }
 
     tick = () => {
+        const { weatherFetching, weatherFetched, weatherData } = this.props;
+
         updateEntity()
         const store = getStore()
         store.dispatch({ type: `APP/CLOCKWORK/TICK` })
+        if (!weatherFetching && !weatherFetched && !weatherData) {
+            console.log('LOAD WEATHER 1 TIME')
+            fetchWeather()
+        }
+
     }
 
     startTimer = () => {
@@ -55,7 +63,11 @@ const mapStateToProps = (store) => {
     return {
         tickDelay: store.app.clockwork.tickDelay,
         ticking: store.app.clockwork.ticking,
-        ticks: store.app.clockwork.ticks
+        ticks: store.app.clockwork.ticks,
+
+        weatherFetching: store.app.weather.fetching,
+        weatherFetched: store.app.weather.fetched,
+        weatherData: store.app.weather.data,
     }
 }
 
