@@ -12,12 +12,11 @@ class ClockWork extends Component {
 
     tick = () => {
         const { weatherFetching, weatherFetched, weatherData } = this.props;
-
         updateEntity()
         const store = getStore()
         store.dispatch({ type: `APP/CLOCKWORK/TICK` })
         if (!weatherFetching && !weatherFetched && !weatherData) {
-            console.log('LOAD WEATHER 1 TIME')
+            // console.log('LOAD WEATHER 1 TIME')
             fetchWeather()
         }
 

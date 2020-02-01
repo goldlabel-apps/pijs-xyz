@@ -56,7 +56,7 @@ export default function Bottom() {
                             e.preventDefault()
                             console.log('Call to action')
                         }}>
-                        <Icon icon={`time`} />
+                        <Icon icon={`contact`} />
                     </Fab>
                     <div className={classes.grow} />
                     <IconButton

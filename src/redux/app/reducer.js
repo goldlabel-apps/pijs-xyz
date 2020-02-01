@@ -24,12 +24,15 @@ export const appSlice = {
     data: null,
     error: null
   },
-
   map: {
     fetching: false,
     fetched: false,
     data: null,
-    error: null
+    error: null,
+    style: {
+      light: `mapbox://styles/listingslab/ck4uugpxf13y11cqp72z8snc4`,
+      dark: `mapbox://styles/listingslab/ck4c1er100to21co6sd5kl563`
+    }
   },
   theme: {
     mode: `dark`
