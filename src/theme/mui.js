@@ -1,6 +1,9 @@
 const themeDark = {
   palette: {
     type: "dark",
+    bg: {
+      main: "#212121"
+    },
     success: {
       main: "rgba(0,0,0,1)"
     },
@@ -16,9 +19,6 @@ const themeDark = {
     secondary: {
       main: "rgba(33,33,33,1)"
     },
-    background: {
-      default: "rgba(0,0,0,1)"
-    },
     text: {
       main: "rgba(255,255,255,1)"
     }
@@ -27,14 +27,14 @@ const themeDark = {
 const themeLight = {
   palette: {
     type: "light",
+    bg: {
+      main: "#E1E1E1"
+    },
     primary: {
       main: "rgba(241,221,63,1)"
     },
     secondary: {
-      main: "rgba(255,255,255,1)"
-    },
-    background: {
-      default: "rgba(0,0,0,0.0.5)"
+      main: "#F0F0F0"
     },
     text: {
       main: "rgba(33,33,33,1)"

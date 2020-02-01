@@ -22,7 +22,9 @@ export const appSlice = {
     fetching: false,
     fetched: false,
     data: null,
-    error: null
+    error: null,
+    res: `md/`,
+    src: `https://pi.listingslab.io/current-photo/`
   },
   map: {
     fetching: false,

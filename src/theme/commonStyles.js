@@ -1,6 +1,12 @@
 import { makeStyles } from "@material-ui/core/styles"
 
 export default makeStyles(theme => ({
+  card: {
+    border: "1px solid rgba(255,255,255,0.125)",
+    padding: theme.spacing(),
+    background: "none",
+    margin: theme.spacing(0.5)
+  },
   flex: {
     display: "flex"
   },

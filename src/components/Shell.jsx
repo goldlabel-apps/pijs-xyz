@@ -17,7 +17,7 @@ import {
 
 const style = makeStyles(theme => ({
     shell: {
-        // background: theme.palette.background.default,
+        background: theme.palette.bg.main,
         height: "100vh",
         width: "100vw"
     }
@@ -32,12 +32,12 @@ export default function Shell() {
             <PrimaryAppBar className={classesCommon.none} />
             <Snackbars />
             <Grid container>
-                <Grid item xs={12} sm={12} md={8} lg={4} xl={4}>
+                <Grid item xs={12} sm={12} md={8} lg={8}>
                     <Camera />
                 </Grid>
-                <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-                    <Map />
+                <Grid item xs={12} sm={12} md={4} lg={4}>
                     <Weather />
+                    <Map />
                 </Grid>
             </Grid>
             <Bottom />

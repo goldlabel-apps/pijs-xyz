@@ -1,9 +1,9 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import commonStyles from '../theme/commonStyles'
+import { useSelector } from 'react-redux'
 import {
-    Button,
     Card,
-    CardActions,
     CardContent,
     CardHeader,
     IconButton,
@@ -11,21 +11,28 @@ import {
 import { Icon } from './'
 
 const useStyles = makeStyles(theme => ({
-    card: {
-        margin: theme.spacing(),
-    },
     content: {
-        // border: '1px solid red',
         height: 450,
+        overflow: 'hidden'
     },
+    image: {
+        height: '100%',
+        width: '100%'
+    }
 
 }));
 
 export default function Camera() {
-    const classes = useStyles();
-    const showActions = false;
+    const classesCommon = commonStyles()
+    const classes = useStyles()
+    const {
+        app,
+    } = useSelector(state => state)
+    const { res, src } = app.camera
+    console.log(res, src);
+
     return (
-        <Card className={classes.card} variant="outlined">
+        <Card className={classesCommon.card} variant="outlined">
             <CardHeader
                 title={`Camera`}
                 avatar={<Icon icon={`camera`} />}
@@ -33,32 +40,19 @@ export default function Camera() {
                     color={`inherit`}
                     onClick={(e) => {
                         e.preventDefault()
-                        console.log('camera fullscreen')
+                        console.log('Camera Fullscreen')
                     }}
                 >
                     <Icon icon={`fullscreen`} />
                 </IconButton>}
             />
             <CardContent className={classes.content}>
-
+                {/* <img
+                    src={`${src}${res}`}
+                    alt={`camera`}
+                    className={classes.image}
+                /> */}
             </CardContent>
-
-            {showActions ?
-                <CardActions>
-                    <Button
-                        variant={`contained`}
-                        color={`secondary`}
-                        onClick={(e) => {
-                            e.preventDefault()
-                            console.log('focus camera')
-                        }}>
-                        Focus
-                </Button>
-                </CardActions>
-                : null}
-
-
-
         </Card>
     );
 }

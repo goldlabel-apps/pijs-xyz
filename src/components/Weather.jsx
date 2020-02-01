@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles'
+import commonStyles from '../theme/commonStyles'
 import { useSelector } from 'react-redux'
 import moment from 'moment'
 import {
@@ -16,11 +17,8 @@ import {
 import { Icon } from './'
 
 const useStyles = makeStyles(theme => ({
-    card: {
-        margin: theme.spacing(),
-    },
     content: {
-        height: 130,
+        height: 100,
     },
     grow: {
         flexGrow: 1,
@@ -60,6 +58,7 @@ function degToCompass(num) {
 }
 
 export default function Weather() {
+    const classesCommon = commonStyles();
     const classes = useStyles();
     const showActions = false;
     const {
@@ -84,7 +83,7 @@ export default function Weather() {
     const location = `Scarborough`
 
     return (
-        <Card className={classes.card} variant="outlined">
+        <Card className={classesCommon.card} variant="outlined">
             <CardHeader
                 title={`Weather in ${location}`}
                 avatar={<Icon icon={`weather`} />}

@@ -1,46 +1,55 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles'
+import commonStyles from '../theme/commonStyles'
 import {
-    Button,
     Card,
-    CardActions,
     CardContent,
     CardHeader,
     IconButton,
 } from '@material-ui/core/'
 import { Icon } from './'
 import mapboxgl from 'mapbox-gl'
-mapboxgl.accessToken = process.env.REACT_APP_MAPBOX;
 
 const useStyles = makeStyles(theme => ({
-    card: {
-        margin: theme.spacing(),
-    },
     content: {
-        height: 200,
     },
-    aMap: {
-        border: '1px solid rgba(241,221,63,0.25)',
-        background: 'rgba(0,0,0,0.5)',
-        height: 190,
+    map: {
+        display: 'block',
+        borderRadius: theme.spacing(0.5),
+        height: 210,
     }
 }));
 
-export default function Map() {
-    const classes = useStyles()
-    const showActions = false
-    // let mapOptions = {
-    //     // container: this.mapContainer,
-    //     // style: mapboxStyle,
-    //     center: [0, 0],
-    //     zoom: 10,
-    //     interactive: false,
-    // }
-    // const map = new mapboxgl.Map(mapOptions)
+// dark: `mapbox://styles/listingslab/ck4c1er100to21co6sd5kl563`
+// light: `mapbox://styles/listingslab/ck4uugpxf13y11cqp72z8snc4`
 
+export default function Map() {
+    const classesCommon = commonStyles();
+    const classes = useStyles()
+    const [map, setMap] = useState(null)
+    const mapContainer = useRef(null)
+    useEffect(() => {
+        mapboxgl.accessToken = process.env.REACT_APP_MAPBOX;
+        const initializeMap = ({ setMap, mapContainer }) => {
+            const map = new mapboxgl.Map({
+                container: mapContainer.current,
+                style: `mapbox://styles/listingslab/ck4c1er100to21co6sd5kl563`,
+                // style: `mapbox://styles/listingslab/ck4uugpxf13y11cqp72z8snc4`,
+                center: [153.107658, -27.211579],
+                zoom: 6
+            });
+
+            map.on("load", () => {
+                setMap(map);
+                map.resize();
+            });
+        };
+
+        if (!map) initializeMap({ setMap, mapContainer });
+    }, [map])
 
     return (
-        <Card className={classes.card} variant="outlined">
+        <Card className={classesCommon.card} variant="outlined">
             <CardHeader
                 title={`Map`}
                 avatar={<Icon icon={`map`} />}
@@ -55,22 +64,11 @@ export default function Map() {
                 </IconButton>}
             />
             <CardContent className={classes.content}>
-                <div className={classes.aMap}></div>
+                <div
+                    className={classes.map}
+                    ref={el => (mapContainer.current = el)}
+                />
             </CardContent>
-
-            {showActions ?
-                <CardActions>
-                    <Button
-                        variant={`contained`}
-                        color={`secondary`}
-                        onClick={(e) => {
-                            e.preventDefault()
-                            console.log('focus Map')
-                        }}>
-                        Focus
-                </Button>
-                </CardActions>
-                : null}
         </Card>
     );
 }
