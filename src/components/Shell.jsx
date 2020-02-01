@@ -7,14 +7,17 @@ import { makeStyles } from '@material-ui/core/styles';
 //     Button,
 // } from '@material-ui/core/'
 // import Github from './svg/Github'
-import { SwitchTheme } from './'
+import {
+    BottomAppBar,
+    PrimarySearchAppBar,
+} from './'
 
 const style = makeStyles(theme => ({
     shell: {
         background: theme.palette.background.default,
         // border: '1px solid green',
-        margin: theme.spacing(),
-        padding: theme.spacing(),
+        height: "100vh",
+        width: "100vw"
     }
 }));
 
@@ -24,7 +27,9 @@ export default function Shell() {
     // console.log(useTheme())
     return (
         <div className={classes.shell}>
-            <SwitchTheme className={classesCommon.none} />
+
+            <PrimarySearchAppBar className={classesCommon.none} />
+            <BottomAppBar />
         </div>
     );
 }

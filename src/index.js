@@ -11,6 +11,11 @@ import * as serviceWorker from "./serviceWorker"
 console.log(`${pJSON.name} ${pJSON.version} (${process.env.REACT_APP_ENV})`)
 
 let store
+const getStore = () => {
+  return store
+}
+export { getStore }
+
 let entity = {
   bootTime: Date.now(),
   app_version: pJSON.version

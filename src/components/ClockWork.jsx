@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { updateEntity } from '../redux/entity/actions'
+import { getStore } from '../'
 
 class ClockWork extends Component {
 
@@ -8,19 +10,12 @@ class ClockWork extends Component {
     componentWillUnmount() { this.stopTimer() }
 
     tick = () => {
-        // console.log ('tick', Date.now())
-        // const store = getStore()
-        // store.dispatch({ type: `APP/CLOCKWORK/TICK` })
-        // const {
-        //     tickDelay,
-        //     ticking,
-        //     ticks
-        // } = this.props
+        updateEntity()
+        const store = getStore()
+        store.dispatch({ type: `APP/CLOCKWORK/TICK` })
     }
 
     startTimer = () => {
-        // const store = getStore()
-        // store.dispatch({ type: `APP/CLOCKWORK/START` })
         const { tickDelay } = this.props
         const {
             timer
@@ -50,6 +45,12 @@ class ClockWork extends Component {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        increment: () => dispatch({ type: 'INCREMENT' }),
+    };
+};
+
 const mapStateToProps = (store) => {
     return {
         tickDelay: store.app.clockwork.tickDelay,
@@ -58,4 +59,4 @@ const mapStateToProps = (store) => {
     }
 }
 
-export default (connect(mapStateToProps, null)(ClockWork))
+export default (connect(mapStateToProps, mapDispatchToProps)(ClockWork))

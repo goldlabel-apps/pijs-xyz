@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit"
-import { reset, switchTheme } from "./actions"
+import { clockTick, reset, switchTheme } from "./actions"
 
 export const appSlice = {
   clockwork: {
@@ -8,11 +8,16 @@ export const appSlice = {
     ticks: 0
   },
   theme: {
-    mode: `light`
+    mode: `dark`
   }
 }
 
 const appReducer = createReducer(appSlice, {
+  [clockTick]: state => {
+    state.clockwork.ticks++
+    // console.log("clockTick", state.clockwork.ticks)
+    return state
+  },
   [switchTheme]: (state, action) => {
     state.theme.mode = action.newMode
     // console.log("switchTheme", action.newMode)

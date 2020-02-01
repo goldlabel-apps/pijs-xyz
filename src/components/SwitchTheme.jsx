@@ -4,20 +4,22 @@ import { useSelector } from 'react-redux';
 import commonStyles from '../theme/commonStyles'
 import { useTheme } from '@material-ui/core/styles'
 import { makeStyles } from '@material-ui/core/styles';
-// import { useSelector } from 'react-redux';
 import {
     Grid,
     Switch,
     Typography,
 } from '@material-ui/core/'
-// import Github from './svg/Github'
 
 const style = makeStyles(theme => ({
     switchTheme: {
-        background: theme.palette.background.default,
+        paddingTop: theme.spacing(0.5)
     },
     textColor: {
-        color: theme.palette.text.main
+        color: theme.palette.text.main,
+
+    },
+    pad: {
+        paddingTop: theme.spacing()
     }
 }));
 
@@ -29,10 +31,11 @@ export default function SwitchTheme() {
         app,
     } = useSelector(state => state)
     const { mode } = app.theme
+
     return (
         <div className={classes.switchTheme}>
             <Grid container>
-                <Grid item>
+                <Grid item className={classes.pad}>
                     <Typography variant={`body2`} className={classes.textColor}>
                         light
                     </Typography>
@@ -40,6 +43,7 @@ export default function SwitchTheme() {
                 <Grid item>
                     <Switch
                         className={classesCommon.none}
+                        checked={mode === `dark` ? true : false}
                         color={`primary`}
                         onChange={(e) => {
                             dispatch({
@@ -49,7 +53,7 @@ export default function SwitchTheme() {
                         }}
                     />
                 </Grid>
-                <Grid item>
+                <Grid item className={classes.pad}>
                     <Typography variant={`body2`} className={classes.textColor}>
                         dark
                     </Typography>
