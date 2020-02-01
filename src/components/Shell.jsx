@@ -27,7 +27,6 @@ export default function Shell() {
     // console.log(useTheme())
     return (
         <div className={classes.shell}>
-
             <PrimarySearchAppBar className={classesCommon.none} />
             <BottomAppBar />
         </div>

@@ -7,12 +7,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
     Grid,
     Switch,
-    Typography,
+    // Typography,
 } from '@material-ui/core/'
 
 const style = makeStyles(theme => ({
     switchTheme: {
-        paddingTop: theme.spacing(0.5)
     },
     textColor: {
         color: theme.palette.text.main,
@@ -35,11 +34,11 @@ export default function SwitchTheme() {
     return (
         <div className={classes.switchTheme}>
             <Grid container>
-                <Grid item className={classes.pad}>
+                {/* <Grid item className={classes.pad}>
                     <Typography variant={`body2`} className={classes.textColor}>
                         light
                     </Typography>
-                </Grid>
+                </Grid> */}
                 <Grid item>
                     <Switch
                         className={classesCommon.none}
@@ -53,11 +52,11 @@ export default function SwitchTheme() {
                         }}
                     />
                 </Grid>
-                <Grid item className={classes.pad}>
+                {/* <Grid item className={classes.pad}>
                     <Typography variant={`body2`} className={classes.textColor}>
                         dark
                     </Typography>
-                </Grid>
+                </Grid> */}
             </Grid>
         </div>
     );

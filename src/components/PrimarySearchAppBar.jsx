@@ -8,12 +8,10 @@ import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import MoreIcon from '@material-ui/icons/MoreVert';
+
+import { Icon } from './'
 
 import {
     SwitchTheme
@@ -67,18 +65,6 @@ const useStyles = makeStyles(theme => ({
             width: 200,
         },
     },
-    sectionDesktop: {
-        display: 'none',
-        [theme.breakpoints.up('md')]: {
-            display: 'flex',
-        },
-    },
-    sectionMobile: {
-        display: 'flex',
-        [theme.breakpoints.up('md')]: {
-            display: 'none',
-        },
-    },
 }));
 
 export default function PrimarySearchAppBar() {
@@ -102,9 +88,9 @@ export default function PrimarySearchAppBar() {
         handleMobileMenuClose();
     };
 
-    const handleMobileMenuOpen = event => {
-        setMobileMoreAnchorEl(event.currentTarget);
-    };
+    // const handleMobileMenuOpen = event => {
+    //     setMobileMoreAnchorEl(event.currentTarget);
+    // };
 
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
@@ -135,18 +121,13 @@ export default function PrimarySearchAppBar() {
         >
             <MenuItem>
                 <IconButton aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={4} color="secondary">
+                    <Badge badgeContent={0} color="secondary">
                         <MailIcon />
                     </Badge>
                 </IconButton>
                 <p>Messages</p>
             </MenuItem>
             <MenuItem>
-                <IconButton aria-label="show 11 new notifications" color="inherit">
-                    <Badge badgeContent={11} color="secondary">
-                        <NotificationsIcon />
-                    </Badge>
-                </IconButton>
                 <p>Notifications</p>
             </MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
@@ -156,11 +137,13 @@ export default function PrimarySearchAppBar() {
                     aria-haspopup="true"
                     color="inherit"
                 >
-                    <AccountCircle />
+                    <Badge badgeContent={0} color="secondary">
+                        <AccountCircle />
+                    </Badge>
                 </IconButton>
                 <p>Profile</p>
             </MenuItem>
-        </Menu>
+        </Menu >
     );
 
     return (
@@ -175,7 +158,7 @@ export default function PrimarySearchAppBar() {
                         color="inherit"
                         aria-label="open drawer"
                     >
-                        <MenuIcon />
+                        <Icon icon={`logo`} color={`inherit`} />
                     </IconButton>
 
                     <Typography className={classes.title} variant="h6" noWrap>
@@ -184,7 +167,7 @@ export default function PrimarySearchAppBar() {
 
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
-                            <SearchIcon />
+                            <Icon icon={`search`} color={`inherit`} />
                         </div>
                         <InputBase
                             placeholder="Search…"
@@ -196,23 +179,9 @@ export default function PrimarySearchAppBar() {
                         />
                     </div>
                     <div className={classes.grow} />
+                    <SwitchTheme />
                     <div className={classes.sectionDesktop}>
 
-                        {/* <IconButton aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <MailIcon />
-                            </Badge>
-                        </IconButton> */}
-
-                        <SwitchTheme />
-
-                        <IconButton aria-label="show 17 new notifications" color="inherit">
-                            <Badge
-                                badgeContent={17}
-                                color={`primary`}>
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
                         <IconButton
                             edge="end"
                             aria-label="account of current user"
@@ -221,10 +190,12 @@ export default function PrimarySearchAppBar() {
                             onClick={handleProfileMenuOpen}
                             color="inherit"
                         >
-                            <AccountCircle />
+                            <Badge badgeContent={0} color="secondary">
+                                <Icon icon={`userentity`} color={`inherit`} />
+                            </Badge>
                         </IconButton>
                     </div>
-                    <div className={classes.sectionMobile}>
+                    {/* <div className={classes.sectionMobile}>
                         <IconButton
                             aria-label="show more"
                             aria-controls={mobileMenuId}
@@ -234,7 +205,7 @@ export default function PrimarySearchAppBar() {
                         >
                             <MoreIcon />
                         </IconButton>
-                    </div>
+                    </div> */}
                 </Toolbar>
             </AppBar>
             {renderMobileMenu}
