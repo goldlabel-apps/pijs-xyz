@@ -11,13 +11,17 @@ class ClockWork extends Component {
     componentWillUnmount() { this.stopTimer() }
 
     tick = () => {
-        const { weatherFetching, weatherFetched, weatherData } = this.props;
+        const { weatherFetching, weatherFetched, weatherData, ticks } = this.props;
         updateEntity()
         const store = getStore()
         store.dispatch({ type: `APP/CLOCKWORK/TICK` })
         if (!weatherFetching && !weatherFetched && !weatherData) {
             // console.log('LOAD WEATHER 1 TIME')
             fetchWeather()
+        }
+
+        if (ticks % 3 === 0) {
+            store.dispatch({ type: `APP/CAMERA/UPDATE` })
         }
 
     }

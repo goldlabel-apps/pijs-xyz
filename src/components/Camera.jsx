@@ -2,6 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import commonStyles from '../theme/commonStyles'
 import { useSelector } from 'react-redux'
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"
 import {
     Card,
     CardContent,
@@ -18,7 +19,6 @@ const useStyles = makeStyles(theme => ({
     image: {
         width: '100%'
     }
-
 }));
 
 export default function Camera() {
@@ -27,12 +27,12 @@ export default function Camera() {
     const {
         app,
     } = useSelector(state => state)
-    const { res, src } = app.camera
+    const { src } = app.camera
+    // console.log("cameraUpdate", src)
     return (
         <Card className={classesCommon.card} variant="outlined">
             <CardHeader
                 title={`Camera`}
-                // avatar={<Icon icon={`camera`} />}
                 action={<IconButton
                     color={`inherit`}
                     onClick={(e) => {
@@ -44,11 +44,24 @@ export default function Camera() {
                 </IconButton>}
             />
             <CardContent className={classes.content}>
-                <img
-                    src={`${src}${res}`}
-                    alt={`camera`}
-                    className={classes.image}
-                />
+                <TransformWrapper>
+                    {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
+                        <TransformComponent>
+                            <img
+                                className={classes.image}
+                                alt={`Camera`}
+                                onLoad={(e) => {
+                                    //store.dispatch({ type: `CAMERA/LOADED` })
+                                }}
+                                onError={(error) => {
+                                    console.log(error)
+                                    //store.dispatch({ type: `CAMERA/ERROR` })
+                                }}
+                                src={src}
+                            />
+                        </TransformComponent>
+                    )}
+                </TransformWrapper>
             </CardContent>
         </Card>
     );

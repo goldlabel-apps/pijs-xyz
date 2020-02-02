@@ -28,7 +28,7 @@ const themeLight = {
   palette: {
     type: "light",
     bg: {
-      main: "#E1E1E1"
+      main: "#FFFFFF"
     },
     primary: {
       main: "rgba(241,221,63,1)"

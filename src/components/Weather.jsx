@@ -94,26 +94,30 @@ export default function Weather() {
             />
             <CardContent className={classes.content}>
                 <Grid container className={classes.primaryText}>
-                    <Grid item xs={5}>
+
+                    <Grid item xs={7}>
+                        <Typography variant={`body2`} >
+                            <strong>{location}</strong><br />
+                            {overview}<br />
+                            Humidity <strong>{humidity}</strong><br />
+                            Wind <strong>{windSpeed}</strong>, {windDirection}<br />
+                            Sunset {sunset}
+                        </Typography>
+                    </Grid>
+
+                    <Grid item xs={5} className={classes.pullRight}>
                         <Typography
-                            variant={`h6`}
-                            className={classes.pullRight}>
+                            variant={`h5`}
+                        >
+                            {temperature}
                             <Avatar
                                 src={outlookIcon}
                                 alt={`weather outlook`}
                             />
-                            {temperature}
+
                         </Typography>
                     </Grid>
-                    <Grid item xs={7}>
-                        <Typography variant={`body2`} >
-                            <strong>{location}</strong><br />
-                            Humidity <strong>{humidity}</strong><br />
-                            Wind <strong>{windSpeed}</strong>, {windDirection}<br />
-                            {overview}<br />
-                            Sunset {sunset}
-                        </Typography>
-                    </Grid>
+
                 </Grid>
             </CardContent>
         </Card>

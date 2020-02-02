@@ -10,6 +10,7 @@ export const played = createAction(`APP/ZXSPECTRUM/PLAYED`)
 export const fetchingWeather = createAction(`APP/WEATHER/FETCHING`)
 export const saveWeather = createAction(`APP/WEATHER/SAVE`)
 export const errorWeather = createAction(`APP/WEATHER/ERROR`)
+export const cameraUpdate = createAction(`APP/CAMERA/UPDATE`)
 
 export const fetchWeather = () => {
   const baseUrl = `https://api.openweathermap.org/data/2.5/`

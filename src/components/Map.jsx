@@ -31,9 +31,9 @@ export default function Map() {
         const initializeMap = ({ setMap, mapContainer }) => {
             const map = new mapboxgl.Map({
                 container: mapContainer.current,
-                style: `mapbox://styles/listingslab/ck4uugpxf13y11cqp72z8snc4`,
+                style: `mapbox://styles/listingslab/ck64doqiq0l2b1ir0995szolj`,
                 center: [153.107658, -27.211579],
-                zoom: 12
+                zoom: 6
             });
             map.on(`load`, (e) => {
                 // console.log('Map has loaded', e)

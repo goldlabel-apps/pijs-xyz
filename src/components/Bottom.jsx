@@ -2,12 +2,12 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import {
-    Fab
-} from '@material-ui/core/';
-import {
-    Icon,
-} from './'
+// import {
+//     Fab
+// } from '@material-ui/core/';
+// import {
+//     Icon,
+// } from './'
 
 const useStyles = makeStyles(theme => ({
     appBar: {
@@ -49,7 +49,7 @@ export default function Bottom() {
         <React.Fragment>
             <AppBar position="fixed" color="secondary" className={classes.appBar}>
                 <Toolbar>
-                    <Fab
+                    {/* <Fab
                         className={classes.fabButton}
                         color={`secondary`}
                         aria-label={`Call to action`}
@@ -57,8 +57,8 @@ export default function Bottom() {
                             e.preventDefault()
                             console.log('Call to action')
                         }}>
-                        <Icon icon={`contact`} color={`primary`} />
-                    </Fab>
+                        <Icon icon={`contact`} color={`inherit`} />
+                    </Fab> */}
                     <div className={classes.grow} />
                     <div style={{ width: 50 }} />
                 </Toolbar>

@@ -32,10 +32,10 @@ export default function Shell() {
             <PrimaryAppBar className={classesCommon.none} />
             <Snackbars />
             <Grid container>
-                <Grid item xs={12} sm={12} md={8}>
+                <Grid item xs={12} sm={12} md={6}>
                     <Camera />
                 </Grid>
-                <Grid item xs={12} sm={12} md={4}>
+                <Grid item xs={12} sm={12} md={6}>
                     <Map />
                     <Weather />
                 </Grid>

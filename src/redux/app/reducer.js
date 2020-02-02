@@ -1,5 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit"
 import {
+  cameraUpdate,
   fetchingWeather,
   saveWeather,
   errorWeather,
@@ -11,6 +12,9 @@ import {
 } from "./actions"
 
 export const appSlice = {
+  theme: {
+    mode: `light`
+  },
   weather: {
     fetching: false,
     fetched: false,
@@ -36,9 +40,6 @@ export const appSlice = {
       dark: `mapbox://styles/listingslab/ck4c1er100to21co6sd5kl563`
     }
   },
-  theme: {
-    mode: `dark`
-  },
   zxSpectrum: {
     played: false,
     playing: false
@@ -51,6 +52,10 @@ export const appSlice = {
 }
 
 const appReducer = createReducer(appSlice, {
+  [cameraUpdate]: state => {
+    state.camera.src = `https://pi.listingslab.io/current-photo/md/?cb=${Date.now()}`
+    return state
+  },
   [errorWeather]: (state, action) => {
     state.weather.error = action.error.toString()
     return state
