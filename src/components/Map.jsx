@@ -14,9 +14,7 @@ const useStyles = makeStyles(theme => ({
     content: {
     },
     map: {
-        display: 'block',
-        borderRadius: theme.spacing(0.5),
-        height: 210,
+        height: 215,
     }
 }));
 
@@ -33,18 +31,16 @@ export default function Map() {
         const initializeMap = ({ setMap, mapContainer }) => {
             const map = new mapboxgl.Map({
                 container: mapContainer.current,
-                style: `mapbox://styles/listingslab/ck4c1er100to21co6sd5kl563`,
-                // style: `mapbox://styles/listingslab/ck4uugpxf13y11cqp72z8snc4`,
+                style: `mapbox://styles/listingslab/ck4uugpxf13y11cqp72z8snc4`,
                 center: [153.107658, -27.211579],
-                zoom: 6
+                zoom: 12
             });
-
-            map.on("load", () => {
+            map.on(`load`, (e) => {
+                // console.log('Map has loaded', e)
                 setMap(map);
                 map.resize();
             });
         };
-
         if (!map) initializeMap({ setMap, mapContainer });
     }, [map])
 
@@ -52,7 +48,6 @@ export default function Map() {
         <Card className={classesCommon.card} variant="outlined">
             <CardHeader
                 title={`Map`}
-                avatar={<Icon icon={`map`} />}
                 action={<IconButton
                     color={`inherit`}
                     onClick={(e) => {
@@ -60,7 +55,7 @@ export default function Map() {
                         console.log('camera fullscreen')
                     }}
                 >
-                    <Icon icon={`fullscreen`} />
+                    <Icon icon={`map`} />
                 </IconButton>}
             />
             <CardContent className={classes.content}>

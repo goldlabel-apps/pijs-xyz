@@ -6,17 +6,16 @@ import {
     Card,
     CardContent,
     CardHeader,
-    IconButton,
+    IconButton
 } from '@material-ui/core/'
 import { Icon } from './'
 
 const useStyles = makeStyles(theme => ({
     content: {
-        height: 450,
+        maxHeight: 450,
         overflow: 'hidden'
     },
     image: {
-        height: '100%',
         width: '100%'
     }
 
@@ -29,13 +28,11 @@ export default function Camera() {
         app,
     } = useSelector(state => state)
     const { res, src } = app.camera
-    console.log(res, src);
-
     return (
         <Card className={classesCommon.card} variant="outlined">
             <CardHeader
                 title={`Camera`}
-                avatar={<Icon icon={`camera`} />}
+                // avatar={<Icon icon={`camera`} />}
                 action={<IconButton
                     color={`inherit`}
                     onClick={(e) => {
@@ -43,15 +40,15 @@ export default function Camera() {
                         console.log('Camera Fullscreen')
                     }}
                 >
-                    <Icon icon={`fullscreen`} />
+                    <Icon icon={`camera`} />
                 </IconButton>}
             />
             <CardContent className={classes.content}>
-                {/* <img
+                <img
                     src={`${src}${res}`}
                     alt={`camera`}
                     className={classes.image}
-                /> */}
+                />
             </CardContent>
         </Card>
     );

@@ -5,9 +5,7 @@ import { useSelector } from 'react-redux'
 import moment from 'moment'
 import {
     Avatar,
-    Button,
     Card,
-    CardActions,
     CardContent,
     CardHeader,
     Grid,
@@ -60,7 +58,6 @@ function degToCompass(num) {
 export default function Weather() {
     const classesCommon = commonStyles();
     const classes = useStyles();
-    const showActions = false;
     const {
         app,
     } = useSelector(state => state)
@@ -85,15 +82,14 @@ export default function Weather() {
     return (
         <Card className={classesCommon.card} variant="outlined">
             <CardHeader
-                title={`Weather in ${location}`}
-                avatar={<Icon icon={`weather`} />}
+                title={`Weather`}
                 action={<IconButton
                     color={`inherit`}
                     onClick={(e) => {
                         e.preventDefault()
                         console.log('Weather fullscreen')
                     }}>
-                    <Icon icon={`fullscreen`} />
+                    <Icon icon={`weather`} />
                 </IconButton>}
             />
             <CardContent className={classes.content}>
@@ -111,6 +107,7 @@ export default function Weather() {
                     </Grid>
                     <Grid item xs={7}>
                         <Typography variant={`body2`} >
+                            <strong>{location}</strong><br />
                             Humidity <strong>{humidity}</strong><br />
                             Wind <strong>{windSpeed}</strong>, {windDirection}<br />
                             {overview}<br />
@@ -119,19 +116,6 @@ export default function Weather() {
                     </Grid>
                 </Grid>
             </CardContent>
-            {showActions ?
-                <CardActions>
-                    <Button
-                        variant={`contained`}
-                        color={`secondary`}
-                        onClick={(e) => {
-                            e.preventDefault()
-                            console.log('focus Weather')
-                        }}>
-                        Focus
-                </Button>
-                </CardActions>
-                : null}
         </Card>
     );
 }

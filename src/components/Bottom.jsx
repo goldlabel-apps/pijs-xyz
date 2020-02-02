@@ -2,16 +2,29 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Fab from '@material-ui/core/Fab';
 import {
-    Badge,
-    IconButton,
+    Fab
 } from '@material-ui/core/';
 import {
     Icon,
 } from './'
 
 const useStyles = makeStyles(theme => ({
+    appBar: {
+        top: 'auto',
+        bottom: 0,
+        background: 'none',
+        boxShadow: 'none',
+        border: 'none'
+    },
+    fabButton: {
+        position: 'absolute',
+        zIndex: 1,
+        top: -30,
+        left: 0,
+        right: 0,
+        margin: '0 auto',
+    },
     text: {
         padding: theme.spacing(2, 2, 0),
     },
@@ -24,20 +37,8 @@ const useStyles = makeStyles(theme => ({
     subheader: {
         backgroundColor: theme.palette.background.paper,
     },
-    appBar: {
-        top: 'auto',
-        bottom: 0,
-    },
     grow: {
         flexGrow: 1,
-    },
-    fabButton: {
-        position: 'absolute',
-        zIndex: 1,
-        top: -30,
-        left: 0,
-        right: 0,
-        margin: '0 auto',
     },
 }));
 
@@ -56,31 +57,10 @@ export default function Bottom() {
                             e.preventDefault()
                             console.log('Call to action')
                         }}>
-                        <Icon icon={`contact`} />
+                        <Icon icon={`contact`} color={`primary`} />
                     </Fab>
                     <div className={classes.grow} />
-                    <IconButton
-                        edge={`end`}
-                        color={`inherit`}
-                        onClick={(e) => {
-                            e.preventDefault()
-                            console.log('Settings')
-                        }}>
-                        <Icon icon={`settings`} />
-                    </IconButton>
-
-                    <IconButton
-                        edge={`end`}
-                        color={`inherit`}
-                        onClick={(e) => {
-                            e.preventDefault()
-                            console.log('User Entity')
-                        }}
-                    >
-                        <Badge badgeContent={0} color="secondary">
-                            <Icon icon={`userentity`} color={`inherit`} />
-                        </Badge>
-                    </IconButton>
+                    <div style={{ width: 50 }} />
                 </Toolbar>
             </AppBar>
         </React.Fragment>

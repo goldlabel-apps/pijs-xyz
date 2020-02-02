@@ -6,12 +6,19 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import { Badge } from '@material-ui/core'
 import {
     Icon,
     SwitchTheme
 } from './'
 
+
 const useStyles = makeStyles(theme => ({
+    appbar: {
+        background: 'none',
+        boxShadow: 'none',
+        border: 'none'
+    },
     grow: {
         flexGrow: 1,
     },
@@ -69,6 +76,7 @@ export default function PrimaryAppBar() {
     return (
         <div className={classes.grow}>
             <AppBar
+                className={classes.appbar}
                 position={`static`}
                 color={`secondary`}>
                 <Toolbar>
@@ -84,6 +92,28 @@ export default function PrimaryAppBar() {
                     </Typography>
                     <div className={classes.grow} />
                     <SwitchTheme />
+                    <IconButton
+                        edge={`end`}
+                        color={`inherit`}
+                        onClick={(e) => {
+                            e.preventDefault()
+                            console.log('Settings')
+                        }}>
+                        <Icon icon={`settings`} />
+                    </IconButton>
+
+                    <IconButton
+                        edge={`end`}
+                        color={`inherit`}
+                        onClick={(e) => {
+                            e.preventDefault()
+                            console.log('User Entity')
+                        }}
+                    >
+                        <Badge badgeContent={0} color="secondary">
+                            <Icon icon={`userentity`} color={`inherit`} />
+                        </Badge>
+                    </IconButton>
                 </Toolbar>
             </AppBar>
             {renderMenu}
