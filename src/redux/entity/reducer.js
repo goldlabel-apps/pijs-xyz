@@ -1,12 +1,12 @@
-import { createReducer } from "@reduxjs/toolkit";
-import { reset } from "./actions";
+import { createReducer } from "@reduxjs/toolkit"
+import { reset } from "./actions"
 
-export const entitySlice = {};
+export const entitySlice = {}
 
 const entityReducer = createReducer(entitySlice, {
   [reset]: () => {
-    return entitySlice;
+    return entitySlice
   }
-});
+})
 
-export { entityReducer };
+export { entityReducer }
