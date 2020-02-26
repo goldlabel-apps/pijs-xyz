@@ -13,7 +13,7 @@ import {
 
 let duration = 1;
 if (process.env.REACT_APP_ENV === 'DEV') {
-    duration = 0.05
+    duration = 1
 }
 
 function hasPlayed() {
@@ -26,7 +26,6 @@ function hasPlayed() {
 }
 
 function byListingslab() {
-    // console.log('by-Listingslab')
     gsap.to(`#by-listingslab`, {
         duration: 1.5 * duration,
         opacity: 1,

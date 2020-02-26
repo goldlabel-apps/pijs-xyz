@@ -43,7 +43,7 @@ export default function SwitchTheme() {
                     <Switch
                         className={classesCommon.none}
                         checked={mode === `dark` ? true : false}
-                        color={`default`}
+                        color={`primary`}
                         onChange={(e) => {
                             dispatch({
                                 type: `APP/THEME/SWITCH`,

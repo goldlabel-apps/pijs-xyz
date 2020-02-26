@@ -7,12 +7,9 @@ import {
     Avatar,
     Card,
     CardContent,
-    CardHeader,
     Grid,
-    IconButton,
     Typography,
 } from '@material-ui/core/'
-import { Icon } from './'
 
 const useStyles = makeStyles(theme => ({
     content: {
@@ -81,20 +78,8 @@ export default function Weather() {
 
     return (
         <Card className={classesCommon.card} variant="outlined">
-            <CardHeader
-                title={`Weather`}
-                action={<IconButton
-                    color={`inherit`}
-                    onClick={(e) => {
-                        e.preventDefault()
-                        console.log('Weather fullscreen')
-                    }}>
-                    <Icon icon={`weather`} />
-                </IconButton>}
-            />
             <CardContent className={classes.content}>
                 <Grid container className={classes.primaryText}>
-
                     <Grid item xs={7}>
                         <Typography variant={`body2`} >
                             <strong>{location}</strong><br />
@@ -104,20 +89,15 @@ export default function Weather() {
                             Sunset {sunset}
                         </Typography>
                     </Grid>
-
                     <Grid item xs={5} className={classes.pullRight}>
-                        <Typography
-                            variant={`h5`}
-                        >
-                            {temperature}
+                        <Typography variant={`h5`}>
                             <Avatar
                                 src={outlookIcon}
                                 alt={`weather outlook`}
                             />
-
+                            {temperature}
                         </Typography>
                     </Grid>
-
                 </Grid>
             </CardContent>
         </Card>

@@ -6,10 +6,7 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"
 import {
     Card,
     CardContent,
-    CardHeader,
-    IconButton
 } from '@material-ui/core/'
-import { Icon } from './'
 
 const useStyles = makeStyles(theme => ({
     content: {
@@ -28,21 +25,8 @@ export default function Camera() {
         app,
     } = useSelector(state => state)
     const { src } = app.camera
-    // console.log("cameraUpdate", src)
     return (
         <Card className={classesCommon.card} variant="outlined">
-            <CardHeader
-                title={`Camera`}
-                action={<IconButton
-                    color={`inherit`}
-                    onClick={(e) => {
-                        e.preventDefault()
-                        console.log('Camera Fullscreen')
-                    }}
-                >
-                    <Icon icon={`camera`} />
-                </IconButton>}
-            />
             <CardContent className={classes.content}>
                 <TransformWrapper>
                     {({ zoomIn, zoomOut, resetTransform, ...rest }) => (

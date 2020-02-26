@@ -13,7 +13,7 @@ import {
 
 export const appSlice = {
   theme: {
-    mode: `light`
+    mode: `dark`
   },
   weather: {
     fetching: false,

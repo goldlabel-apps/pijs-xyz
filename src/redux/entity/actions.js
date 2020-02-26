@@ -9,7 +9,7 @@ export const reset = createAction(`ENTITY/RESET`)
 
 export const update = () => {
   // const currentEntity = getStore().getState()
-  let newUserEntity = {}
-  console.log("update()", newUserEntity)
-  return null
+  // let newUserEntity = {}
+  // console.log("update()", newUserEntity)
+  return true
 }
