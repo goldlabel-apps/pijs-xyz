@@ -1,8 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-    IconButton,
-    Grid,
     Typography,
 } from '@material-ui/core/';
 import {
@@ -11,36 +9,29 @@ import {
 
 const useStyles = makeStyles(theme => ({
     byListingslab: {
-        marginLeft: 150,
         opacity: 0,
+        textAlign: 'center',
+        width: 200,
     },
     logoText: {
         color: 'rgba(255,255,255,1)',
-        paddingTop: theme.spacing()
     },
-
+    logo: {
+        marginRight: theme.spacing(2)
+    },
 }));
 
 function ByListingslab() {
     const classes = useStyles();
     return (
         <div id={`by-listingslab`} className={classes.byListingslab}>
-            <Grid container>
-                <Grid item className={classes.logo}>
-                    <IconButton
-                        onClick={(e) => {
-                            e.preventDefault();
-                            window.open(`https://listingslab.com`, `_blank`)
-                        }}>
-                        <Icon icon={`spade`} color={`primary`} />
-                    </IconButton>
-                </Grid>
-                <Grid item className={classes.logoText}>
-                    <Typography variant={`h6`}>
-                        by listingslab
-                    </Typography>
-                </Grid>
-            </Grid>
+            <Typography variant={`h6`} className={classes.logoText}>
+                <Icon
+                    icon={`spade`}
+                    color={`primary`}
+                    className={classes.logo}
+                /> by listingslab
+            </Typography>
         </div>
     );
 }
