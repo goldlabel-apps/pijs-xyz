@@ -1,43 +1,27 @@
-import Boot from "./Boot";
-import ByListingslab from "./ByListingslab";
-import Camera from "./Camera";
-import CameraControls from "./CameraControls";
-import CameraControls2 from "./CameraControls2";
-import Debug from "./Debug";
-import Dashboard from "./Dashboard";
-import EffectsMenu from "./EffectsMenu";
-import Footer from "./Footer";
-import Advert from "./Advert";
-import Icon from "./Icon";
-import Pi from "./Pi";
-import Connection from "./Connection";
-import Privacy from "./Privacy";
-import PiCard from "./PiCard";
-import PiJSLogo from "./PiJSLogo";
-import PopupMenu from "./PopupMenu";
-import UserEntity from "./UserEntity";
-import Verbindungsstatus from "./Verbindungsstatus";
-import WeatherHeadline from "./WeatherHeadline";
+import Bottom from "./Bottom"
+import ByListingslab from "./ByListingslab"
+import Camera from "./Camera"
+import ClockWork from "./ClockWork"
+import Snackbars from "./Snackbars"
+import Icon from "./Icon"
+import Map from "./Map"
+import PrimaryAppBar from "./PrimaryAppBar"
+import Shell from "./Shell"
+import SSR from "./SSR"
+import SwitchTheme from "./SwitchTheme"
+import Weather from "./Weather"
 
 export {
-  Boot,
+  Bottom,
   ByListingslab,
   Camera,
-  CameraControls,
-  CameraControls2,
-  Dashboard,
-  EffectsMenu,
-  Footer,
-  Advert,
-  Debug,
+  ClockWork,
+  Snackbars,
   Icon,
-  Pi,
-  Connection,
-  Privacy,
-  PiCard,
-  PiJSLogo,
-  PopupMenu,
-  UserEntity,
-  Verbindungsstatus,
-  WeatherHeadline
-};
+  Map,
+  PrimaryAppBar,
+  Shell,
+  SSR,
+  SwitchTheme,
+  Weather
+}

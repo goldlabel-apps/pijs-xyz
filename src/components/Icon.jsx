@@ -31,12 +31,16 @@ import IconEnvironment from '@material-ui/icons/AcUnit';
 import IconWifi from '@material-ui/icons/Wifi';
 import IconWifiOff from '@material-ui/icons/WifiOff';
 import IconInstall from '@material-ui/icons/SaveAlt';
-import GithubSVG from '../graphics/GithubSVG';
-import PiJSSVG from '../graphics/PiJSSVG';
-import SpadeSVG from '../graphics/SpadeSVG';
+// import GithubSVG from '../graphics/GithubSVG';
+import {
+    Logo,
+    Spade
+} from '../graphics/';
+// import SVG from '../graphics/SpadeSVG';
 import IconDarkmode from '@material-ui/icons/Highlight';
 import IconTrash from '@material-ui/icons/DeleteForeverOutlined';
 import IconEffect from '@material-ui/icons/BrightnessMedium';
+import IconSearch from '@material-ui/icons/Search';
 
 const styles = theme => ({
     navIcon: {
@@ -65,6 +69,18 @@ class Icon extends Component {
         }
         switch (icon) {
 
+            // case `spade`:
+            //     return (<SpadeSVG color={iconColor} className={classes.navIcon} />);
+
+            // case `github`:
+            //     return (<GithubSVG color={iconColor} className={classes.navIcon} />);
+
+            case `spade`:
+                return (<Spade className={classes.navIcon} />);
+
+            case `logo`:
+                return (<Logo className={classes.navIcon} />);
+
             case `effect`:
                 return (<IconEffect color={iconColor} />);
 
@@ -76,9 +92,6 @@ class Icon extends Component {
 
             case `darkmode`:
                 return (<IconDarkmode color={iconColor} />);
-
-            case `pi`:
-                return (<PiJSSVG className={classes.navIcon} />);
 
             case `install`:
                 return (<IconInstall color={iconColor} />);
@@ -94,12 +107,6 @@ class Icon extends Component {
 
             case `time`:
                 return (<IconTime color={iconColor} />);
-
-            case `spade`:
-                return (<SpadeSVG color={iconColor} className={classes.navIcon} />);
-
-            case `github`:
-                return (<GithubSVG color={iconColor} className={classes.navIcon} />);
 
             case `weather`:
                 return (<IconWeather color={iconColor} />);
@@ -178,6 +185,9 @@ class Icon extends Component {
 
             case `api`:
                 return (<IconApi color={iconColor} />);
+
+            case `search`:
+                return (<IconSearch color={iconColor} />);
 
             default: {
                 return null;

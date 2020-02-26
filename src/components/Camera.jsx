@@ -1,60 +1,68 @@
-import React from 'react';
-import { getStore } from '../';
-import { useSelector } from 'react-redux';
-import { makeStyles } from '@material-ui/core/styles';
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import commonStyles from '../theme/commonStyles'
+import { useSelector } from 'react-redux'
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"
 import {
-    CameraControls,
-    // CameraControls2,
-} from './';
+    Card,
+    CardContent,
+    CardHeader,
+    IconButton
+} from '@material-ui/core/'
+import { Icon } from './'
 
 const useStyles = makeStyles(theme => ({
-    camera: {
-        // border: '1px solid white',
+    content: {
+        maxHeight: 450,
+        overflow: 'hidden'
     },
-    cameraImage: {
-        width: '100%',
-        // border: `1px solid rgba(241,221,63,1)`,
-    },
+    image: {
+        width: '100%'
+    }
 }));
 
-function Camera() {
-    const store = getStore();
-    const classes = useStyles();
-    const { camera } = useSelector(state => state);
+export default function Camera() {
+    const classesCommon = commonStyles()
+    const classes = useStyles()
     const {
-        currentPhoto,
-        error,
-    } = camera;
-
+        app,
+    } = useSelector(state => state)
+    const { src } = app.camera
+    // console.log("cameraUpdate", src)
     return (
-        <div className={classes.camera}>
-
-            <TransformWrapper>
-                {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
-                    <TransformComponent>
-
-                        {!error ?
+        <Card className={classesCommon.card} variant="outlined">
+            <CardHeader
+                title={`Camera`}
+                action={<IconButton
+                    color={`inherit`}
+                    onClick={(e) => {
+                        e.preventDefault()
+                        console.log('Camera Fullscreen')
+                    }}
+                >
+                    <Icon icon={`camera`} />
+                </IconButton>}
+            />
+            <CardContent className={classes.content}>
+                <TransformWrapper>
+                    {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
+                        <TransformComponent>
                             <img
-                                className={classes.cameraImage}
+                                className={classes.image}
                                 alt={`Camera`}
                                 onLoad={(e) => {
-                                    store.dispatch({ type: `CAMERA/LOADED` })
+                                    //store.dispatch({ type: `CAMERA/LOADED` })
                                 }}
-                                onError={(e) => {
-                                    store.dispatch({ type: `CAMERA/ERROR` })
+                                onError={(error) => {
+                                    console.log(error)
+                                    //store.dispatch({ type: `CAMERA/ERROR` })
                                 }}
-                                src={!error ? currentPhoto : `/jpg/broken.jpg`}
+                                src={src}
                             />
-                            : null}
-                    </TransformComponent>
-                )}
-            </TransformWrapper>
-            <CameraControls />
-            {/* <CameraControls2 /> */}
-        </div>
+                        </TransformComponent>
+                    )}
+                </TransformWrapper>
+            </CardContent>
+        </Card>
     );
 }
-
-const MemodFuncComponent = React.memo(Camera);
-export default MemodFuncComponent;

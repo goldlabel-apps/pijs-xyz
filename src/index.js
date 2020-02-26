@@ -1,41 +1,90 @@
-import packageJSON from "../package.json";
-import React from "react";
-import ReactDOM from "react-dom";
-import initRedux from "./redux/initRedux";
-import { Provider } from "react-redux";
-import * as serviceWorker from "./serviceWorker";
-import MaterialView from "./MaterialView";
-import ClockWork from "./ClockWork";
-import { CssBaseline } from "@material-ui/core/";
+import pJSON from "../package.json"
+import React from "react"
+import ReactDOM from "react-dom"
+import { Provider } from "react-redux"
+import reduxStore from "./redux"
+import Fingerprint2 from "fingerprintjs2"
+import { fstore } from "./fire"
+import App from "./App"
+import * as serviceWorker from "./serviceWorker"
 
-let debugOn = false;
+console.log(`${pJSON.name} ${pJSON.version} (${process.env.REACT_APP_ENV})`)
 
-const urlParams = new URLSearchParams(window.location.search);
-if (urlParams.has("upgrade-from")) {
-  localStorage.clear();
-  window.location.assign(`/`);
+let store
+const getStore = () => {
+  return store
+}
+export { getStore }
+
+let entity = {
+  bootTime: Date.now(),
+  app_version: pJSON.version
 }
 
-console.log(
-  `${packageJSON.name} ${packageJSON.version} (${process.env.REACT_APP_ENV})`
-);
+const startReact = () => {
+  store = reduxStore(entity)
+  ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById("react")
+  )
+}
 
-const store = initRedux();
+const returning = () => {
+  const docRef = fstore.collection("userentities").doc(entity.fingerprint)
+  docRef.get().then(function(fsdoc) {
+    const data = fsdoc.data()
+    // delete data.fingerprint;
+    // delete data.bootTime;
+    entity = {
+      ...entity,
+      fstore: data
+    }
+    startReact()
+  })
+}
 
-const getStore = () => {
-  return store;
-};
-export { getStore };
+const firstRun = () => {
+  entity.visits = 1
+  const docRef = fstore.collection("userentities").doc(entity.fingerprint)
+  docRef
+    .set(entity, { merge: true })
+    .then(function() {
+      returning()
+    })
+    .catch(function(error) {
+      console.log("Error firstRun failed", error)
+    })
+}
 
-ReactDOM.render(
-  <Provider store={store}>
-    <React.Fragment>
-      <ClockWork />
-      <CssBaseline />
-      <MaterialView debugOn={debugOn} />
-    </React.Fragment>
-  </Provider>,
-  document.getElementById("pijs")
-);
+const initFirestore = fingerprint => {
+  const docRef = fstore.collection("entities").doc(fingerprint)
+  docRef
+    .get()
+    .then(function(doc) {
+      if (doc.exists) {
+        returning()
+      } else {
+        firstRun()
+      }
+    })
+    .catch(function(error) {
+      console.log("Error getting document:", error)
+    })
+}
 
-serviceWorker.register();
+const createFingerprint = () => {
+  Fingerprint2.getPromise().then(function(components) {
+    const values = components.map(function(component) {
+      return component.value
+    })
+    const fingerprint = Fingerprint2.x64hash128(values.join(""), 31)
+    entity.fingerprint = fingerprint
+    initFirestore(fingerprint)
+  })
+}
+
+setTimeout(createFingerprint, 50)
+
+serviceWorker.register()

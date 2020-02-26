@@ -1,5 +1,5 @@
-import GithubSVG from "./GithubSVG";
-import PiJSSVG from "./PiJSSVG";
-import SpadeSVG from "./SpadeSVG";
+import Github from "./Github";
+import Logo from "./Logo";
+import Spade from "./Spade";
 
-export { GithubSVG, PiJSSVG, SpadeSVG };
+export { Github, Logo, Spade };
