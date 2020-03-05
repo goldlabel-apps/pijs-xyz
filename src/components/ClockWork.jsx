@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getStore } from '../'
-import { fetchWeather } from '../redux/app/actions'
+import { 
+    fetchWeather,
+    fetchPi 
+} from '../redux/app/actions'
 import { update } from '../redux/entity/actions'
 
 class ClockWork extends Component {
@@ -23,7 +26,9 @@ class ClockWork extends Component {
         if (ticks % 3 === 0) {
             store.dispatch({ type: `APP/CAMERA/UPDATE` })
         }
-
+        if (ticks % 60 === 0) {
+            fetchPi()
+        }
     }
 
     startTimer = () => {

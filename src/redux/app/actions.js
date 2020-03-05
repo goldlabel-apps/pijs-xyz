@@ -12,6 +12,40 @@ export const saveWeather = createAction(`APP/WEATHER/SAVE`)
 export const errorWeather = createAction(`APP/WEATHER/ERROR`)
 export const cameraUpdate = createAction(`APP/CAMERA/UPDATE`)
 
+export const fetchingPi = createAction(`APP/PI/FETCHING`)
+export const savingPi = createAction(`APP/PI/SAVE`)
+export const piError = createAction(`APP/PI/ERROR`)
+
+export const fetchPi = () => {
+  
+  const store = getStore()
+  store.dispatch({
+    type: `APP/PI/FETCHING`,
+    fetching: true
+  })
+  axios
+    .get(`https://pi.listingslab.io/pimoroni`)
+    .then(function(response) {
+      store.dispatch({
+        type: `APP/PI/SAVE`,
+        data: response.data
+      })
+    })
+    .catch(function(error) {
+      store.dispatch({
+        type: `APP/PI/ERROR`,
+        error
+      })
+    })
+    .finally(function() {
+      store.dispatch({
+        type: `APP/PI/FETCHING`,
+        fetching: false
+      })
+    })
+}
+
+
 export const fetchWeather = () => {
   const baseUrl = `https://api.openweathermap.org/data/2.5/`
   const endPoint = `weather?lat=-27.211579&l&lon=153.107658`

@@ -5,21 +5,14 @@ import {
     Card,
     CardContent,
     CardHeader,
-    IconButton,
 } from '@material-ui/core/'
-import { Icon } from './'
 import mapboxgl from 'mapbox-gl'
 
 const useStyles = makeStyles(theme => ({
-    content: {
-    },
     map: {
-        height: 215,
+        height: 275,
     }
 }));
-
-// dark: `mapbox://styles/listingslab/ck4c1er100to21co6sd5kl563`
-// light: `mapbox://styles/listingslab/ck4uugpxf13y11cqp72z8snc4`
 
 export default function Map() {
     const classesCommon = commonStyles();
@@ -36,7 +29,6 @@ export default function Map() {
                 zoom: 6
             });
             map.on(`load`, (e) => {
-                // console.log('Map has loaded', e)
                 setMap(map);
                 map.resize();
             });
@@ -47,18 +39,9 @@ export default function Map() {
     return (
         <Card className={classesCommon.card} variant="outlined">
             <CardHeader
-                title={`Map`}
-                action={<IconButton
-                    color={`inherit`}
-                    onClick={(e) => {
-                        e.preventDefault()
-                        console.log('camera fullscreen')
-                    }}
-                >
-                    <Icon icon={`map`} />
-                </IconButton>}
+                title={`It is night time in Brisbane`}
             />
-            <CardContent className={classes.content}>
+            <CardContent>
                 <div
                     className={classes.map}
                     ref={el => (mapContainer.current = el)}

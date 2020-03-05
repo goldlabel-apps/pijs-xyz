@@ -9,12 +9,17 @@ import {
 
 const useStyles = makeStyles(theme => ({
     byListingslab: {
-        opacity: 0,
+        opacity: 1,
+        display: 'block',
+        width: '100vw',
         textAlign: 'center',
-        width: 200,
+        //width: 200,
     },
-    logoText: {
+    logoColor: {
         color: 'rgba(255,255,255,1)',
+    },
+    logoText:{
+        marginTop: -15
     },
     logo: {
         marginRight: theme.spacing(2)
@@ -25,12 +30,14 @@ function ByListingslab() {
     const classes = useStyles();
     return (
         <div id={`by-listingslab`} className={classes.byListingslab}>
-            <Typography variant={`h6`} className={classes.logoText}>
+            <Typography variant={`h6`} className={classes.logoColor}>
+                <span className={classes.logo}>
                 <Icon
                     icon={`spade`}
-                    color={`primary`}
-                    className={classes.logo}
-                /> by listingslab
+                    color={`primary`}     
+                />
+                </span>
+                <span className={classes.logoText}>by listingslab</span>
             </Typography>
         </div>
     );

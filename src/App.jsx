@@ -3,6 +3,7 @@ import { getStore } from './'
 import { useSelector } from 'react-redux';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { themeLight, themeDark } from './theme/mui.js'
+import commonStyles from './theme/commonStyles'
 import { gsap } from "gsap"
 import {
     ByListingslab,
@@ -13,7 +14,7 @@ import {
 
 let duration = 1;
 if (process.env.REACT_APP_ENV === 'DEV') {
-    duration = 0.1
+    duration = 1
 }
 
 function hasPlayed() {
@@ -45,6 +46,7 @@ function App() {
     const {
         app,
     } = useSelector(state => state)
+    const classesCommon = commonStyles()
     const { mode } = app.theme
     const { playing, played } = app.zxSpectrum
     let theme = themeLight;
@@ -68,8 +70,10 @@ function App() {
 
     return (
         <MuiThemeProvider theme={createMuiTheme(theme)}>
-            <ClockWork />
-            {onScreen}
+            <div className={classesCommon.app}>
+                <ClockWork />
+                {onScreen}
+            </div>
         </MuiThemeProvider>
     )
 }

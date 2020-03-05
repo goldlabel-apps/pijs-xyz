@@ -8,10 +8,21 @@ import {
   played,
   clockTick,
   reset,
-  switchTheme
+  switchTheme,
+  fetchingPi,
+  savingPi,
+  piError,
 } from "./actions"
 
 export const appSlice = {
+  pi:{
+    fetching: false,
+    fetched: false,
+    data:{
+      lux: 0
+    },
+    error: null,
+  },
   theme: {
     mode: `dark`
   },
@@ -52,6 +63,31 @@ export const appSlice = {
 }
 
 const appReducer = createReducer(appSlice, {
+
+//   fetchingPi, savingPi, piError,
+
+  [fetchingPi]: (state, action) => {
+    state.pi.fetching = action.fetching
+    return state
+  },
+
+
+  [savingPi]: (state, action) => {
+    state.pi.data = action.data
+    return state
+  },
+
+  [piError]: (state, action) => {
+    state.pi.error = action.error.toString()
+    return state
+  },
+
+  [errorWeather]: (state, action) => {
+    state.weather.error = action.error.toString()
+    return state
+  },
+
+
   [cameraUpdate]: state => {
     state.camera.src = `https://pi.listingslab.io/current-photo/md/?cb=${Date.now()}`
     return state

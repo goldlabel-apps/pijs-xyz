@@ -5,7 +5,6 @@ export default makeStyles(theme => ({
     border: "none",
     boxShadow: "none",
     background: "none"
-    // margin: theme.spacing(0.5)
   },
   flex: {
     display: "flex"
@@ -30,7 +29,6 @@ export default makeStyles(theme => ({
   title: {
     flexGrow: 1
   },
-
   grow: {
     flexGrow: 1
   }
