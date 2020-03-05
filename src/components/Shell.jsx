@@ -17,7 +17,6 @@ import {
 
 const style = makeStyles(theme => ({
     shell: {
-        background: theme.palette.bg.main,
         height: "100vh",
         width: "100vw"
     }
@@ -29,10 +28,9 @@ export default function Shell() {
     const reduxSlice = useSelector(state => state)
     const { data } = reduxSlice.app.pi
     let isNight = true
-    if (data.lux < 50){
-        isNight = true
+    if (parseFloat(data.lux) > 50){
+        isNight = false
     }
-    
     return (
         <div className={classes.shell}>
             <PrimaryAppBar className={classesCommon.none} />
@@ -40,13 +38,10 @@ export default function Shell() {
             <Grid container>
                 <Grid item xs={12} sm={12} md={6}>
                 {!isNight ?
-                    <Camera />
-                 : 
-                    <Map />
+                    <Camera /> : <Map />
                 }
                 </Grid>
                 <Grid item xs={12} sm={12} md={6}>
-                    {/* <Map /> */}
                     <Weather />
                 </Grid>
             </Grid>

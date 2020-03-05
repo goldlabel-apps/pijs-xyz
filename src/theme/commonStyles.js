@@ -1,6 +1,9 @@
 import { makeStyles } from "@material-ui/core/styles"
 
 export default makeStyles(theme => ({
+  app: {
+    // background: "red"
+  },
   card: {
     border: "none",
     boxShadow: "none",

@@ -1,9 +1,10 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import commonStyles from '../theme/commonStyles'
+// import commonStyles from '../theme/commonStyles'
 import { useSelector } from 'react-redux'
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"
 import {
+    Button,
     Card,
     CardContent,
     IconButton,
@@ -11,23 +12,29 @@ import {
 import { Icon } from './' 
 
 const useStyles = makeStyles(theme => ({
+    card: {
+        border: "none",
+        boxShadow: "none",
+        background: "none"
+    },
     content: {
         maxHeight: 450,
         overflow: 'hidden'
     },
     cameraControlBar: {
         textAlign: 'center',
+        margin: theme.spacing(),
     },
     image: {
         width: '100%'
     },
-    title: {
-        flexGrow: 1,
-    },
+    btnTxt:{
+        marginLeft: theme.spacing(),
+    }
 }));
 
 export default function Camera() {
-    const classesCommon = commonStyles()
+    // const classesCommon = commonStyles()
     const classes = useStyles()
     const {
         app,
@@ -37,10 +44,12 @@ export default function Camera() {
     
     const { src } = app.camera
     return (
-        <Card className={classesCommon.card} variant="outlined">
+        <Card className={classes.card} variant="outlined">
             <CardContent className={classes.content}>
                 <TransformWrapper>
                     {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
+                        <React.Fragment>
+                       
                         <TransformComponent>
                             <img
                                 className={classes.image}
@@ -55,9 +64,46 @@ export default function Camera() {
                                 src={src}
                             />
                         </TransformComponent>
+
+
+                         <div className={classes.cameraControlBar}>
+
+                         <Button 
+                            variant={`text`}
+                            onClick={zoomIn}
+                            color={`inherit`}>
+                            <Icon icon={`zoomIn`} />
+                            <span className={classes.btnTxt}>
+                                Zoom In
+                            </span>
+                        </Button>
+
+                        <Button 
+                            variant={`text`}
+                            onClick={zoomOut}
+                            color={`inherit`}>
+                            <Icon icon={`zoomOut`} />
+                            <span className={classes.btnTxt}>
+                                ZoomOut
+                            </span>
+                        </Button>
+
+                        <Button 
+                            variant={`text`}
+                            onClick={resetTransform}
+                            color={`inherit`}>
+                            <Icon icon={`reset`} />
+                            <span className={classes.btnTxt}>
+                                Reset
+                            </span>
+                        </Button>
+                        </div>
+
+
+                        </React.Fragment>
                     )}
                 </TransformWrapper>
-                    <div className={classes.cameraControlBar}>
+                    
                     {zoomLevel !== 0 ? 
                         <React.Fragment>
                           <IconButton 
@@ -86,21 +132,6 @@ export default function Camera() {
                           </IconButton>
                         </React.Fragment>
                     : null}
-                    <IconButton 
-                        edge={`start`}
-                        color={`inherit`}
-                        aria-label={'Pan Left'}>
-                        <Icon icon={`zoomIn`} />
-                      </IconButton>
-                      {zoomLevel !== 0 ? 
-                        <IconButton 
-                            edge={`start`}
-                            color={`inherit`}
-                            aria-label={'Pan Left'}>
-                            <Icon icon={`zoomOut`} />
-                          </IconButton>
-                        : null }
-                    </div>
             </CardContent>
         </Card>
     );

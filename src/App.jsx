@@ -14,7 +14,7 @@ import {
 
 let duration = 1;
 if (process.env.REACT_APP_ENV === 'DEV') {
-    duration = 1
+    duration = 0.1
 }
 
 function hasPlayed() {

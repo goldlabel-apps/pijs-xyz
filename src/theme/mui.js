@@ -2,7 +2,7 @@ const themeDark = {
   palette: {
     type: "dark",
     bg: {
-      main: "#212121"
+      main: "rgba(0,0,0,1)"
     },
     success: {
       main: "rgba(0,0,0,1)"
