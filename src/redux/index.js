@@ -3,16 +3,19 @@ import { combineReducers } from "redux";
 import { reduxBatch } from "@manaflair/redux-batch";
 import { entityReducer } from "./entity/reducer";
 import { appReducer, appSlice } from "./app/reducer";
+import { cameraReducer, cameraSlice } from "./camera/reducer";
 
 const reduxStore = (entity) => {
   
   const reducer = combineReducers({
     app: appReducer,
-    entity: entityReducer
+    entity: entityReducer,
+    camera: cameraReducer,
   });
 
   const preloadedState = {
     app: appSlice,
+    camera: cameraSlice,
     entity,
   };
 
