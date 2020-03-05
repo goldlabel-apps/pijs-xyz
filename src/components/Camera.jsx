@@ -6,8 +6,6 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"
 import {
     Card,
     CardContent,
-    // Toolbar,
-    // AppBar, 
     IconButton,
 } from '@material-ui/core/'
 import { Icon } from './' 
@@ -18,9 +16,7 @@ const useStyles = makeStyles(theme => ({
         overflow: 'hidden'
     },
     cameraControlBar: {
-        // display: 'flex',
-        // border: '1px solid red',
-        // alignItems: 'flex-start'
+        textAlign: 'center',
     },
     image: {
         width: '100%'
@@ -35,7 +31,10 @@ export default function Camera() {
     const classes = useStyles()
     const {
         app,
+        camera,
     } = useSelector(state => state)
+    const { zoomLevel } = camera.controls
+    
     const { src } = app.camera
     return (
         <Card className={classesCommon.card} variant="outlined">
@@ -58,44 +57,50 @@ export default function Camera() {
                         </TransformComponent>
                     )}
                 </TransformWrapper>
-
-                      <IconButton 
-                        edge={`start`}
-                        color={`inherit`}
-                        aria-label={'Pan Left'}>
-                        <Icon icon={`panLeft`} />
-                      </IconButton>
-                      <IconButton 
-                        edge={`start`}
-                        color={`inherit`}
-                        aria-label={'Pan Right'}>
-                        <Icon icon={`panRight`} />
-                      </IconButton>
-                      <IconButton 
-                        edge={`start`}
-                        color={`inherit`}
-                        aria-label={'Pan Up'}>
-                        <Icon icon={`panUp`} />
-                      </IconButton>
-                      <IconButton 
-                        edge={`start`}
-                        color={`inherit`}
-                        aria-label={'Pan Down'}>
-                        <Icon icon={`panDown`} />
-                      </IconButton>
-                      <IconButton 
+                    <div className={classes.cameraControlBar}>
+                    {zoomLevel !== 0 ? 
+                        <React.Fragment>
+                          <IconButton 
+                            edge={`start`}
+                            color={`inherit`}
+                            aria-label={'Pan Left'}>
+                            <Icon icon={`panLeft`} />
+                          </IconButton>
+                          <IconButton 
+                            edge={`start`}
+                            color={`inherit`}
+                            aria-label={'Pan Right'}>
+                            <Icon icon={`panRight`} />
+                          </IconButton>
+                          <IconButton 
+                            edge={`start`}
+                            color={`inherit`}
+                            aria-label={'Pan Up'}>
+                            <Icon icon={`panUp`} />
+                          </IconButton>
+                          <IconButton 
+                            edge={`start`}
+                            color={`inherit`}
+                            aria-label={'Pan Down'}>
+                            <Icon icon={`panDown`} />
+                          </IconButton>
+                        </React.Fragment>
+                    : null}
+                    <IconButton 
                         edge={`start`}
                         color={`inherit`}
                         aria-label={'Pan Left'}>
                         <Icon icon={`zoomIn`} />
                       </IconButton>
-                      <IconButton 
-                        edge={`start`}
-                        color={`inherit`}
-                        aria-label={'Pan Left'}>
-                        <Icon icon={`zoomOut`} />
-                      </IconButton>
-
+                      {zoomLevel !== 0 ? 
+                        <IconButton 
+                            edge={`start`}
+                            color={`inherit`}
+                            aria-label={'Pan Left'}>
+                            <Icon icon={`zoomOut`} />
+                          </IconButton>
+                        : null }
+                    </div>
             </CardContent>
         </Card>
     );
@@ -103,9 +108,8 @@ export default function Camera() {
 
 
 /*
-                <AppBar position={`static`}>
-                    <Toolbar className={classes.cameraControlBar}>
-                    </Toolbar>
-                </AppBar>
-
-                */
+<AppBar position={`static`}>
+    <Toolbar className={classes.cameraControlBar}>
+    </Toolbar>
+</AppBar>
+*/
