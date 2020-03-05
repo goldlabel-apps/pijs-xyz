@@ -31,6 +31,8 @@ import IconEnvironment from '@material-ui/icons/AcUnit';
 import IconWifi from '@material-ui/icons/Wifi';
 import IconWifiOff from '@material-ui/icons/WifiOff';
 import IconInstall from '@material-ui/icons/SaveAlt';
+
+
 // import GithubSVG from '../graphics/GithubSVG';
 import {
     Logo,
@@ -41,6 +43,11 @@ import IconDarkmode from '@material-ui/icons/Highlight';
 import IconTrash from '@material-ui/icons/DeleteForeverOutlined';
 import IconEffect from '@material-ui/icons/BrightnessMedium';
 import IconSearch from '@material-ui/icons/Search';
+
+import IconPanLeft from '@material-ui/icons/ArrowLeft';
+import IconPanRight from '@material-ui/icons/ArrowRight';
+import IconPanUp from '@material-ui/icons/ArrowDropUp';
+import IconPanDown from '@material-ui/icons/ArrowDropDown';
 
 const styles = theme => ({
     navIcon: {
@@ -117,12 +124,6 @@ class Icon extends Component {
             case `fullscreen`:
                 return (<IconFullscreen color={iconColor} />);
 
-            case `zoomout`:
-                return (<IconZoomOut color={iconColor} />);
-
-            case `zoomin`:
-                return (<IconZoomIn color={iconColor} />);
-
             case `humidity`:
                 return (<IconHumidity color={iconColor} />);
 
@@ -188,6 +189,25 @@ class Icon extends Component {
 
             case `search`:
                 return (<IconSearch color={iconColor} />);
+
+            case `panLeft`:
+                return (<IconPanLeft color={iconColor} />);
+
+            case `panRight`:
+                return (<IconPanRight color={iconColor} />);
+
+            case `panUp`:
+                return (<IconPanUp color={iconColor} />);
+
+            case `panDown`:
+                return (<IconPanDown color={iconColor} />);
+
+            case `zoomIn`:
+                return (<IconZoomIn color={iconColor} />);
+
+            case `zoomOut`:
+                return (<IconZoomOut color={iconColor} />);
+
 
             default: {
                 return null;
