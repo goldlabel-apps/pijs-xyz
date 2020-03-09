@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core/';
 import {
     Icon,
-    SwitchTheme
+    // SwitchTheme
 } from './'
 
 const useStyles = makeStyles(theme => ({
@@ -75,10 +75,14 @@ export default function PrimaryAppBar() {
                         PiJS.app
                     </Typography>
                     <div className={classes.grow} />
-                    <SwitchTheme />
+                    
                 </Toolbar>
             </AppBar>
             {renderMenu}
         </div>
     );
 }
+
+/*
+<SwitchTheme />
+*/

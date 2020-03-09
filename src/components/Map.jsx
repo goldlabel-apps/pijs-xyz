@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles'
-import commonStyles from '../theme/commonStyles'
 import {
     Card,
     CardContent,
@@ -9,13 +8,17 @@ import {
 import mapboxgl from 'mapbox-gl'
 
 const useStyles = makeStyles(theme => ({
+        card: {
+        border: "none",
+        boxShadow: "none",
+        background: "none"
+    },
     map: {
         height: 275,
     }
 }));
 
 export default function Map() {
-    const classesCommon = commonStyles();
     const classes = useStyles()
     const [map, setMap] = useState(null)
     const mapContainer = useRef(null)
@@ -37,9 +40,10 @@ export default function Map() {
     }, [map])
 
     return (
-        <Card className={classesCommon.card} variant="outlined">
+        <Card className={classes.card} variant="outlined">
             <CardHeader
-                title={`It is night time in Brisbane`}
+                title={`Camera Offline`}
+                subheader={`While we learn how to renew our LetsEncrypt SSL`}
             />
             <CardContent>
                 <div
