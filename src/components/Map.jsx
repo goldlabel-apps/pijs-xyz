@@ -27,23 +27,25 @@ export default function Map() {
         const initializeMap = ({ setMap, mapContainer }) => {
             const map = new mapboxgl.Map({
                 container: mapContainer.current,
-                style: `mapbox://styles/listingslab/ck64doqiq0l2b1ir0995szolj`,
+                style: `mapbox://styles/listingslab/ck7picfb501sh1ipfwf7ab967`,
                 center: [153.107658, -27.211579],
-                zoom: 6
+                zoom: 11
             });
             map.on(`load`, (e) => {
                 setMap(map);
                 map.resize();
+                // map.addControl(new mapboxgl.NavigationControl());
             });
         };
+
         if (!map) initializeMap({ setMap, mapContainer });
     }, [map])
 
     return (
         <Card className={classes.card} variant="outlined">
             <CardHeader
-                title={`Camera Offline`}
-                subheader={`While we learn how to renew our LetsEncrypt SSL`}
+                title={`The Queen's Land`}
+                subheader={`Secured with LetsEncrypt`}
             />
             <CardContent>
                 <div
