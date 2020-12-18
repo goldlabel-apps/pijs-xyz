@@ -1,10 +1,10 @@
 {
-  "name": "pijs-app",
-  "version": "1.0.7",
+  "name": "pijs-xyz",
+  "version": "1.0.8",
   "description": "PiJS.app is an Open Source React Progressive Web App",
   "repository": {
     "type": "git",
-    "url": "https://github.com/listingslab-hardware/pijs-app.git"
+    "url": "https://github.com/listingslab-hardware/pijs-xyz.git"
   },
   "author": {
     "name": "listingslab",
